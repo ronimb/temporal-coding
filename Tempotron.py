@@ -2,7 +2,7 @@ import numpy as np
 import tensorflow as tf
 
 
-class Tempotron():
+class Tempotron:
     def __init__(self, threshold_value, learning_rate,
                  input_shape=(10, 500), weights=None, reduce_func='sum'):
         # Handling input
@@ -27,7 +27,8 @@ class Tempotron():
         self.sess = tf.InteractiveSession()
         tf.global_variables_initializer().run()
 
-    def initvals(self):
+    @staticmethod
+    def initvals():
         tf.global_variables_initializer().run()
 
     def setup_model(self):
@@ -166,3 +167,9 @@ class Tempotron():
         fd = {self.x: data, self.y_: labels}
         c = self.correct.eval(fd)
         return c.sum() / c.size
+
+
+if __name__ == '__main__':
+    thresh = 1.5
+    learning_rate = 1e-4
+    tmp = Tempotron(thresh, learning_rate)
