@@ -36,14 +36,16 @@ class Tempotron:
         self.x = tf.placeholder(tf.float32, shape=(None, *self.input_shape))
 
         # Configurable weights - Must manually define weights with proper shape!
-        if self.weights == None:
+        if self.weights is None:
             # Weight initialization # Currently fixed for N x T shapes
             self.w = tf.Variable(
                 tf.random_uniform(shape=(1, self.input_shape[0]), minval=0, maxval=1))
-        elif type(self.weights) == tf.Variable:
+        elif isinstance(self.weights, tf.Variable):
             self.w = self.weights
         else:
-            self.w = tf.Variable(self.weights)
+            # Cast to appropriate type and
+            weights = self.weights.astype('float32')[np.newaxis, :]
+            self.w = tf.Variable(weights)
 
         # Activation layer - NOTE: CURRENTLY NOT GENERALIZED TO ANY SHAPE!
         ## NEED TO SWITCH TO A VERSION WITH NO SQUEEZE!
@@ -87,7 +89,7 @@ class Tempotron:
         self.train_step = tf.assign(self.w, tf.add(self.w, self.w_upd))
 
     def train(self, data, labels, iter_num=1000, batch_size=None, train_mode='batch',
-              return_params=False, verbose=False):
+              return_params=False):
         '''
         The tempotron training function,
         This function takes data and real labels as input, and trains the model using these samples.
