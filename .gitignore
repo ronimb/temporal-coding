@@ -105,3 +105,9 @@ ENV/
 
 # Old data
 /Old
+
+# Link files
+*.lnk
+
+# Testing code folder
+/Testing

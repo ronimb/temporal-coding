@@ -2,7 +2,6 @@ import brian2 as b2
 import numpy as np
 from brian2.units import ms, Hz, second
 
-
 def make_test_samples(rate, duration_sec,
                       num_neur=10, shift_size=5,
                       set1_size=500, set2_size=500):

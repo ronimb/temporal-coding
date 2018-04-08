@@ -55,10 +55,12 @@ if __name__ == '__main__':
         set1_size=500,
         set2_size=500)
     duration_ms = sample_params['duration_sec'] * 1000
+
     tempotron_params = dict(
         threshold_value=1.5,
         learning_rate=0.001,
         input_shape=(sample_params['num_neur'], duration_ms))
+
     train_params = dict(
         batch_size=50,
         train_mode='batch',
