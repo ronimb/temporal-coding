@@ -1,7 +1,7 @@
 import matplotlib; matplotlib.use('module://backend_interagg')
-from Tempotron import Tempotron
+from Discrete_Tempotron.Tempotron import Tempotron
 import tensorflow as tf
-from make_test_samples import make_test_samples
+from Discrete_Tempotron.make_test_samples import make_test_samples
 import numpy as np
 from matplotlib import pyplot as plt
 
