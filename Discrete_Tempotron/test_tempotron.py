@@ -1,5 +1,5 @@
 import matplotlib; matplotlib.use('module://backend_interagg')
-from Discrete_Tempotron.Tempotron import Tempotron
+from Discrete_Tempotron.Discrete_Tempotron import Tempotron
 import tensorflow as tf
 from Discrete_Tempotron.make_test_samples import make_test_samples
 import numpy as np
