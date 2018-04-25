@@ -109,5 +109,6 @@ ENV/
 # Link files
 *.lnk
 
-# Testing code folder
+# Testing code
 /Testing
+tempotron_mockup.ipynb
