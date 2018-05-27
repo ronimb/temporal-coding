@@ -112,3 +112,4 @@ ENV/
 # Testing code
 /Testing
 tempotron_mockup.ipynb
+tempotron_mockup_old.ipynb

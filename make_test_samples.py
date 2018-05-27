@@ -1,5 +1,6 @@
 import brian2 as b2
 import numpy as np
+import matplotlib.pyplot as plt
 from brian2.units import ms, Hz, second
 
 def make_test_samples(rate, duration_sec,
@@ -88,7 +89,12 @@ def make_test_samples(rate, duration_sec,
 
     return {'data': combined, 'labels': labels}
 
-
+def plot_sample(sample):
+    for i, train in enumerate(sample):
+        n_spikes = train.shape[0]
+        ax = plt.scatter(train, n_spikes * [i], marker='|', c='blue')
+        plt.yticks([])
+    return ax
 
 if __name__ == '__main__':
     rate = 50
