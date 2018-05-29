@@ -50,7 +50,7 @@ for num_neur, _, _ in multi_samples:
             acc_after.loc[num_neur, reps][i] = T.accuracy(samples, labels)
             curr_run_time = time.time() - start_time
             run_times.loc[num_neur, reps][i] = curr_run_time
-            timestr = '    | took {:0>2}:{} (min:sec)'.format(*divmod(curr_run_time, 60))
+            timestr = '    | took {:0>2.0f}:{:.2f} (min:sec)'.format(*divmod(curr_run_time, 60))
             print(timestr)
 acc_diff = acc_after - acc_before
 # %%

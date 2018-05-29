@@ -272,10 +272,16 @@ if __name__ == '__main__':
         num_neurons=test_sample_params['num_neur'],
         tau=2,
         threshold=0.005, )
-    res = T.classify(samples['data'][0])
-    acc_pre= T.accuracy(samples['data'], samples['labels'], 100)
-    print('Accuracy before {}'.format(acc_pre))
-    T.train(samples['data'], samples['labels'], n=100)
-    acc_post = T.accuracy(samples['data'], samples['labels'], 100)
-    print('Accuracy after {}'.format(acc_post))
+    # res = T.classify(samples['data'][0])
+    # acc_pre= T.accuracy(samples['data'], samples['labels'], 200)
+    # print('Accuracy before {}'.format(acc_pre))
+    # T.train(samples['data'], samples['labels'], n=200)
+    # acc_post = T.accuracy(samples['data'], samples['labels'], 200)
+    # print('Accuracy after {}'.format(acc_post))
 
+    def trial(samples, tempotron, n, train_reps):
+        acc_pre = tempotron.accuracy(samples['data'], samples['labels'], n)
+        for _ in range(train_reps):
+            tempotron.train(samples['data'], samples['labels'], n=n)
+        acc_post = tempotron.accuracy(samples['data'], samples['labels'], n)
+        return (acc_pre, acc_post)

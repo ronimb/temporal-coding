@@ -1,11 +1,13 @@
 import brian2 as b2
+b2.BrianLogger.suppress_name('method_choice')
 import numpy as np
 import matplotlib.pyplot as plt
 from brian2.units import ms, Hz, second
 
+
 def make_test_samples(rate, duration_sec,
                       num_neur=10, shift_size=5,
-                      set1_size=500, set2_size=500):
+                      set1_size=100, set2_size=100):
     """
 
     :param num_neur:
