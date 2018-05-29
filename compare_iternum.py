@@ -23,11 +23,13 @@ learning_rate = 1e-4  # Parameter controlling size of weight change for wrong tr
 
 train_reps = [2,5,10,20]
 
+length_to_use = 500 # MS
+num_neur = (30, 500)
 rate, shift = 50, 5
-num_sets = 30
+num_sets = 10
 num_conds = 2 * len(train_reps)
 # %%
-df_ind = pd.MultiIndex.from_product(((30, 500), train_reps))
+df_ind = pd.MultiIndex.from_product((num_neur, train_reps))
 acc_before = pd.DataFrame(np.zeros((num_conds, num_sets)), index=df_ind)
 acc_after = acc_before.copy()
 
@@ -37,9 +39,9 @@ run_times = acc_before.copy()
 for num_neur, _, _ in multi_samples:
     print(f'{num_neur} neurons in set')
     for reps in train_reps:
-        print(f'\t {reps} training repetitions, sample #   ', end='')
+        print(f'\t {reps} training repetitions')
         for i in range(num_sets):
-            print('\b'*3, f'{i:>2}', end='')
+            print(f'\tSample #{i:>2}', end='')
             start_time = time.time()
             samples = multi_samples[num_neur, rate, shift][i]['data']
             labels = multi_samples[num_neur, rate, shift][i]['labels']
@@ -50,7 +52,7 @@ for num_neur, _, _ in multi_samples:
             acc_after.loc[num_neur, reps][i] = T.accuracy(samples, labels)
             curr_run_time = time.time() - start_time
             run_times.loc[num_neur, reps][i] = curr_run_time
-            timestr = '    | took {:0>2.0f}:{:.2f} (min:sec)'.format(*divmod(curr_run_time, 60))
+            timestr = '  | took {:0>2.0f}:{:.2f} (min:sec)'.format(*divmod(curr_run_time, 60))
             print(timestr)
 acc_diff = acc_after - acc_before
 # %%

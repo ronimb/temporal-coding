@@ -262,12 +262,12 @@ class Tempotron():
 # %%
 if __name__ == '__main__':
     test_sample_params = dict(rate=150,
-                              duration_sec=1,
+                              duration_ms=500,
                               num_neur=300,
                               shift_size=5,
                               set1_size=500,
                               set2_size=500)
-    samples = make_test_samples(**test_sample_params)
+    samples = gen_with_temporal_shift(**test_sample_params)
     T = Tempotron(
         num_neurons=test_sample_params['num_neur'],
         tau=2,

@@ -4,6 +4,7 @@ import pickle
 import time
 import datetime
 import brian2 as b2
+b2.BrianLogger.suppress_name('method_choice')
 import pyspike as spk
 
 import matplotlib.pyplot as plt
@@ -31,13 +32,8 @@ def determine_sample_distance(sample_a, sample_b, duration=1000):
         distances.append(spk.spike_distance(tr_a, tr_b))
     return np.mean(distances)
 
-def release_fun(span, mode, num_ves, base_a=2, base_span=3):
-    # The base_span is the span for which the a parameter of the beta distribution equals base_a
-    a = 1 + (base_span / span) * (base_a - 1)
-    b = (span * (a - 1) - mode * (a - 2)) / mode
-    return np.random.beta(a, b, num_ves) * span
 
-def spikes_to_ves(sample, span, mode, num_ves):
+def spikes_to_ves(sample, span, mode=1, num_ves=20):
     ves_array = []
     for train in sample:
         num_spikes = train.shape[0]

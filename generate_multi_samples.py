@@ -1,4 +1,4 @@
-from make_test_samples import make_test_samples
+from make_test_samples import gen_with_temporal_shift
 from itertools import product
 import pandas as pd
 import numpy as np
@@ -21,7 +21,7 @@ for i, (num_neur, rate, shift) in enumerate(conditions):
     print(f'Now generating {num_neur} neurons at {rate}Hz with {shift}ms temporal shift  -  Condition #{i+1}/{n_conds}')
     multi_samples[(num_neur, rate, shift)] = []
     for _ in range(num_sets):
-        multi_samples[(num_neur, rate, shift)].append(make_test_samples(
+        multi_samples[(num_neur, rate, shift)].append(gen_with_temporal_shift(
         rate=rate,
         duration_sec=1,
         num_neur=num_neur ,
