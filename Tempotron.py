@@ -264,10 +264,12 @@ if __name__ == '__main__':
     test_sample_params = dict(rate=150,
                               duration_ms=500,
                               num_neur=300,
-                              shift_size=5,
-                              set1_size=500,
-                              set2_size=500)
-    samples = gen_with_temporal_shift(**test_sample_params)
+                              span=5,
+                              mode=1,
+                              num_ves=20,
+                              set1_size=200,
+                              set2_size=200)
+    samples = gen_with_vesicle_release(**test_sample_params)
     T = Tempotron(
         num_neurons=test_sample_params['num_neur'],
         tau=2,

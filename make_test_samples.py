@@ -47,7 +47,6 @@ def gen_with_temporal_shift(rate, num_neur, duration_ms=500, shift_size=5,
     :param set2_size:
     :return:
     """
-    # TODO: move unit checking to brian_poisson, keep duration ms somehow
 
     def shift_spikes(source, shift_size, num_samples):
         """
@@ -115,6 +114,7 @@ def gen_with_vesicle_release(rate, num_neur, duration_ms,
         samples = []
         for _ in range(num_samples):
             samples.append(spikes_to_ves(source, span, mode, num_ves))
+        return samples
 
     source_1 = brian_poisson(rate, duration_ms, n=num_neur)
     source_2 = brian_poisson(rate, duration_ms, n=num_neur)
@@ -145,5 +145,8 @@ if __name__ == '__main__':
     duration = 500
     num_neur = 10
     set_size = 100
-    data = gen_with_temporal_shift(rate, duration,
-                                   num_neur, set_size, set_size)
+    # data = gen_with_temporal_shift(rate, duration,
+    #                                num_neur, set_size, set_size)
+    data = gen_with_vesicle_release(rate, num_neur, duration,
+                                    span=5, mode=1, num_ves=20,
+                                    set1_size=set_size, set2_size=set_size)

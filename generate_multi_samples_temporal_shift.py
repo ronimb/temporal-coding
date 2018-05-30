@@ -4,12 +4,14 @@ import pandas as pd
 import numpy as np
 import datetime
 import pickle
+import time
 # %% Define the conditions
 shift_sizes = [5]
 rates = [50]
 num_neurons = [30, 500]
 
-num_sets = 30  # Number of sets to generate from each condition
+num_sets = 10  # Number of sets to generate from each condition
+duration_ms = 500
 
 set_sizes = 100 # Shared between conditions
 
@@ -18,16 +20,22 @@ n_conds = len(shift_sizes) * len(rates) * len(num_neurons)
 # %% Sample generation
 multi_samples = dict()
 for i, (num_neur, rate, shift) in enumerate(conditions):
+    start_time = time.time()
     print(f'Now generating {num_neur} neurons at {rate}Hz with {shift}ms temporal shift  -  Condition #{i+1}/{n_conds}')
     multi_samples[(num_neur, rate, shift)] = []
-    for _ in range(num_sets):
+    for j in range(num_sets):
+        print(f'Sample #{j:>2}', end='\r')
         multi_samples[(num_neur, rate, shift)].append(gen_with_temporal_shift(
         rate=rate,
-        duration_sec=1,
+        duration_ms=duration_ms,
         num_neur=num_neur ,
         shift_size=shift,
         set1_size=set_sizes,
         set2_size=set_sizes))
+    run_time = time.time() - start_time
+    time_str = timestr = 'took {:0>2.0f}:{:.2f} (min:sec)'.format(*divmod(run_time, 60))
+    print(f'Done!  | {time_str}')
+
 # %% Sample verification
 # verfdict = {
 #     key: [multi_samples[key]['data'][i][j].shape for i,j
