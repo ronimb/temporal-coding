@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
 
 # %%
-samples_path = r"D:\Data\Samples_270518.pickle"
+samples_path = r"D:\Data\Samples_300518.pickle"
 with open(samples_path, 'rb') as file:
     multi_samples = pickle.load(file)
 # %%
@@ -23,7 +23,6 @@ learning_rate = 1e-4  # Parameter controlling size of weight change for wrong tr
 
 train_reps = [2,5,10,20]
 
-length_to_use = 500 # MS
 num_neur = (30, 500)
 rate, shift = 50, 5
 num_sets = 10

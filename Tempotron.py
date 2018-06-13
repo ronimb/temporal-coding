@@ -2,6 +2,8 @@ import numpy as np
 import brian2 as b2
 from brian2.units import second, ms
 import matplotlib.pyplot as plt
+import time
+import pickle
 
 from make_test_samples import *
 
@@ -123,7 +125,7 @@ class Tempotron():
         """
         tau = self.tau  # Required for brian to find variable in the namespace
 
-        # Computer model decision and the time of maximal voltage for the given input
+        # Compute model decision and the time of maximal voltage for the given input
         decision, t_vmax = self.classify(sample)
 
         # TODO: Remove this if once cause of error is found
@@ -134,7 +136,7 @@ class Tempotron():
             \tMax: {self.weights.max()}
             \tMin: {self.weights.min()}
             \tMean: {self.weights.mean()}''')
-            return
+            return sample, self.weights
         # Determine if the model decisions is equal to the label
         match = (decision == label)
 
@@ -261,29 +263,47 @@ class Tempotron():
 
 # %%
 if __name__ == '__main__':
-    test_sample_params = dict(rate=150,
-                              duration_ms=500,
-                              num_neur=300,
-                              span=5,
-                              mode=1,
-                              num_ves=20,
-                              set1_size=200,
-                              set2_size=200)
-    samples = gen_with_vesicle_release(**test_sample_params)
+    num_neur = 30
+    # set_size = 100
+
+
+    # Temporary testing bits
+    loc = r'C:\Users\ron\OneDrive\Documents\Masters\Parnas\temporal-coding\Data\n30_r15_tempshift_testset.pickle'
+    with open(loc, 'rb') as file:
+        samples = pickle.load(file)
+
+    print('Setting up tempotron model')
     T = Tempotron(
-        num_neurons=test_sample_params['num_neur'],
+        num_neurons=num_neur,
         tau=2,
         threshold=0.005, )
-    # res = T.classify(samples['data'][0])
-    # acc_pre= T.accuracy(samples['data'], samples['labels'], 200)
-    # print('Accuracy before {}'.format(acc_pre))
-    # T.train(samples['data'], samples['labels'], n=200)
-    # acc_post = T.accuracy(samples['data'], samples['labels'], 200)
-    # print('Accuracy after {}'.format(acc_post))
 
-    def trial(samples, tempotron, n, train_reps):
-        acc_pre = tempotron.accuracy(samples['data'], samples['labels'], n)
-        for _ in range(train_reps):
-            tempotron.train(samples['data'], samples['labels'], n=n)
-        acc_post = tempotron.accuracy(samples['data'], samples['labels'], n)
-        return (acc_pre, acc_post)
+
+    def sec_to_str(sec):
+        m, s = divmod(sec, 60)
+        return f'{m:0>2.0f}:{s:0>2.2f}'
+
+
+    def cycle(tempotron, samples, learning_rate=1e-4, n=[]):
+        time_eval_1 = time.time()
+        acc_before = tempotron.accuracy(samples['data'], samples['labels'])
+        time_eval_1 = time.time() - time_eval_1
+        weights_pre = tempotron.weights
+
+        time_train = time.time()
+        tempotron.train(samples['data'], samples['labels'], n=n)
+        time_train = time.time() - time_train
+
+        time_eval_2 = time.time()
+        acc_after = tempotron.accuracy(samples['data'], samples['labels'])
+        time_eval_2 = time.time() - time_eval_2
+        weights_post = tempotron.weights
+
+        print(f'accuracy before: {acc_before}')
+        print(f'accuracy after: {acc_after}')
+
+        print(f'''Times:
+        \t First accuracy evaluation: {sec_to_str(time_eval_1)}
+        \t Training: {sec_to_str(time_train)}
+        \t Second accuracy evaluation: {sec_to_str(time_eval_2)}''')
+        return acc_before, acc_after, {'weights_pre': weights_pre, 'weights_post': weights_post}

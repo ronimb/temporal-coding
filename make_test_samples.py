@@ -36,6 +36,19 @@ def brian_poisson(rate, duration_ms, dt=1 * ms, n=1):
         trains = [train / dt for train in spikes.spike_trains().values()]
     return trains
 
+def convert_sample(sample):
+    inds = []
+    times = []
+    counts = []
+    for i, neuron in enumerate(sample):
+        # neuron = np.round(neuron, 1)
+        neuron = np.trunc(neuron * 10) / 10
+        time, count = np.unique(neuron, return_counts=True)
+        inds.extend([i] * time.shape[0])
+        times.extend(time)
+        counts.extend(count)
+    return np.array([inds, times, counts])
+
 def gen_with_temporal_shift(rate, num_neur, duration_ms=500, shift_size=5,
                             set1_size=100, set2_size=100):
     """
@@ -89,8 +102,8 @@ def gen_with_temporal_shift(rate, num_neur, duration_ms=500, shift_size=5,
 
     return {'data': combined, 'labels': labels}
 
-def gen_with_vesicle_release(rate, num_neur, duration_ms,
-                             span, mode, num_ves,
+def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
+                             span=5, mode=1, num_ves=20,
                              set1_size=100, set2_size=100):
 
     def release_fun(span, mode, num_ves, base_a=2, base_span=3):

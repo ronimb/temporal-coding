@@ -46,17 +46,6 @@ if not(os.path.exists(current_folder)):
 
     with open(rf"{current_folder}\Samples_Info.txt", 'w') as handle:
         handle.write(param_str)
-# %% TEMPORARILY SET MANUAL CONDITIONS
-# TODO: Remove the manual conditions
-from itertools import chain
-partial_n = 150
-partial_rates = 50, 100
-partial_conds = product([partial_n], partial_rates, multi_params['spans'])
-
-rest_n = 500
-rest_conds = product([rest_n], multi_params['rates'], multi_params['spans'])
-
-conditions = chain(partial_conds, rest_conds)
 # %% Sample generation
 for i, (num_neur, rate, span) in enumerate(conditions):
     start_time = time.time()
