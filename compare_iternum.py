@@ -7,9 +7,8 @@ import datetime
 import warnings
 warnings.filterwarnings("ignore")  # Used to ignore brian deprecation warnings
 
-from Tempotron import Tempotron
+from Old.Tempotron import Tempotron
 
-import matplotlib.pyplot as plt
 import seaborn as sns; sns.set()
 
 # %%

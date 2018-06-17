@@ -1,4 +1,4 @@
-from Tempotron import Tempotron
+from Old.Tempotron import Tempotron
 import pandas as pd
 import pickle
 import numpy as np

@@ -25,15 +25,15 @@ set_sizes = 100  # Shared between conditions
 conditions = product(*multi_params.values())
 num_conditions = np.prod([len(items) for items in multi_params.values()])
 # %% set up data saving model
-main_folder = 'D:\Data'
+data_folder = 'D:\Data'
 Condition = namedtuple('Condition', ['num_neur', 'rate', 'span'])
 
 date = datetime.datetime.now()
 datestr = f'{date.day:02}_{date.month:02}_{date.year-2000}'
 
-current_folder = rf"{main_folder}\{datestr}_vesrel"
-if not(os.path.exists(current_folder)):
-    os.mkdir(current_folder)
+main_folder = rf"{data_folder}\{datestr}_vesrel"
+if not(os.path.exists(main_folder)):
+    os.mkdir(main_folder)
 
     param_str = f"""Conditions: {multi_params}
     
@@ -44,7 +44,7 @@ if not(os.path.exists(current_folder)):
     set_size={set_sizes}"""
 
 
-    with open(rf"{current_folder}\Samples_Info.txt", 'w') as handle:
+    with open(rf"{main_folder}\Samples_Info.txt", 'w') as handle:
         handle.write(param_str)
 # %% Sample generation
 for i, (num_neur, rate, span) in enumerate(conditions):
@@ -53,7 +53,11 @@ for i, (num_neur, rate, span) in enumerate(conditions):
         f'Now generating {num_neur} neurons at {rate}Hz with {span}ms release span  -  Condition #{i+1}/{num_conditions}')
     # multi_samples[(num_neur, rate, span)] = []
     descriptor = Condition(num_neur, rate, span)
-    condition_samples = pd.Series(np.zeros(num_sets), name=descriptor, dtype=object)
+    folder_name = '_'.join([f'{descriptor._fields[i]}={descriptor[i]}' for i in range(len(descriptor))])
+    current_folder = rf'{main_folder}\{folder_name}'
+    if not(os.path.exists(current_folder)):
+        os.mkdir(current_folder)
+    # condition_samples = pd.Series(np.zeros(num_sets), name=descriptor, dtype=object)
     for j in range(num_sets):
         print(f'Sample #{j:>2}', end='\r')
         data = gen_with_vesicle_release(
@@ -65,12 +69,11 @@ for i, (num_neur, rate, span) in enumerate(conditions):
             num_ves=num_ves,
             set1_size=set_sizes,
             set2_size=set_sizes)
-        condition_samples[j] = data
+        with open(rf"{current_folder}\set{j}.pickle", 'wb') as handle:
+            pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        # condition_samples[j] = data
     # Save data
     print('  Saving...', end='')
-    fname = '_'.join([f'{descriptor._fields[i]}={descriptor[i]}' for i in range(len(descriptor))])
-    with open(rf"{current_folder}\{fname}.pickle", 'wb') as handle:
-        pickle.dump(condition_samples, handle, protocol=pickle.HIGHEST_PROTOCOL)
     run_time = time.time() - start_time
     time_str = timestr = 'took {:0>2.0f}:{:.2f} (min:sec)'.format(*divmod(run_time, 60))
     print(f'Done!  | {time_str}')
