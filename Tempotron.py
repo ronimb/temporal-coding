@@ -4,17 +4,18 @@ from brian2.units import ms
 import pickle
 import matplotlib.pyplot as plt
 import time
+import sys
 
 from make_test_samples import *
 
 # %% Generate samples for use in testing - REMOVE once done!
 num_neurons = 500
-rate = 150
-samples_tempshift = gen_with_temporal_shift(rate=150,
+rate = 100
+samples_tempshift = gen_with_temporal_shift(rate=rate,
                                   num_neur=num_neurons,
                                   shift_size=5)
 
-samples_ves = gen_with_vesicle_release(rate=150,
+samples_ves = gen_with_vesicle_release(rate=rate,
                                        num_neur=num_neurons,
                                        span=5,
                                        mode=1,
@@ -94,6 +95,7 @@ class Tempotron:
                                     self.voltage_train)
         self.net_train.store()
 
+        self.debug_0 = 0 # For debugging problematic samples
 
     def convert(func):
         """
@@ -188,7 +190,10 @@ class Tempotron:
         if not(match):
             vmax_ind = self.voltage.v[0].argmax()
             t_vmax = self.voltage.t[vmax_ind]
-
+            if t_vmax == 0:
+                (print('t_vmax == 0 :('))
+                self.debug_0 += 1
+                return
             self.prep_network('train')
             self.set_driving(sample, mode='train')
             self.net_train.run(t_vmax)
@@ -206,16 +211,6 @@ class Tempotron:
         for _ in range(iter):
             for i in inds:
                 self.train_sample(samples[i], labels[i], learning_rate)
-
-# %%
-# loc = r'C:\Users\ron\OneDrive\Documents\Masters\Parnas\temporal-coding\Data\n30_r15_vesrel_testset.pickle'
-loc = r'E:\OneDrive\Documents\Masters\Parnas\temporal-coding\Data\n30_r15_tempshift_testset.pickle'
-with open(loc, 'rb') as file:
-    samples = pickle.load(file)
-
-num_neurons = samples['data'][0].shape[0]
-# %%
-T = Tempotron(num_neurons, 2, 0.005)
 
 # %%
 def sec_to_str(sec):
@@ -249,9 +244,21 @@ def cycle(tempotron, samples, learning_rate=1e-4, n=[], iter=1):
     return acc_before, acc_after, {'weights_pre': weights_pre, 'weights_post': weights_post}
 # %%
 if __name__ == '__main__':
-    data = cycle(T, samples)
+    # loc = r'E:\OneDrive\Documents\Masters\Parnas\temporal-coding\Data\n30_r15_tempshift_testset.pickle'
+    # loc = r'C:\Users\ron\OneDrive\Documents\Masters\Parnas\temporal-coding\Data\n30_r15_tempshift_testset.pickle'
+    # loc = sys.argv[1]
+    # with open(loc, 'rb') as file:
+        # samples = pickle.load(file)
+
+    samples = samples_ves
+    num_neurons = samples['data'][0].shape[0]
+
+    # %%
+    T = Tempotron(num_neurons, 2, 0.005)
+    data = cycle(T, samples, iter=5)
     print(data[:2])
     data[2]['weights_pre'] == data[2]['weights_post']
+
 
 # %%
 '''Current issue:
