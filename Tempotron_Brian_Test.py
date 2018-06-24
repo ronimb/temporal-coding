@@ -5,6 +5,7 @@ import brian2 as b2
 from brian2.units import ms
 import sys
 import matplotlib.pyplot as plt
+from numba import jit, prange, njit
 
 from make_test_samples import gen_with_vesicle_release
 # %%
@@ -12,6 +13,7 @@ def sec_to_str(sec):
     m, s = divmod(sec, 60)
     return f'{m:0>2.0f}:{s:0>2.2f}'
 
+@jit(parallel=True)
 def convert_sample(sample):
     inds = []
     times = []
@@ -24,6 +26,7 @@ def convert_sample(sample):
         counts.extend(count)
     return np.array([inds, times, counts])
 
+@jit(parallel=True)
 def convert_all_samples(samples):
     labels = samples['labels']
     num_neurons = samples['data'][0].shape[0]
@@ -56,6 +59,7 @@ orig_samples = gen_with_vesicle_release(rate=100,
                                        mode=1,
                                        num_ves=20)
 print(f'Sample generation took {sec_to_str(time.time()-t)}')
+# %%
 num_neurons = orig_samples['data'][0].shape[0]
 num_samples = orig_samples['data'].shape[0]
 
