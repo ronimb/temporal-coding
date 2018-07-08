@@ -1,7 +1,7 @@
 import numpy as np
 cimport numpy as np
 
-DTI = np.int
+DTI = np.intc
 DTF = np.float32
 DTB = np.bool
 
@@ -9,7 +9,7 @@ ctypedef np.int_t  DTI_t
 ctypedef np.float_t  DTF_t
 # ctypedef np.bool_t DTI_t
 
-def return_subset(DTI_t batch_size,
+cpdef return_subset(DTI_t batch_size,
                   np.ndarray[DTF_t, ndim=2] samples,
                   np.ndarray[DTI_t] labels,
                   DTI_t num_samples,
@@ -19,6 +19,8 @@ def return_subset(DTI_t batch_size,
     cdef np.ndarray[np.uint8_t, cast=True] ind_locs
     cdef np.ndarray[DTF_t, ndim=2] subset
     cdef np.ndarray[DTI_t] u, inv
+
+    cdef dict samp_map
 
     selected_inds = np.sort(np.random.choice(range(num_samples), batch_size, replace=False))
     batch_inds = (selected_inds * num_neurons + np.arange(num_neurons)[:, np.newaxis]).flatten()

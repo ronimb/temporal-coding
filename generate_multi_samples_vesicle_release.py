@@ -1,4 +1,4 @@
-from make_test_samples import gen_with_vesicle_release
+from make_test_samples import gen_with_vesicle_release, convert_multi_samples
 from itertools import product
 import pandas as pd
 import numpy as np
@@ -11,7 +11,7 @@ import warnings
 
 warnings.filterwarnings("ignore")  # Used to ignore brian deprecation warnings
 # %% Define the conditions
-multi_params = dict(num_neurons=[30, 150, 500],
+multi_params = dict(num_neurons=[30],
                     rates=[15, 50, 100],
                     spans=[3, 6, 9])
 mode = 1
@@ -25,16 +25,18 @@ set_sizes = 100  # Shared between conditions
 conditions = product(*multi_params.values())
 num_conditions = np.prod([len(items) for items in multi_params.values()])
 # %% set up data saving model
-data_folder = 'D:\Data'
+# data_folder = 'D:\Data'
+data_folder = '/mnt/disks/data'
 Condition = namedtuple('Condition', ['num_neur', 'rate', 'span'])
 
 date = datetime.datetime.now()
 datestr = f'{date.day:02}_{date.month:02}_{date.year-2000}'
 
-main_folder = rf"{data_folder}\{datestr}_vesrel"
+main_folder = f"{data_folder}/{datestr}_vesrel"
 if not(os.path.exists(main_folder)):
-    os.mkdir(main_folder)
-
+    oldmask = os.umask(0)
+    os.mkdir(main_folder, 0o777)
+    os.umask(oldmask)
     param_str = f"""Conditions: {multi_params}
     
     Params:
@@ -44,7 +46,7 @@ if not(os.path.exists(main_folder)):
     set_size={set_sizes}"""
 
 
-    with open(rf"{main_folder}\Samples_Info.txt", 'w') as handle:
+    with open(f"{main_folder}/Samples_Info.txt", 'w') as handle:
         handle.write(param_str)
 # %% Sample generation
 for i, (num_neur, rate, span) in enumerate(conditions):
@@ -54,9 +56,11 @@ for i, (num_neur, rate, span) in enumerate(conditions):
     # multi_samples[(num_neur, rate, span)] = []
     descriptor = Condition(num_neur, rate, span)
     folder_name = '_'.join([f'{descriptor._fields[i]}={descriptor[i]}' for i in range(len(descriptor))])
-    current_folder = rf'{main_folder}\{folder_name}'
+    current_folder = rf'{main_folder}/{folder_name}'
     if not(os.path.exists(current_folder)):
-        os.mkdir(current_folder)
+        oldmask = os.umask(0)
+        os.makedirs(current_folder, 0o777)
+        os.umask(oldmask)
     # condition_samples = pd.Series(np.zeros(num_sets), name=descriptor, dtype=object)
     for j in range(num_sets):
         print(f'Sample #{j:>2}', end='\r')
@@ -69,7 +73,8 @@ for i, (num_neur, rate, span) in enumerate(conditions):
             num_ves=num_ves,
             set1_size=set_sizes,
             set2_size=set_sizes)
-        with open(rf"{current_folder}\set{j}.pickle", 'wb') as handle:
+        data = {key: data for key, data in zip(['data', 'labels'],convert_multi_samples(data))}
+        with open(f"{current_folder}/set{j}.pickle", 'wb') as handle:
             pickle.dump(data, handle, protocol=pickle.HIGHEST_PROTOCOL)
         # condition_samples[j] = data
     # Save data

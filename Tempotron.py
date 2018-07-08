@@ -266,3 +266,4 @@ When using a large number of inputs, particularly when there are many spikes,
 imbalance between positive and negative weights may cause spikes close to the beginning of the stimulus
 to drop the models voltage far below 0, such that the tempotrons vMax at the end occurs right at the beginning,
 this leads to problems with training'''
+# %%

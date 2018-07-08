@@ -3,7 +3,9 @@ b2.BrianLogger.suppress_name('method_choice')
 import numpy as np
 import matplotlib.pyplot as plt
 from brian2.units import ms, Hz, second
-
+from numba import jit, prange
+from multiprocessing import Pool
+# %%
 
 def brian_poisson(rate, duration_ms, dt=1 * ms, n=1):
     """
@@ -152,6 +154,37 @@ def plot_sample(sample):
         ax = plt.scatter(train, n_spikes * [i], marker='|', c='blue')
         plt.yticks([])
     return ax
+
+@jit(parallel=True)
+def convert_single_sample(sample):
+    inds = []
+    times = []
+    counts = []
+    num_events = []
+    for i in prange(sample.shape[0]):
+        neuron = np.trunc(sample[i] * 10) / 10
+        time, count = np.unique(neuron, return_counts=True)
+        num_events.append(time.shape[0])
+        inds.extend([i] * time.shape[0])
+        times.extend(time)
+        counts.extend(count)
+    return np.array([inds, times, counts]), num_events
+
+def convert_multi_samples(samples):
+    num_neurons = samples['data'][0].shape[0]
+    p = Pool(12)
+    labels = samples['labels']
+    res = p.map(convert_single_sample, samples['data'])
+    ts = np.hstack([[x[0][0] + num_neurons * i, x[0][1], x[0][2]] for i, x in enumerate(res)])
+    p.close()
+    p.join()
+    converted_samples = np.zeros(ts.shape[1],
+                                 dtype={'names': ('inds', 'times', 'counts'),
+                                        'formats': (int, float, int)})
+    converted_samples['inds'] = ts[0]
+    converted_samples['times'] = ts[1]
+    converted_samples['counts'] = ts[2]
+    return converted_samples, labels
 # %%
 if __name__ == '__main__':
     rate = 50
@@ -163,3 +196,6 @@ if __name__ == '__main__':
     data = gen_with_vesicle_release(rate, num_neur, duration,
                                     span=5, mode=1, num_ves=20,
                                     set1_size=set_size, set2_size=set_size)
+
+
+
