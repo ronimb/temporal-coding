@@ -6,7 +6,14 @@ from multiprocessing import Pool
 import pickle
 from make_test_samples import convert_single_sample, convert_multi_samples
 # %% Helper functions
-
+def load_sample(loc):
+    with open(loc, 'rb') as f:
+        data = pickle.load(f)
+    if data['data'].dtype == np.object:
+        samples, labels = convert_multi_samples(data)
+    else:
+        samples, labels = [data['data'], data['labels']]
+    return samples, labels
 
 
 def return_subset(batch_size, samples, labels, num_samples, num_neurons):
@@ -40,15 +47,13 @@ class Tempotron():
 
         # Dummy variables
         self.networks = dict()
-        self.test_samples = None
-        self.test_labels = None
 
     def make_classification_network(self, num_samples, name):
         network_size = num_samples * self.num_neurons
         count_mat = np.zeros((int(self.duration / ms * 10), network_size), int)
         target = b2.NeuronGroup(N=num_samples, model=self.eqs, threshold='v>threshold', reset='v=0',
                                 namespace={'tau': self.tau, 'threshold': self.threshold})
-        driving = b2.SpikeGeneratorGroup(N=(num_samples * self.num_neurons),
+        driving = b2.SpikeGeneratorGroup(N=network_size,
                                          indices=[0], times=[0 * ms])
         # counts = b2.TimedArray(values=_count_mat, dt=b2.defaultclock.dt)
         synapses = b2.Synapses(source=driving, target=target,
@@ -71,32 +76,96 @@ class Tempotron():
                                    num_samples=num_samples,
                                    driving=driving)
 
-    def feed_test_samples(self, samples):
-        self.test_samples, self.test_labels = convert_multi_samples(samples)
-
-    def accuracy(self, network_name):
+    def accuracy(self, network_name, samples, labels, return_decision=False):
         network = self.networks[network_name]
         network['net'].restore()
-        network['driving'].set_spikes(self.test_samples['inds'], self.test_samples['times']*ms)
+        network['driving'].set_spikes(samples['inds'], samples['times']*ms)
         network['synapses'].w = np.tile(self.weights, reps=network['num_samples'])
         counts = network['count_mat'].copy()
         counts[
-            (self.test_samples['times'] * 10).astype(int),
-            self.test_samples['inds'].astype(int)] = self.test_samples['counts']
+            (samples['times'] * 10).astype(int),
+            samples['inds'].astype(int)] = samples['counts']
         counts = b2.TimedArray(values=counts, dt=b2.defaultclock.dt)
         network['net'].run(self.duration)
-        decision = network['spike_mon'].count != 0
-        correct = (decision == self.test_labels)
-        return correct
+        decisions = network['spike_mon'].count != 0
+        correct = (decisions == labels)
+        if return_decision:
+            return correct, decisions
+        else:
+            return correct
 
-    def train(self):
-        pass
+    def make_train_network(self, batch_size, name):
+        network_size = batch_size * self.num_neurons
+        target = b2.NeuronGroup(N=network_size, model=self.eqs,
+                                namespace={'tau': self.tau})
+        driving = b2.SpikeGeneratorGroup(N=network_size,
+                                         indices=[0], times=[0 * ms])
+        count_mat = np.zeros((int(self.duration / ms * 10), network_size), int)
+        synapses = b2.Synapses(driving, target, 'w: 1', on_pre='v+=1*counts(t, i)')
+        synapses.connect(condition='i==j')
+        synapses.w = np.tile(self.weights, reps=batch_size)
+        voltage = b2.StateMonitor(target, 'v', record=True)
+        net = b2.Network([target, driving, synapses, voltage])
+        net.store()
+        self.networks[name] = dict(net=net,
+                                   count_mat=count_mat,
+                                   synapses=synapses,
+                                   v_mon=voltage,
+                                   num_samples=batch_size,
+                                   driving=driving)
+
+
+    def train(self, samples, labels, batch_size=50, num_reps=100, learning_rate=1e-3):
+        num_samples = int(np.unique(samples['inds']).shape[0] / self.num_neurons)
+        self.make_classification_network(batch_size, 'batch')
+        self.make_train_network(batch_size, 'train')
+        for ind in range(num_reps):
+            print(ind)
+            batch, batch_labels = return_subset(
+                batch_size, samples, labels,
+                num_samples=num_samples,
+                num_neurons=self.num_neurons)
+            self.networks['batch']['net'].restore()
+            correct, decisions = self.accuracy('batch', batch, batch_labels, return_decision=True)
+            v_max_times = np.argmax(self.networks['batch']['v_mon'].v, 1)
+            if (correct.shape[0] == correct.sum()):
+                print('No mistakes detected')
+                continue
+            v_max_t = v_max_times[~correct].max()
+            self.networks['train']['net'].restore()
+            self.networks['train']['synapses'].w = np.tile(self.weights, reps=batch_size)
+            self.networks['train']['driving'].set_spikes(batch['inds'], batch['times'] * ms)
+            counts = self.networks['train']['count_mat'].copy()
+            counts[
+                (batch['times'] * 10).astype(int),
+                batch['inds'].astype(int)] = batch['counts']
+            counts = b2.TimedArray(values=counts, dt=b2.defaultclock.dt)
+            if (v_max_t != 0):
+                self.networks['train']['net'].run(v_max_t * ms)
+                voltage_contribs = self.networks['train']['v_mon'].v
+                voltage_contribs = voltage_contribs[
+                    range(voltage_contribs.shape[0]), np.repeat(v_max_times, self.num_neurons)].\
+                    reshape(batch_size, self.num_neurons)[~correct]
+                weight_upd = (voltage_contribs
+                              * (batch_labels - decisions)[~correct, np.newaxis]).mean(0) * learning_rate
+                self.weights += weight_upd
+            else:
+                print('Aww Crap')
+
+
 # %%
 if __name__ == '__main__':
-    with open('/mnt/disks/data/test_big.pickle', 'rb') as f:
-        samples = pickle.load(f)
-    T = Tempotron(500, 2, 0.3)
-    T.feed_test_samples(samples)
-    T.make_classification_network(200, 'test')
-    T.accuracy('test').mean()
+    # loc = '/mnt/disks/data/test_big.pickle'
+    loc = '/mnt/disks/data/08_07_18_vesrel/num_neur=30_rate=100_span=9/set0.pickle'
+    samples, labels = load_sample(loc)
+
+    num_neurons = 30
+    num_samples = 200
+
+    T = Tempotron(num_neurons, 2, 0.15)
+
+    T.make_classification_network(num_samples, 'test')
+    print(T.accuracy('test', samples, labels).mean())
+    T.train(samples, labels, learning_rate=1e-6)
+    print(T.accuracy('test', samples, labels).mean())
 
