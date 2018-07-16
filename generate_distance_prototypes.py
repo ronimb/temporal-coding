@@ -1,4 +1,6 @@
 import numpy as np
+from numba import jit, prange
+from multiprocessing import Pool
 import pandas as pd
 import pickle
 import time
@@ -31,18 +33,9 @@ def determine_sample_distance(sample_a, sample_b, duration=1000):
         tr_b = spk.SpikeTrain(tr_b, (0, duration))
         distances.append(spk.spike_distance(tr_a, tr_b))
     return np.mean(distances)
-
-
-def spikes_to_ves(sample, span, mode=1, num_ves=20):
-    ves_array = []
-    for train in sample:
-        num_spikes = train.shape[0]
-        ves_offsets = release_fun(span, mode, (num_ves, num_spikes))
-        ves_times = (train + ves_offsets).flatten()
-        ves_times.sort()
-        ves_array.append(ves_times)
-    return np.array(ves_array)
 # %%
-
-
-
+distances = [0.05, 0.1, 0.2, 0.3]
+frequencies = [15, 50 ,100]
+num_neurons = [30, 150, 500]
+num_prototypes = 30
+# %%

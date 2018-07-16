@@ -11,8 +11,8 @@ import warnings
 
 warnings.filterwarnings("ignore")  # Used to ignore brian deprecation warnings
 # %% Define the conditions
-multi_params = dict(num_neurons=[100],
-                    rates=[15, 50, 100],
+multi_params = dict(num_neurons=[30, 100],
+                    rates=[150],
                     spans=[3, 6, 9])
 mode = 1
 num_ves = 20

@@ -156,16 +156,16 @@ class Tempotron():
 # %%
 if __name__ == '__main__':
     # loc = '/mnt/disks/data/test_big.pickle'
-    loc = '/mnt/disks/data/08_07_18_vesrel/num_neur=30_rate=100_span=9/set0.pickle'
+    loc = '/mnt/disks/data/08_07_18_vesrel/num_neur=100_rate=100_span=9/set0.pickle'
     samples, labels = load_sample(loc)
 
-    num_neurons = 30
+    num_neurons = 100
     num_samples = 200
 
     T = Tempotron(num_neurons, 2, 0.15)
 
     T.make_classification_network(num_samples, 'test')
     print(T.accuracy('test', samples, labels).mean())
-    T.train(samples, labels, learning_rate=1e-6)
+    T.train(samples, labels, learning_rate=1e-3)
     print(T.accuracy('test', samples, labels).mean())
 
