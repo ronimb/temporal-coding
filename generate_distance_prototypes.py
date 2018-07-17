@@ -8,8 +8,8 @@ import datetime
 import brian2 as b2
 b2.BrianLogger.suppress_name('method_choice')
 import pyspike as spk
-
 import matplotlib.pyplot as plt
+from make_test_samples import make_spk
 # %%
 def plot_sample(sample):
     for i, train in enumerate(sample):
@@ -38,4 +38,12 @@ distances = [0.05, 0.1, 0.2, 0.3]
 frequencies = [15, 50 ,100]
 num_neurons = [30, 150, 500]
 num_prototypes = 30
+duration_ms = 500
 # %%
+total_neurons = np.sum(num_neurons) * num_prototypes
+for f in frequencies:
+    for d in distances:
+        # Set conditions for each distance frequency combination
+        # For each neuron in the set, generate a small sample of shifted versions and pick the closest one
+        neurons = make_spk(f, duration_ms, total_neurons, uniform_freq=False)
+        pass

@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from brian2.units import ms, Hz, second
 from numba import jit, prange
 from multiprocessing import Pool
+import pyspike as spk
 # %%
 
 def brian_poisson(rate, duration_ms, dt=1 * ms, n=1):
@@ -37,6 +38,37 @@ def brian_poisson(rate, duration_ms, dt=1 * ms, n=1):
     else:
         trains = [train / dt for train in spikes.spike_trains().values()]
     return trains
+
+
+def make_spk(rate, duration_ms, n=1, dt=1 * ms, uniform_freq=True):
+    # Set uniform_freq to False to obtain trains with mean Rate instead of exact Rate
+    if type(rate) == b2.units.fundamentalunits.Quantity:
+        comp_rate = rate / Hz
+    else:
+        comp_rate = rate
+    trains = brian_poisson(rate, duration_ms, n=n, dt=dt)
+    if n > 1:
+        if uniform_freq:
+            trains = np.array(trains)
+            actual_rates = [tr.size for tr in trains]
+            rate_match = np.equal(actual_rates, comp_rate)
+            trains = trains[rate_match]
+            real_N = trains.size
+            while real_N < n:
+                new_trains = np.array(brian_poisson(rate, duration_ms, n=n, dt=dt))
+                new_rates = [tr.size for tr in new_trains]
+                rate_match = np.equal(new_rates, comp_rate)
+                new_trains = new_trains[rate_match]
+                trains = np.append(trains, new_trains)
+                real_N = trains.size
+        tr_spk = [spk.SpikeTrain(train, duration_ms) for train in trains[0:n]]
+    else:
+        rate_match = trains.size == comp_rate
+        while not(rate_match):
+            trains = brian_poisson(rate, duration_ms, n=n, dt=dt)
+            rate_match = trains.size == comp_rate
+        tr_spk = spk.SpikeTrain(trains, duration_ms)
+    return tr_spk
 
 def convert_sample(sample):
     inds = []
@@ -170,6 +202,7 @@ def convert_single_sample(sample):
         counts.extend(count)
     return np.array([inds, times, counts]), num_events
 
+
 def convert_multi_samples(samples):
     num_neurons = samples['data'][0].shape[0]
     p = Pool(12)
@@ -185,6 +218,138 @@ def convert_multi_samples(samples):
     converted_samples['times'] = ts[1]
     converted_samples['counts'] = ts[2]
     return converted_samples, labels
+
+
+def multi_shift(source, shifts, n, frac_shifts=[1],
+                increase=False, jitter=False):
+
+    ### FRAC_FIRE IS CURRENTLY IGNORED!!!!, implemented in shift_fwd ###
+    if not(isinstance(frac_shifts, np.ndarray)):
+        frac_shifts = np.array(frac_shifts)
+
+    if not (isinstance(shifts, np.ndarray)):
+        shifts = np.array(shifts)
+
+    duration = source.t_end
+
+    def shift_main(src):
+
+        spiketimes = src.spikes[:, np.newaxis]
+
+        num_shifts = len(shifts)
+        num_fracshift = len(frac_shifts)
+        num_spikes = spiketimes.size
+
+        # Finding edges
+        left_edge = np.where(spiketimes < shifts)
+        right_edge = np.where((spiketimes + shifts) > duration)
+
+       # Create the shift matrices
+        shifts_bottom = np.tile(shifts,
+                               reps=(num_spikes, n, num_fracshift, 1))
+        shifts_top = shifts_bottom.copy()
+
+        shifts_bottom[left_edge[0], :, :, left_edge[1]] = \
+                spiketimes[left_edge[0]][:, np.newaxis]
+        shifts_top[right_edge[0], :, :, right_edge[1]] = \
+                ((duration) - spiketimes[right_edge[0]][:, np.newaxis])
+
+        shifts_range = shifts_top + shifts_bottom
+
+        # boolean matrix for fractional shifting - MAY REQUIRE CHANGING AFTER FRAC_FIRE IS INTEGRATED
+        bool_frac_mat = np.random.rand(num_spikes, n, num_fracshift, num_shifts)
+        bool_frac_mat = bool_frac_mat <= frac_shifts[:, np.newaxis]
+
+        # Draw!
+        shiftvals = np.random.rand(num_spikes, n, num_fracshift, num_shifts)
+
+        # Fix edges!
+        shiftvals = ((shiftvals * shifts_range) - shifts_bottom) * bool_frac_mat
+        shiftvals.round(out = shiftvals)
+
+        # Shift!
+        shifted = shiftvals + spiketimes[:, np.newaxis, np.newaxis]
+        shifted.sort()
+
+        # Find uniques!
+        uniques = [np.unique(shifted[:, i, j, k])
+                   for i in range(n)
+                   for j in range(num_fracshift)
+                   for k in range(num_shifts)]
+
+        # pyspike!
+        shifted_spk = [spk.SpikeTrain(shifted_times, duration)
+                       for shifted_times in uniques]
+        return shifted_spk
+
+    if increase:
+        slots = np.setdiff1d(np.arange(source.t_start, source.t_end), source.spikes, assume_unique=True)
+        sources = {0: source}
+        for inc in increase:
+            new_spikes = np.random.choice(slots, inc)
+            sources[inc] = spk.SpikeTrain(np.sort(np.append(source.spikes, new_spikes)), duration)
+
+        shifted = []
+        for src in sources.values():
+            shifted.extend(shift_main(src))
+
+    else:
+        shifted = shift_main(source)
+
+    return shifted
+
+
+def find_match_dists(sample_dists, desired_dists, eps):
+    absdiff = np.abs(sample_dists[:, np.newaxis] - desired_dists)
+
+    inds = np.argwhere((absdiff == absdiff.min(0)).T)
+
+    _, unique_inds = np.unique(inds[:, 0], return_index=True)
+
+    inds = inds[unique_inds]
+
+    meet_criteria = absdiff[inds[:, 1], inds[:, 0]] < eps
+
+    inds = inds[meet_criteria]
+
+    distance_inds = inds[:, 0]
+    train_inds = inds[:, 1]
+
+    return train_inds, distance_inds
+
+
+def calc_distance(source, target=[], metric='distance'):
+    if metric == 'distance':
+        metric_fun = spk.spike_distance
+        metric_matrix_fun = spk.spike_distance_matrix
+    elif metric == 'isi':
+        metric_fun = spk.isi_distance
+        metric_matrix_fun = spk.isi_distance_matrix
+
+
+    if not(target):  # In this case, create self distance matrix within set
+        distance_matrix = metric_matrix_fun(source)
+        distance_vector = distance_matrix[np.triu_indices_from
+                                          (distance_matrix, 1)]
+        distance = {'matrix': distance_matrix,
+                    'vector': distance_vector}
+
+    elif isinstance(target, spk.SpikeTrain):  # In this case, calculate distances between all trains and a reference train
+        distance_vector = np.array(
+                [metric_fun(tr, target) for tr in source])
+        distance = {'vector': distance_vector}
+
+    else:  # In this case, calculate pairwise distances between different train sets
+        n1 = len(source)
+        n2 = len(target)
+        distance_matrix = np.zeros((n1, n2))
+        for i in range(n1):
+            for j in range(n2):
+                distance_matrix[i, j] = metric_fun(source[i], target[j])
+        distance_vector = distance_matrix.flatten()
+        distance = {'matrix': distance_matrix,
+                    'vector': distance_vector}
+    return distance
 # %%
 if __name__ == '__main__':
     rate = 50
@@ -196,6 +361,8 @@ if __name__ == '__main__':
     data = gen_with_vesicle_release(rate, num_neur, duration,
                                     span=5, mode=1, num_ves=20,
                                     set1_size=set_size, set2_size=set_size)
+    
+    
 
 
 
