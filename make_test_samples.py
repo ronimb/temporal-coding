@@ -299,26 +299,22 @@ def multi_shift(source, shifts, n, frac_shifts=[1],
     return shifted
 
 
-def find_match_dists(sample_dists, desired_dists, eps):
-    absdiff = np.abs(sample_dists[:, np.newaxis] - desired_dists)
+def find_match_dists(sample_dists, desired_dist, eps=1e-3):
+    absdiff = np.abs(sample_dists - desired_dist)
 
-    inds = np.argwhere((absdiff == absdiff.min(0)).T)
+    ind = np.argmin(absdiff)
 
-    _, unique_inds = np.unique(inds[:, 0], return_index=True)
+    meet_criteria = absdiff[ind] <= eps
 
-    inds = inds[unique_inds]
+    if meet_criteria:
+        res = ind
+    else:
+        res = None
 
-    meet_criteria = absdiff[inds[:, 1], inds[:, 0]] < eps
-
-    inds = inds[meet_criteria]
-
-    distance_inds = inds[:, 0]
-    train_inds = inds[:, 1]
-
-    return train_inds, distance_inds
+    return res
 
 
-def calc_distance(source, target=[], metric='distance'):
+def calc_distance(samples, target=[], metric='distance'):
     if metric == 'distance':
         metric_fun = spk.spike_distance
         metric_matrix_fun = spk.spike_distance_matrix
@@ -328,7 +324,7 @@ def calc_distance(source, target=[], metric='distance'):
 
 
     if not(target):  # In this case, create self distance matrix within set
-        distance_matrix = metric_matrix_fun(source)
+        distance_matrix = metric_matrix_fun(samples)
         distance_vector = distance_matrix[np.triu_indices_from
                                           (distance_matrix, 1)]
         distance = {'matrix': distance_matrix,
@@ -336,16 +332,16 @@ def calc_distance(source, target=[], metric='distance'):
 
     elif isinstance(target, spk.SpikeTrain):  # In this case, calculate distances between all trains and a reference train
         distance_vector = np.array(
-                [metric_fun(tr, target) for tr in source])
+                [metric_fun(tr, target) for tr in samples])
         distance = {'vector': distance_vector}
 
     else:  # In this case, calculate pairwise distances between different train sets
-        n1 = len(source)
+        n1 = len(samples)
         n2 = len(target)
         distance_matrix = np.zeros((n1, n2))
         for i in range(n1):
             for j in range(n2):
-                distance_matrix[i, j] = metric_fun(source[i], target[j])
+                distance_matrix[i, j] = metric_fun(samples[i], target[j])
         distance_vector = distance_matrix.flatten()
         distance = {'matrix': distance_matrix,
                     'vector': distance_vector}
