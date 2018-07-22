@@ -138,7 +138,7 @@ def gen_with_temporal_shift(rate, num_neur, duration_ms=500, shift_size=5,
 
 def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
                              span=5, mode=1, num_ves=20,
-                             set1_size=100, set2_size=100):
+                             set1_size=100, set2_size=100, source_stims=[]):
 
     def release_fun(span, mode, num_ves, base_a=2, base_span=3):
         # The base_span is the span for which the a parameter of the beta distribution equals base_a
@@ -163,8 +163,12 @@ def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
             samples.append(spikes_to_ves(source, span, mode, num_ves))
         return samples
 
-    source_1 = brian_poisson(rate, duration_ms, n=num_neur)
-    source_2 = brian_poisson(rate, duration_ms, n=num_neur)
+    if source_stims:
+        source_1 = [train.get_spikes_non_empty() for train in source_stims[0]]
+        source_2 = [train.get_spikes_non_empty() for train in source_stims[0]]
+    else:
+        source_1 = brian_poisson(rate, duration_ms, n=num_neur)
+        source_2 = brian_poisson(rate, duration_ms, n=num_neur)
 
     samples_1 = make_samples(source_1, set1_size, span, mode, num_ves)
     samples_2 = make_samples(source_2, set2_size, span, mode, num_ves)
