@@ -9,11 +9,29 @@ from datetime import datetime
 root_folder = '/mnt/disks/data/18_07_samples'
 source_folder = os.path.join(root_folder, 'Sources')
 save_folder = os.path.join(root_folder, 'vesrel')
+fuckup_location = 'num_neur=150_rate=100_distance=0.2_span=9'
 if not (os.path.exists(save_folder)):
     oldmask = os.umask(0)
     os.mkdir(save_folder, 0o777)
     os.umask(oldmask)
 spans = [3, 6, 9]
+num_samps = 30
+# %%
+def check_folder(folder, num_samps=30):
+    contents = os.listdir(folder)
+    n_files = len(contents)
+    correct_num_files = n_files == num_samps
+    if not correct_num_files:
+        return False
+    else:
+        file_sizes = np.array([os.path.getsize(
+            os.path.join(folder, file_name))
+            for file_name in contents])
+        magnitude = np.log10(file_sizes)
+        deviations = np.abs((magnitude - magnitude.mean())) > 0.5
+        if any(deviations):
+            return False
+        return True
 # %%
 for freq_folder in os.listdir(source_folder):
     freq = int(re.findall(r'(\d+)hz', freq_folder)[0])
@@ -29,6 +47,11 @@ for freq_folder in os.listdir(source_folder):
                 oldmask = os.umask(0)
                 os.mkdir(target_folder, 0o777)
                 os.umask(oldmask)
+            else:
+                done = check_folder(target_folder)
+                if done:
+                    print(f'span={span} already completed for this condition')
+                    continue
             samp_times = np.zeros(samples.shape[0])
             for i, sample in enumerate(samples):
                 samp_time = time.time()

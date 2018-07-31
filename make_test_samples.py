@@ -165,7 +165,7 @@ def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
 
     if source_stims:
         source_1 = [train.get_spikes_non_empty() for train in source_stims[0]]
-        source_2 = [train.get_spikes_non_empty() for train in source_stims[0]]
+        source_2 = [train.get_spikes_non_empty() for train in source_stims[1]]
     else:
         source_1 = brian_poisson(rate, duration_ms, n=num_neur)
         source_2 = brian_poisson(rate, duration_ms, n=num_neur)

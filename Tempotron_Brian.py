@@ -1,7 +1,10 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import re
 import brian2 as b2
 from brian2.units import Hz, ms
 from numba import jit, prange
+
 from multiprocessing import Pool
 import pickle
 from make_test_samples import convert_single_sample, convert_multi_samples
@@ -9,10 +12,10 @@ from make_test_samples import convert_single_sample, convert_multi_samples
 def load_sample(loc):
     with open(loc, 'rb') as f:
         data = pickle.load(f)
-    if data['data'].dtype == np.object:
+    if isinstance(data, dict):
         samples, labels = convert_multi_samples(data)
     else:
-        samples, labels = [data['data'], data['labels']]
+        samples, labels = [data[0], data[1]]
     return samples, labels
 
 
@@ -47,6 +50,28 @@ class Tempotron():
 
         # Dummy variables
         self.networks = dict()
+
+        def make_plot_network(self):
+            count_mat = np.zeros((int(self.duration / ms * 10), self.num_neurons), int)
+            target = b2.NeuronGroup(N=1, model=self.eqs, threshold='v>threshold', reset='v=0',
+                                    namespace={'tau': self.tau, 'threshold': self.threshold})
+            driving = b2.SpikeGeneratorGroup(N=self.num_neurons,
+                                             indices=[0], times=[0 * ms])
+            synapses = b2.Synapses(source=driving, target=target,
+                                   model='w: 1', on_pre='v+=w*counts(t, i)')
+            synapses.connect(i=range(num_neurons), j=[0]*num_neurons)
+            synapses.w = self.weights
+            spikes = b2.SpikeMonitor(target, record=True)
+            voltage = b2.StateMonitor(target, 'v', record=True)
+            net = b2.Network([target, driving, synapses, spikes, voltage])
+            net.store()
+            self.networks['plot'] = dict(net=net,
+                                         synapses=synapses,
+                                         count_mat=count_mat,
+                                         v_mon=voltage,
+                                         spike_mon=spikes,
+                                         driving=driving)
+        make_plot_network(self)
 
     def make_classification_network(self, num_samples, name):
         network_size = num_samples * self.num_neurons
@@ -115,12 +140,13 @@ class Tempotron():
                                    driving=driving)
 
 
-    def train(self, samples, labels, batch_size=50, num_reps=100, learning_rate=1e-3):
+    def train(self, samples, labels, batch_size=50, num_reps=100, learning_rate=1e-3, verbose=False):
         num_samples = int(np.unique(samples['inds']).shape[0] / self.num_neurons)
         self.make_classification_network(batch_size, 'batch')
         self.make_train_network(batch_size, 'train')
         for ind in range(num_reps):
-            print(ind)
+            if verbose:
+                print(f'train rep #{ind+1}/{num_reps}')
             batch, batch_labels = return_subset(
                 batch_size, samples, labels,
                 num_samples=num_samples,
@@ -129,7 +155,8 @@ class Tempotron():
             correct, decisions = self.accuracy('batch', batch, batch_labels, return_decision=True)
             v_max_times = np.argmax(self.networks['batch']['v_mon'].v, 1)
             if (correct.shape[0] == correct.sum()):
-                print('No mistakes detected')
+                if verbose:
+                    print('No mistakes detected')
                 continue
             v_max_t = v_max_times[~correct].max()
             self.networks['train']['net'].restore()
@@ -152,20 +179,36 @@ class Tempotron():
             else:
                 print('Aww Crap')
 
-
+    def plot_response(self, samples, samp_num):
+        sample = samples[samples['inds']==samp_num]
+        network = self.networks['plot']
+        network['net'].restore()
+        network['driving'].set_spikes(sample['inds'], sample['times']*ms)
+        network['synapses'].w = self.weights
+        counts = network['count_mat'].copy()
+        counts[
+            (sample['times'] * 10).astype(int),
+            sample['inds'].astype(int)] = sample['counts']
+        counts = b2.TimedArray(values=counts, dt=b2.defaultclock.dt)
+        network['net'].run(self.duration)
+        v = network['v_mon'].v[0]
+        plt.figure()
+        plt.plot(v)
+        plt.hlines(xmin=0, xmax=self.duration*10, y=self.threshold, colors='k', linestyles='dashed')
 # %%
 if __name__ == '__main__':
     # loc = '/mnt/disks/data/test_big.pickle'
-    loc = '/mnt/disks/data/08_07_18_vesrel/num_neur=100_rate=100_span=9/set0.pickle'
+    loc = '/mnt/disks/data/18_07_samples/mock_identical/num_neur=30_rate=15_span=3/set0.pickle'
+    loc = '/mnt/disks/data/18_07_samples/vesrel/num_neur=30_rate=15_distance=0.3_span=3/set0.pickle'
     samples, labels = load_sample(loc)
 
-    num_neurons = 100
+    num_neurons = int(re.findall(r"num_neur=(\d+)",loc)[0])
     num_samples = 200
 
-    T = Tempotron(num_neurons, 2, 0.15)
+    T = Tempotron(num_neurons, 2, 0.005)
 
     T.make_classification_network(num_samples, 'test')
     print(T.accuracy('test', samples, labels).mean())
-    T.train(samples, labels, learning_rate=1e-3)
+    T.train(samples, labels, batch_size=50, num_reps=20, learning_rate=1e-3)
     print(T.accuracy('test', samples, labels).mean())
 
