@@ -73,33 +73,39 @@ class Tempotron():
                                          driving=driving)
         make_plot_network(self)
 
+    def reset(self):
+        self.weights = np.random.normal(0, 1e-3, self.num_neurons)
+
     def make_classification_network(self, num_samples, name):
-        network_size = num_samples * self.num_neurons
-        count_mat = np.zeros((int(self.duration / ms * 10), network_size), int)
-        target = b2.NeuronGroup(N=num_samples, model=self.eqs, threshold='v>threshold', reset='v=0',
-                                namespace={'tau': self.tau, 'threshold': self.threshold})
-        driving = b2.SpikeGeneratorGroup(N=network_size,
-                                         indices=[0], times=[0 * ms])
-        # counts = b2.TimedArray(values=_count_mat, dt=b2.defaultclock.dt)
-        synapses = b2.Synapses(source=driving, target=target,
-                               model='w: 1', on_pre='v+=w*counts(t, i)')
-        i = np.arange(network_size)
-        j = np.repeat(range(num_samples), self.num_neurons)
-        synapses.connect(j=j, i=i)
-        synapses.w = np.tile(self.weights, reps=num_samples)
+        if name not in self.networks:
+            network_size = num_samples * self.num_neurons
+            count_mat = np.zeros((int(self.duration / ms * 10), network_size), int)
+            target = b2.NeuronGroup(N=num_samples, model=self.eqs, threshold='v>threshold', reset='v=0',
+                                    namespace={'tau': self.tau, 'threshold': self.threshold})
+            driving = b2.SpikeGeneratorGroup(N=network_size,
+                                             indices=[0], times=[0 * ms])
+            # counts = b2.TimedArray(values=_count_mat, dt=b2.defaultclock.dt)
+            synapses = b2.Synapses(source=driving, target=target,
+                                   model='w: 1', on_pre='v+=w*counts(t, i)')
+            i = np.arange(network_size)
+            j = np.repeat(range(num_samples), self.num_neurons)
+            synapses.connect(j=j, i=i)
+            synapses.w = np.tile(self.weights, reps=num_samples)
 
-        spikes = b2.SpikeMonitor(target, record=True)
-        voltage = b2.StateMonitor(target, 'v', record=True)
+            spikes = b2.SpikeMonitor(target, record=True)
+            voltage = b2.StateMonitor(target, 'v', record=True)
 
-        net = b2.Network([target, driving, synapses, spikes, voltage])
-        net.store()
-        self.networks[name] = dict(net=net,
-                                   count_mat=count_mat,
-                                   synapses=synapses,
-                                   v_mon=voltage,
-                                   spike_mon=spikes,
-                                   num_samples=num_samples,
-                                   driving=driving)
+            net = b2.Network([target, driving, synapses, spikes, voltage])
+            net.store()
+            self.networks[name] = dict(net=net,
+                                       count_mat=count_mat,
+                                       synapses=synapses,
+                                       v_mon=voltage,
+                                       spike_mon=spikes,
+                                       num_samples=num_samples,
+                                       driving=driving)
+        else:
+            self.networks[name]['synapses'].w = np.tile(self.weights, reps=num_samples)
 
     def accuracy(self, network_name, samples, labels, return_decision=False):
         network = self.networks[network_name]
@@ -120,24 +126,27 @@ class Tempotron():
             return correct
 
     def make_train_network(self, batch_size, name):
-        network_size = batch_size * self.num_neurons
-        target = b2.NeuronGroup(N=network_size, model=self.eqs,
-                                namespace={'tau': self.tau})
-        driving = b2.SpikeGeneratorGroup(N=network_size,
-                                         indices=[0], times=[0 * ms])
-        count_mat = np.zeros((int(self.duration / ms * 10), network_size), int)
-        synapses = b2.Synapses(driving, target, 'w: 1', on_pre='v+=1*counts(t, i)')
-        synapses.connect(condition='i==j')
-        synapses.w = np.tile(self.weights, reps=batch_size)
-        voltage = b2.StateMonitor(target, 'v', record=True)
-        net = b2.Network([target, driving, synapses, voltage])
-        net.store()
-        self.networks[name] = dict(net=net,
-                                   count_mat=count_mat,
-                                   synapses=synapses,
-                                   v_mon=voltage,
-                                   num_samples=batch_size,
-                                   driving=driving)
+        if name not in self.networks:
+            network_size = batch_size * self.num_neurons
+            target = b2.NeuronGroup(N=network_size, model=self.eqs,
+                                    namespace={'tau': self.tau})
+            driving = b2.SpikeGeneratorGroup(N=network_size,
+                                             indices=[0], times=[0 * ms])
+            count_mat = np.zeros((int(self.duration / ms * 10), network_size), int)
+            synapses = b2.Synapses(driving, target, 'w: 1', on_pre='v+=1*counts(t, i)')
+            synapses.connect(condition='i==j')
+            synapses.w = np.tile(self.weights, reps=batch_size)
+            voltage = b2.StateMonitor(target, 'v', record=True)
+            net = b2.Network([target, driving, synapses, voltage])
+            net.store()
+            self.networks[name] = dict(net=net,
+                                       count_mat=count_mat,
+                                       synapses=synapses,
+                                       v_mon=voltage,
+                                       num_samples=batch_size,
+                                       driving=driving)
+        else:
+            self.networks[name]['synapses'].w = np.tile(self.weights, reps=num_samples)
 
 
     def train(self, samples, labels, batch_size=50, num_reps=100, learning_rate=1e-3, verbose=False):
@@ -170,13 +179,20 @@ class Tempotron():
             if (v_max_t != 0):
                 self.networks['train']['net'].run(v_max_t * ms)
                 voltage_contribs = self.networks['train']['v_mon'].v
-                voltage_contribs = voltage_contribs[
-                    range(voltage_contribs.shape[0]), np.repeat(v_max_times, self.num_neurons)].\
-                    reshape(batch_size, self.num_neurons)[~correct]
-                weight_upd = (voltage_contribs
-                              * (batch_labels - decisions)[~correct, np.newaxis]).mean(0) * learning_rate
-                self.weights += weight_upd
-            else:
+                try:
+                    voltage_contribs = voltage_contribs[
+                        range(voltage_contribs.shape[0]), np.repeat(v_max_times, self.num_neurons)].\
+                        reshape(batch_size, self.num_neurons)[~correct]
+                    weight_upd = (voltage_contribs
+                                  * (batch_labels - decisions)[~correct, np.newaxis]).mean(0) * learning_rate
+                    self.weights += weight_upd
+                except:
+                    print(f"Error occured on:")
+                    print(f"Learning rate: {learning_rate}")
+                    print(f"Threshold: {self.threshold}")
+                    print(f"Num neurons: {self.num_neurons}")
+                    continue
+            elif verbose:
                 print('Aww Crap')
 
     def plot_response(self, samples, samp_num):
