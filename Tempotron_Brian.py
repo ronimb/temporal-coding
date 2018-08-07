@@ -190,7 +190,12 @@ class Tempotron():
                     print(f"Error occured on:")
                     print(f"Learning rate: {learning_rate}")
                     print(f"Threshold: {self.threshold}")
-                    print(f"Num neurons: {self.num_neurons}")
+                    print(f"Num neurons: {self.num_neurons}\n\n")
+                    print(f"""voltage_contribs: {voltage_contribs.shape}
+                    v_max_times: {v_max_times.shape}
+                    num_neurons: {self.num_neurons}
+                    batch_size: {batch_size}
+                    correct: {correct.sum()}""")
                     continue
             elif verbose:
                 print('Aww Crap')
