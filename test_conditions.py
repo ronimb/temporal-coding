@@ -21,7 +21,11 @@ sample_conditions = dict(num_neur=[30, 150, 500],
                          freq=[15, 50, 100],
                          span=6,
                          distance=0.3)
-
+res_file = '/mnt/disks/data/preliminary_results.csv'
+headers = ['num_neur', 'freq', 'distance', 'span', 'threshold', 'learning_rate', 'pre', 'post', 'diff']
+if not os.path.isfile(res_file):
+    with open(res_file, 'a') as f:
+        f.write(str(headers).replace("'", '').strip('[]') + '\n')
 time_fmt = lambda t: time.strftime('%M:%S', time.gmtime(time.time() - t))
 # %%
 def acc_for_samp(samp_conds):
@@ -62,7 +66,6 @@ def acc_for_file(file_conds):
     t = time.time()
     print(
         f"Started working on a sample with {file_conds['num_neur']} Neurons firing at {file_conds['freq']}hz at a distance of {file_conds['distance']} with a span of {file_conds['span']}, training with a threshold of {file_conds['threshold']} and a learning rate of {file_conds['learning_rate']}")
-    T = Tempotron(file_conds['num_neur'], tau=2, threshold=file_conds['threshold'])
     file_str = f"num_neur={file_conds['num_neur']}_rate={file_conds['freq']}_distance={file_conds['distance']}_span={file_conds['span']}/set{file_conds['samp_num']}.pickle"
     file_loc = os.path.join(folder, file_str)
     with open(file_loc, 'rb') as file:
@@ -80,6 +83,36 @@ def acc_for_file(file_conds):
     print(
         f"Finished working on a sample with {file_conds['num_neur']} Neurons firing at {file_conds['freq']}hz at a distance of {file_conds['distance']} with a span of {file_conds['span']}, took {time_fmt(t)}")
 
+def acc_for_file_writer(file_conds):
+    t = time.time()
+    print(
+        f"Started working on a sample with {file_conds['num_neur']} Neurons firing at {file_conds['freq']}hz at a distance of {file_conds['distance']} with a span of {file_conds['span']}, training with a threshold of {file_conds['threshold']} and a learning rate of {file_conds['learning_rate']}")
+    file_str = f"num_neur={file_conds['num_neur']}_rate={file_conds['freq']}_distance={file_conds['distance']}_span={file_conds['span']}/set{file_conds['samp_num']}.pickle"
+    file_loc = os.path.join(folder, file_str)
+    with open(file_loc, 'rb') as file:
+        samples = pickle.load(file)
+        labels = samples[1]
+        samples = samples[0]
+    T = Tempotron(file_conds['num_neur'], tau=2, threshold=file_conds['threshold'])
+    T.make_classification_network(num_samples=200, name='test')
+    pre = T.accuracy('test', samples, labels).mean()
+    T.train(samples, labels, num_reps=train_reps, learning_rate=file_conds['learning_rate'])
+    post = T.accuracy('test', samples, labels).mean()
+    diff = post - pre
+    line_data = np.array([
+        file_conds['num_neur'],
+        file_conds['freq'],
+        file_conds['distance'],
+        file_conds['span'],
+        file_conds['threshold'],
+        file_conds['learning_rate'],
+        pre,
+        post,
+        diff
+    ])
+    line_str = np.array2string(line_data, separator=',') + '\n'
+    with open(res_file, 'a') as file:
+        file.write(line_str)
 
 # %%
 samp_cond_combs = np.array(list(product(sample_conditions['num_neur'], sample_conditions['freq'])))
@@ -99,7 +132,7 @@ file_cond_list = [{'num_neur': n, 'freq': f, 'threshold': thresh, 'learning_rate
 # res['num_neur'] = samp_cond_combs[:, 0]
 # res['freq'] = samp_cond_combs[:, 1]
 with mp.Pool(8) as P:
-    res = P.map(acc_for_file, file_cond_list)
+    res = P.map(acc_for_file_writer, file_cond_list)
 
-with open(os.path.join('/mnt/disks/data/','acc_test.pickle'), 'wb') as file:
-    pickle.dump(res, file, pickle.HIGHEST_PROTOCOL)
+# with open(os.path.join('/mnt/disks/data/','acc_test.pickle'), 'wb') as file:
+    # pickle.dump(res, file, pickle.HIGHEST_PROTOCOL)
