@@ -7,6 +7,7 @@ import multiprocessing as mp
 import time
 import matplotlib.pyplot as plt
 import re
+import datetime as dt
 from Tempotron_Brian import Tempotron
 # %%
 learning_rates = np.array([1e-6, 5e-6, 1e-5, 5e-5, 1e-4, 5e-4, 1e-3, 5e-3])
@@ -21,7 +22,7 @@ sample_conditions = dict(num_neur=[30, 150, 500],
                          freq=[15, 50, 100],
                          span=6,
                          distance=0.3)
-res_file = '/mnt/disks/data/preliminary_results.csv'
+res_file = 'preliminary_results.csv'
 headers = ['num_neur', 'freq', 'distance', 'span', 'threshold', 'learning_rate', 'pre', 'post', 'diff']
 if not os.path.isfile(res_file):
     with open(res_file, 'a') as f:
@@ -86,7 +87,7 @@ def acc_for_file(file_conds):
 def acc_for_file_writer(file_conds):
     t = time.time()
     print(
-        f"Started working on a sample with {file_conds['num_neur']} Neurons firing at {file_conds['freq']}hz at a distance of {file_conds['distance']} with a span of {file_conds['span']}, training with a threshold of {file_conds['threshold']} and a learning rate of {file_conds['learning_rate']}")
+        f"{dt.datetime.now().strftime('%d/%m/%y - %H:%M')} -- Started working on a sample with {file_conds['num_neur']} Neurons firing at {file_conds['freq']}hz at a distance of {file_conds['distance']} with a span of {file_conds['span']}, training with a threshold of {file_conds['threshold']} and a learning rate of {file_conds['learning_rate']}")
     file_str = f"num_neur={file_conds['num_neur']}_rate={file_conds['freq']}_distance={file_conds['distance']}_span={file_conds['span']}/set{file_conds['samp_num']}.pickle"
     file_loc = os.path.join(folder, file_str)
     with open(file_loc, 'rb') as file:
@@ -110,9 +111,10 @@ def acc_for_file_writer(file_conds):
         post,
         diff
     ])
-    line_str = np.array2string(line_data, separator=',') + '\n'
+    line_str = np.array2string(line_data, separator=',', precision=10, floatmode='maxprec').strip('[]')
     with open(res_file, 'a') as file:
         file.write(line_str)
+        file.write('\n')
 
 # %%
 samp_cond_combs = np.array(list(product(sample_conditions['num_neur'], sample_conditions['freq'])))
