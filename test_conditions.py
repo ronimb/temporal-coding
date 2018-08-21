@@ -23,10 +23,10 @@ sample_conditions = dict(num_neur=[30, 150, 500],
                          span=6,
                          distance=0.3)
 res_file = 'preliminary_results.csv'
-headers = ['num_neur', 'freq', 'distance', 'span', 'threshold', 'learning_rate', 'pre', 'post', 'diff']
+headers = ['num_neur', 'freq', 'samp_num', 'distance', 'span', 'threshold', 'learning_rate', 'pre', 'post', 'diff']
 if not os.path.isfile(res_file):
     with open(res_file, 'a') as f:
-        f.write(str(headers).replace("'", '').strip('[]') + '\n')
+        f.write(str(headers).replace("'", '').strip('[]').replace(' ','') + '\n')
 time_fmt = lambda t: time.strftime('%M:%S', time.gmtime(time.time() - t))
 # %%
 def acc_for_samp(samp_conds):
@@ -86,8 +86,9 @@ def acc_for_file(file_conds):
 
 def acc_for_file_writer(file_conds):
     t = time.time()
+    curr_time = dt.datetime.now(dt.timezone(dt.timedelta(hours=3)))
     print(
-        f"{dt.datetime.now().strftime('%d/%m/%y - %H:%M')} -- Started working on a sample with {file_conds['num_neur']} Neurons firing at {file_conds['freq']}hz at a distance of {file_conds['distance']} with a span of {file_conds['span']}, training with a threshold of {file_conds['threshold']} and a learning rate of {file_conds['learning_rate']}")
+        f"{curr_time.strftime('%d/%m/%y - %H:%M')} -- Started working on a sample with {file_conds['num_neur']} Neurons firing at {file_conds['freq']}hz at a distance of {file_conds['distance']} with a span of {file_conds['span']}, training with a threshold of {file_conds['threshold']} and a learning rate of {file_conds['learning_rate']}")
     file_str = f"num_neur={file_conds['num_neur']}_rate={file_conds['freq']}_distance={file_conds['distance']}_span={file_conds['span']}/set{file_conds['samp_num']}.pickle"
     file_loc = os.path.join(folder, file_str)
     with open(file_loc, 'rb') as file:
@@ -103,6 +104,7 @@ def acc_for_file_writer(file_conds):
     line_data = np.array([
         file_conds['num_neur'],
         file_conds['freq'],
+        file_conds['samp_num'],
         file_conds['distance'],
         file_conds['span'],
         file_conds['threshold'],
@@ -111,19 +113,35 @@ def acc_for_file_writer(file_conds):
         post,
         diff
     ])
-    line_str = np.array2string(line_data, separator=',', precision=10, floatmode='maxprec').strip('[]')
+    line_str = np.array2string(line_data, separator=',', precision=10, floatmode='maxprec').\
+        strip('[]').replace('\n','').replace(' ', '')
     with open(res_file, 'a') as file:
         file.write(line_str)
         file.write('\n')
 
 # %%
+def check_existing(file_loc, cond_list):
+    cond_df = pd.DataFrame(cond_list)
+    existing = pd.read_csv(file_loc).iloc[:, 0:7][cond_df.columns]
+    existing_inds = []
+    for _, row in existing.iterrows():
+        matching = (cond_df.values == row.values).all(1)
+        if matching.any():
+            ind = np.where(matching)[0][0]
+            existing_inds.append(ind)
+    print(f'Found {len(existing_inds)} / {cond_df.shape[0]} in condition list, removing')
+    new_cond_list = [cond_list[i] for i in range(len(cond_list)) if i not in existing_inds]
+    return new_cond_list
+
 samp_cond_combs = np.array(list(product(sample_conditions['num_neur'], sample_conditions['freq'])))
 all_cond_combs = (list(product(learning_rates, thresholds, range(num_samples), samp_cond_combs )))
 file_cond_list = [{'num_neur': n, 'freq': f, 'threshold': thresh, 'learning_rate': lr, 'samp_num': samp_num,
               'span': sample_conditions['span'],
               'distance': sample_conditions['distance']}
                   for lr, thresh, samp_num, (n,f) in all_cond_combs]
-
+print(len(file_cond_list))
+file_cond_list = check_existing(res_file, file_cond_list)
+print(len(file_cond_list))
 # samp_cond_list = [{'num_neur': n, 'freq': f,
 #               'span': sample_conditions['span'],
 #               'distance': sample_conditions['distance']}
