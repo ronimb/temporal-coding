@@ -151,7 +151,7 @@ print(len(file_cond_list))
 #                                              'formats': (int, int, object)})
 # res['num_neur'] = samp_cond_combs[:, 0]
 # res['freq'] = samp_cond_combs[:, 1]
-with mp.Pool(8) as P:
+with mp.Pool(14) as P:
     res = P.map(acc_for_file_writer, file_cond_list)
 
 # with open(os.path.join('/mnt/disks/data/','acc_test.pickle'), 'wb') as file:
