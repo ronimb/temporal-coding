@@ -5,6 +5,7 @@ import matplotlib.pyplot as plt
 from brian2.units import ms, Hz, second
 from numba import jit, prange
 from multiprocessing import Pool
+from scipy.stats import beta
 import pyspike as spk
 # %%
 
@@ -136,31 +137,81 @@ def gen_with_temporal_shift(rate, num_neur, duration_ms=500, shift_size=5,
 
     return {'data': combined, 'labels': labels}
 
-def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
-                             span=5, mode=1, num_ves=20,
-                             set1_size=100, set2_size=100, source_stims=[]):
+class shift_generator:
+    def __init__(self, beta_mode, beta_span, base_span, base_a):
+        pass
 
-    def release_fun(span, mode, num_ves, base_a=2, base_span=3):
+
+def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
+                             release_duration=5, num_ves=20,
+                             beta_params=dict(
+                                 dist_mode=1,
+                                 dist_span=15,
+                                 base_span=3,
+                                 base_a=2),
+                             set1_size=100, set2_size=100,
+                             source_stims=[], mode='fixed'):
+    beta_params.setdefault('base_span',3)
+    beta_params.setdefault('base_a', 2)
+    if mode=='fixed':
+        beta_params.setdefault('dist_span', release_duration)
+    elif mode=='non_fixed':
+        beta_params.setdefault('dist_span', 15)
+
+    def release_fun(beta_params, release_duration, num_ves):
         # The base_span is the span for which the a parameter of the beta distribution equals base_a
+        # Continue adding support for new vesicle release mode
+        span = release_duration
+        mode = beta_params['dist_mode']
+        base_a = beta_params['base_a']
+        base_span = beta_params['base_span']
+
         a = 1 + (base_span / span) * (base_a - 1)
         b = (span * (a - 1) - mode * (a - 2)) / mode
         return np.random.beta(a, b, num_ves) * span
 
-    def spikes_to_ves(sample, span, mode=1, num_ves=20):
+    def spikes_to_ves(sample, beta_params, release_duration, num_ves=20):
+        # Continue adding support for new ves release mode
         ves_array = []
         for train in sample:
             num_spikes = train.shape[0]
-            ves_offsets = release_fun(span, mode, (num_ves, num_spikes))
+            ves_offsets = release_fun(beta_params, (num_ves, num_spikes))
             ves_times = (train + ves_offsets).flatten()
             ves_times = ves_times[ves_times < duration_ms]
             ves_times.sort()
             ves_array.append(np.unique(ves_times))
         return np.array(ves_array)
 
-    def make_samples(source, num_samples, span, mode=1, num_ves=20):
+    def make_bins(beta_params, release_duration, num_ves, dt_ms=0.01, max_span=9):
+        #TODO: Make this a method of the future generator object and find a way to hand max_span and dt settings
+        span = beta_params['dist_span']
+        mode = beta_params['dist_mode']
+        base_a = beta_params['base_a']
+        base_span = beta_params['base_span']
+
+        beta_a = 1 + (base_span / span) * (base_a - 1)
+        beta_b = (span * (beta_a - 1) - mode * (beta_a - 2)) / mode
+        beta_dist = beta(a=beta_a, b=beta_b, scale=span)
+
+        multiplication_factor = num_ves / beta_dist.cdf(max_span)
+
+        bin_borders = np.arange(0, max_span + dt_ms, dt_ms)
+        bin_centers = bin_borders[:-1] + dt_ms / 2
+
+        bin_probs = beta_dist.cdf(bin_borders[1:]) - beta_dist.cdf(bin_borders[:-1])
+
+        release_duration_inds = bin_centers <= release_duration
+
+        return bin_centers[release_duration_inds], bin_probs[release_duration_inds]
+
+    def make_samples(source, num_samples, beta_params, release_duration, num_ves=20):
+
+        if mode == 'non_fixed':
+            bin_centers, bin_probs = make_bins(beta_params, release_duration, num_ves)
+
         samples = []
         for _ in range(num_samples):
-            samples.append(spikes_to_ves(source, span, mode, num_ves))
+            samples.append(spikes_to_ves(source, beta_params, num_ves))
         return samples
 
     if source_stims:
@@ -170,8 +221,9 @@ def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
         source_1 = brian_poisson(rate, duration_ms, n=num_neur)
         source_2 = brian_poisson(rate, duration_ms, n=num_neur)
 
-    samples_1 = make_samples(source_1, set1_size, span, mode, num_ves)
-    samples_2 = make_samples(source_2, set2_size, span, mode, num_ves)
+
+    samples_1 = make_samples(source_1, set1_size, beta_params, release_duration, num_ves)
+    samples_2 = make_samples(source_2, set2_size, beta_params, release_duration, num_ves)
 
     combined = np.concatenate([samples_1, samples_2])
     labels = np.concatenate([np.zeros(set1_size), np.ones(set2_size)])
@@ -358,8 +410,9 @@ if __name__ == '__main__':
     set_size = 100
     # data = gen_with_temporal_shift(rate, duration,
     #                                num_neur, set_size, set_size)
+    beta_params = dict(span=5, mode=1)
     data = gen_with_vesicle_release(rate, num_neur, duration,
-                                    span=5, mode=1, num_ves=20,
+                                    beta_params=beta_params, num_ves=20,
                                     set1_size=set_size, set2_size=set_size)
     
     

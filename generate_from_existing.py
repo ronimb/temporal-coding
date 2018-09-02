@@ -57,8 +57,9 @@ for freq_folder in os.listdir(source_folder):
                 samp_time = time.time()
                 print(f'\t Span={span}, sample#{i+1}', end='', flush=True)
                 shift_sources = [sample['a'], sample['b']]
+                beta_params = dict(span=span, mode=1)
                 vesrel = gen_with_vesicle_release(rate=freq, num_neur=num_neur,
-                                                  span=span, mode=1, num_ves=20, set1_size=100, set2_size=100,
+                                                  beta_params=beta_params, num_ves=20, set1_size=100, set2_size=100,
                                                   source_stims=shift_sources)
                 vesrel = convert_multi_samples(vesrel)
                 with open(os.path.join(target_folder, f'set{i}.pickle'), 'wb') as f:

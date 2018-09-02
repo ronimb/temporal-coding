@@ -62,8 +62,9 @@ def convert_all_samples(samples):
 t = time.time()
 orig_samples = gen_with_vesicle_release(rate=100,
                                         num_neur=500,
-                                        span=5,
-                                        mode=1,
+                                        beta_params=dict(
+                                            span=5,
+                                            mode=1),
                                         num_ves=20)
 print(f'Sample generation took {sec_to_str(time.time()-t)}')
 # %%

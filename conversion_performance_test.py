@@ -110,11 +110,14 @@ def return_subset_numev(batch_size, samples, labels, numev):
 # %%
 t = time.time()
 batch_size = 50
+beta_params = dict(
+    span=5,
+    mode=1
+)
 orig_samples = gen_with_vesicle_release(rate=100,
-                                       num_neur=500,
-                                       span=5,
-                                       mode=1,
-                                       num_ves=20)
+                                        num_neur=500,
+                                        beta_params,
+                                        num_ves=20)
 print(f'Sample generation took {sec_to_str(time.time()-t)}')
 
 num_neurons = orig_samples['data'][0].shape[0]
