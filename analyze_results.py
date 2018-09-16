@@ -45,7 +45,7 @@ eval_summary_conditions = ['num_neur', 'freq']
 summary_conditions = ['num_neur', 'freq', 'distance', 'span']
 
 # %% Load file and treat categories
-file_name = 'preliminary_results.csv'
+file_name = 'Results/preliminary_results_lowdist.csv'
 all_data = pd.read_csv(file_name)
 
 categorical_columns = columns[:-3] # Columns containing categorical data from category list
@@ -86,4 +86,4 @@ for cnd_values in condition_combs:
     top_means = top_means.append(high_diff_data)
 
 # %%
-top_means.to_csv('cleaned_prelim_highdiffs.csv')
+top_means.to_csv('cleaned_lowdist_highdiffs.csv')

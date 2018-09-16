@@ -1,39 +1,56 @@
 import brian2 as b2
-b2.BrianLogger.suppress_name('method_choice')
 import numpy as np
 import matplotlib.pyplot as plt
-from brian2.units import ms, Hz, second
+from brian2.units import ms, Hz
 from numba import jit, prange
 from multiprocessing import Pool
 from scipy.stats import beta
 import pyspike as spk
+
+b2.BrianLogger.suppress_name('method_choice')
+
+
 # %%
+
 
 def brian_poisson(rate, duration_ms, dt=1 * ms, n=1):
     """
+    Generates a sample of poisson neurons with a specified average frequency.
+    Returns the sample as a list of neurons
 
-    :param rate:
-    :param duration_ms:
-    :param dt:
-    :param n:
-    :return:
+    :param rate: The average firing frequency of each neuron in the sample
+    :param duration_ms: Length of a single "trial" in ms
+    :param dt: The shortest time interval between spikes in the sample
+    :param n: Number of neurons in the sample
+
+
+    NOTE: the "rate" and "duration_ms" parameters can also vary between neurons,
+          if this is the desired behaviour, they should be given as a list of length "n"
+          where each entry corresponds to the parameters of a single neuron in the sample
+
+    :return: List of neurons in the sample stimulus, in each neuron, firing times are specified in milliseconds
     """
-    q = b2.units.fundamentalunits.Quantity
-    if not isinstance(rate, q):
+    q = b2.units.fundamentalunits.Quantity  # Type used to represent units in brian
+
+    # Check that all parameters comply with units expected by brian
+    if not isinstance(rate, q):  # Rate is expected to be given in Hz
         if np.isscalar(rate):
             rate = rate * Hz
         else:
             rate = np.array(rate) * Hz
-    if not isinstance(duration_ms, q):
+
+    if not isinstance(duration_ms, q):  # Duration is expected to be specified in ms
         if np.isscalar(duration_ms):
             duration_ms = duration_ms * ms
         else:
             duration_ms = np.array(duration_ms) * ms
 
+    # Specify properties of brian neuron group
     neuron = b2.NeuronGroup(n, "rate : Hz", threshold='rand()<rate*dt', dt=dt)
     neuron.rate = rate
-    spikes = b2.SpikeMonitor(neuron, record=True)
-    b2.run(duration_ms)
+    spikes = b2.SpikeMonitor(neuron, record=True)  # Set up monitoring (required for gathering spike timing information)
+    b2.run(duration_ms)  # Run simulation with the specified parameters
+    # Extract spike timings from brian objects
     if n == 1:
         trains = spikes.spike_trains()[0] / dt
     else:
@@ -41,17 +58,35 @@ def brian_poisson(rate, duration_ms, dt=1 * ms, n=1):
     return trains
 
 
-def make_spk(rate, duration_ms, n=1, dt=1 * ms, uniform_freq=True):
-    # Set uniform_freq to False to obtain trains with mean Rate instead of exact Rate
+def make_spk(rate, duration_ms, n=1, dt=1 * ms, exact_freq=True):
+    """
+    Creates a stimulus with n neurons of a desired frequency.
+    This function returns each neuron as a PySpike object which can be used
+    for evaluating distance between neurons, and uses brian internally for sample generation.
+
+    :param rate: Desired rate of fire for neurons in the sample
+    :param duration_ms: Length of a "trial" in milliseconds
+    :param n: Number of neurons in the sample
+    :param dt: The shortest time interval between spikes in the sample
+    :param exact_freq: Whether frequency should be Exactly "rate" for each neuron, or "rate" on average.
+    :return:
+    """
+
+    # Making sure the variable used for rate comparison is of the correct type
     if type(rate) == b2.units.fundamentalunits.Quantity:
         comp_rate = rate / Hz
     else:
         comp_rate = rate
+
+    # Generating the spike-trains using brian
     trains = brian_poisson(rate, duration_ms, n=n, dt=dt)
+
+    # Handling single or multiple train generation as well as exact or average frequency
     if n > 1:
-        if uniform_freq:
+        if exact_freq:
             trains = np.array(trains)
             actual_rates = [tr.size for tr in trains]
+            # ToDO: Handle the actual rates considering the duration of the stimulus
             rate_match = np.equal(actual_rates, comp_rate)
             trains = trains[rate_match]
             real_N = trains.size
@@ -65,12 +100,14 @@ def make_spk(rate, duration_ms, n=1, dt=1 * ms, uniform_freq=True):
         tr_spk = [spk.SpikeTrain(train, duration_ms) for train in trains[0:n]]
     else:
         rate_match = trains.size == comp_rate
-        while not(rate_match):
+        while not (rate_match):
             trains = brian_poisson(rate, duration_ms, n=n, dt=dt)
             rate_match = trains.size == comp_rate
         tr_spk = spk.SpikeTrain(trains, duration_ms)
     return tr_spk
 
+
+# OLD CONVERSION FUNCTION, NO LONGER USED
 def convert_sample(sample):
     inds = []
     times = []
@@ -84,15 +121,18 @@ def convert_sample(sample):
         counts.extend(count)
     return np.array([inds, times, counts])
 
+
 def gen_with_temporal_shift(rate, num_neur, duration_ms=500, shift_size=5,
                             set1_size=100, set2_size=100):
     """
 
-    :param num_neur:
     :param rate:
-    :param duration_sec: Length in seconds of each spike train
+    :param num_neur:
+    :param duration_ms:
+    :param shift_size:
     :param set1_size:
     :param set2_size:
+
     :return:
     """
 
@@ -137,25 +177,72 @@ def gen_with_temporal_shift(rate, num_neur, duration_ms=500, shift_size=5,
 
     return {'data': combined, 'labels': labels}
 
-class shift_generator:
-    def __init__(self, beta_mode, beta_span, base_span, base_a):
+
+# %% Transformer class
+class vesicle_beta_releaser:
+    # These aree a set of parameters ive found to be suitable for our case
+    _beta_defaults = dict(
+        beta_mode=1,
+        beta_span=15,
+        mode_centrality=3,  # How "tight" the customized distribution is around the mode
+        declination=2  # How fast the values decline past the mode
+    )
+
+    def __init__(self, mode='fixed', beta_params=_beta_defaults, release_duration_ms=6, num_ves=20,
+                 signal_duration_ms=500, set_sizes=100):
+        if not isinstance(beta_params, dict):
+            raise TypeError(f'''
+            beta_params must be a dictionary with any, some, or all of the following fields:
+             {self._beta_defaults.keys()}''')
+        # This makes sure all of the required parameters are set, even if only some are passed
+        if beta_params is not self._beta_defaults:
+            for parameter_name, parameter_value in self._beta_defaults.items():
+                beta_params.setdefault(parameter_name, parameter_value)
+
+        if mode == 'fixed':
+            beta_params['beta_span'] = release_duration_ms
+
+        self.beta_params = beta_params
+        print(self.beta_params)
+
+    def __str__(self):
+        return 'T'
+
+    def __repr__(self):
+        return 'T'
+
+    def fixed_rel(self):
+        pass
+
+    def stochastic_rel(self):
+        def _make_bins():
+            pass
+
+    def transform_set(self):
+        pass
+
+    def transform_sample(self):
         pass
 
 
+t = vesicle_beta_releaser()
+
+
+# %%
 def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
                              release_duration=5, num_ves=20,
                              beta_params=dict(
                                  dist_mode=1,
-                                 dist_span=15,
+                                 dist_span=15,  # This parameter is irrelevant for fixed release mode
                                  base_span=3,
                                  base_a=2),
                              set1_size=100, set2_size=100,
                              source_stims=[], mode='fixed'):
-    beta_params.setdefault('base_span',3)
+    beta_params.setdefault('base_span', 3)
     beta_params.setdefault('base_a', 2)
-    if mode=='fixed':
+    if mode == 'fixed':
         beta_params.setdefault('dist_span', release_duration)
-    elif mode=='non_fixed':
+    elif mode == 'non_fixed':
         beta_params.setdefault('dist_span', 15)
 
     def release_fun(beta_params, release_duration, num_ves):
@@ -171,7 +258,7 @@ def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
         return np.random.beta(a, b, num_ves) * span
 
     def spikes_to_ves(sample, beta_params, release_duration, num_ves=20):
-        # Continue adding support for new ves release mode
+        # ToDO: Continue adding support for new ves release mode
         ves_array = []
         for train in sample:
             num_spikes = train.shape[0]
@@ -183,7 +270,7 @@ def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
         return np.array(ves_array)
 
     def make_bins(beta_params, release_duration, num_ves, dt_ms=0.01, max_span=9):
-        #TODO: Make this a method of the future generator object and find a way to hand max_span and dt settings
+        # TODO: Make this a method of the future generator object and find a way to hand max_span and dt settings
         span = beta_params['dist_span']
         mode = beta_params['dist_mode']
         base_a = beta_params['base_a']
@@ -221,7 +308,6 @@ def gen_with_vesicle_release(rate, num_neur, duration_ms=500,
         source_1 = brian_poisson(rate, duration_ms, n=num_neur)
         source_2 = brian_poisson(rate, duration_ms, n=num_neur)
 
-
     samples_1 = make_samples(source_1, set1_size, beta_params, release_duration, num_ves)
     samples_2 = make_samples(source_2, set2_size, beta_params, release_duration, num_ves)
 
@@ -242,6 +328,7 @@ def plot_sample(sample):
         ax = plt.scatter(train, n_spikes * [i], marker='|', c='blue')
         plt.yticks([])
     return ax
+
 
 @jit(parallel=True)
 def convert_single_sample(sample):
@@ -278,9 +365,8 @@ def convert_multi_samples(samples):
 
 def multi_shift(source, shifts, n, frac_shifts=[1],
                 increase=False, jitter=False):
-
     ### FRAC_FIRE IS CURRENTLY IGNORED!!!!, implemented in shift_fwd ###
-    if not(isinstance(frac_shifts, np.ndarray)):
+    if not (isinstance(frac_shifts, np.ndarray)):
         frac_shifts = np.array(frac_shifts)
 
     if not (isinstance(shifts, np.ndarray)):
@@ -300,15 +386,15 @@ def multi_shift(source, shifts, n, frac_shifts=[1],
         left_edge = np.where(spiketimes < shifts)
         right_edge = np.where((spiketimes + shifts) > duration)
 
-       # Create the shift matrices
+        # Create the shift matrices
         shifts_bottom = np.tile(shifts,
-                               reps=(num_spikes, n, num_fracshift, 1))
+                                reps=(num_spikes, n, num_fracshift, 1))
         shifts_top = shifts_bottom.copy()
 
         shifts_bottom[left_edge[0], :, :, left_edge[1]] = \
-                spiketimes[left_edge[0]][:, np.newaxis]
+            spiketimes[left_edge[0]][:, np.newaxis]
         shifts_top[right_edge[0], :, :, right_edge[1]] = \
-                ((duration) - spiketimes[right_edge[0]][:, np.newaxis])
+            ((duration) - spiketimes[right_edge[0]][:, np.newaxis])
 
         shifts_range = shifts_top + shifts_bottom
 
@@ -321,7 +407,7 @@ def multi_shift(source, shifts, n, frac_shifts=[1],
 
         # Fix edges!
         shiftvals = ((shiftvals * shifts_range) - shifts_bottom) * bool_frac_mat
-        shiftvals.round(out = shiftvals)
+        shiftvals.round(out=shiftvals)
 
         # Shift!
         shifted = shiftvals + spiketimes[:, np.newaxis, np.newaxis]
@@ -378,17 +464,17 @@ def calc_distance(samples, target=[], metric='distance'):
         metric_fun = spk.isi_distance
         metric_matrix_fun = spk.isi_distance_matrix
 
-
-    if not(target):  # In this case, create self distance matrix within set
+    if not (target):  # In this case, create self distance matrix within set
         distance_matrix = metric_matrix_fun(samples)
         distance_vector = distance_matrix[np.triu_indices_from
-                                          (distance_matrix, 1)]
+        (distance_matrix, 1)]
         distance = {'matrix': distance_matrix,
                     'vector': distance_vector}
 
-    elif isinstance(target, spk.SpikeTrain):  # In this case, calculate distances between all trains and a reference train
+    elif isinstance(target,
+                    spk.SpikeTrain):  # In this case, calculate distances between all trains and a reference train
         distance_vector = np.array(
-                [metric_fun(tr, target) for tr in samples])
+            [metric_fun(tr, target) for tr in samples])
         distance = {'vector': distance_vector}
 
     else:  # In this case, calculate pairwise distances between different train sets
@@ -402,6 +488,8 @@ def calc_distance(samples, target=[], metric='distance'):
         distance = {'matrix': distance_matrix,
                     'vector': distance_vector}
     return distance
+
+
 # %%
 if __name__ == '__main__':
     rate = 50
@@ -414,8 +502,3 @@ if __name__ == '__main__':
     data = gen_with_vesicle_release(rate, num_neur, duration,
                                     beta_params=beta_params, num_ves=20,
                                     set1_size=set_size, set2_size=set_size)
-    
-    
-
-
-
