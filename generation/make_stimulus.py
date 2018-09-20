@@ -52,7 +52,7 @@ def make_stimulus(frequency: int, duration: float, num_neurons: int,
         # Count spikes in each neuron
         spike_count = bool_stimulus.sum(1)
         # Find neurons firing at the correct frequency
-        correct_count = spike_count == (frequency * duration)
+        correct_count = spike_count == np.round((frequency * duration))  # Rounding to handle edge cases
         # Keep only those neurons firing at the correct frequency
         exact = bool_stimulus[correct_count]
         return exact

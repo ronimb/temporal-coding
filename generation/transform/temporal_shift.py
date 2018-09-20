@@ -180,6 +180,9 @@ def symmetric_interval_shift(stimulus, duration, interval, num_shifted):
                 elif np.sign(spike) == 1:
                     new_spike = _correct_end_spikes(spike)
 
+                else:
+                    pass
+
                 new_spikes.append(new_spike) # Add newly shifted spike to list of new spikes
             # Add corrected spikes to the shifted neuron
             new_neuron = np.append(new_neuron, new_spikes)
