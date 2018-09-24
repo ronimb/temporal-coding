@@ -186,8 +186,8 @@ def symmetric_interval_shift(stimulus, duration, interval, num_shifted):
             new_neuron = new_neuron[~outside_range]
             # Add corrected spikes to the shifted neuron
             new_neuron = np.append(new_neuron, new_spikes)
-            # Sorting to fix order of spikes
-            new_neuron.sort()
+        # Sorting to fix order of spikes
+        new_neuron.sort()
         return new_neuron
     # %%
     shifted_stimuli = []  # Placeholder list for all shifted stimuli

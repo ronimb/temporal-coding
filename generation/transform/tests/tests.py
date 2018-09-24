@@ -72,16 +72,15 @@ def test_symmetric_shift():
                     if any(before_start):
                         raise Exception(f'With {condition_str}\n'
                                         f'Some neurons spike before t=0 with interval={interval}')
-                    difference = shifted - stimulus
-                    outside_interval = [any([((np.abs(diff) > (interval[1] * 1000)) | (np.abs(diff) < (interval[0] * 1000)))
-                                           .any() for diff in shifted_diff])
-                                       for shifted_diff in difference]
-                    if any(outside_interval):
-                        print('boom')
-                        return condition_str, stimulus, shifted
-                        raise Exception(f'With {condition_str}\n'
-                                        f'Some neurons shifted outside of interval with interval={interval}'
-                                        f'{difference[outside_interval]}')
+                    ## The following test has been deprecated due to the sorting of spike times generating false positives
+                    # difference = shifted - stimulus
+                    # outside_interval = [any([((np.abs(diff) > (interval[1] * 1000)) | (np.abs(diff) < (interval[0] * 1000)))
+                    #                        .any() for diff in shifted_diff])
+                    #                    for shifted_diff in difference]
+                    # if any(outside_interval):
+                    #     raise Exception(f'With {condition_str}\n'
+                    #                     f'Some neurons shifted outside of interval with interval={interval}'
+                    #                     f'{difference[outside_interval]}')
     print('interval symmetric shifting passed testing successfully')
 
 
