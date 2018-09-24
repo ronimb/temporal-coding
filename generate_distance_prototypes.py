@@ -65,7 +65,7 @@ for freq in frequencies:
         print(f'\t distance={dist}, started on {ctime()}')
         # Set conditions for each distance frequency combination
         # For each neuron in the set, generate a small sample of shifted versions and pick the closest one
-        neurons = make_spk(freq, duration_ms, total_neurons, uniform_freq=False)
+        neurons = make_spk(freq, duration_ms, total_neurons, exact_freq=False)
         print('\t\t  ', end="", flush=True)
         neur_times = []
         pairs = np.zeros(total_neurons, dtype={'names': ('a', 'b', 'distance'),
@@ -76,7 +76,7 @@ for freq in frequencies:
         while found < total_neurons:
             i += 1
             if not(neurons):
-                neurons = make_spk(freq, duration_ms, total_neurons, uniform_freq=False)
+                neurons = make_spk(freq, duration_ms, total_neurons, exact_freq=False)
             neuron = neurons.pop()
             print(f'\b\b\b\b\b{freq}Hz, distance={dist} : Scanning neuron #{i:000002}')
             neuron_start = time()

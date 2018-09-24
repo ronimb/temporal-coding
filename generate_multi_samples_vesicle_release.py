@@ -64,12 +64,12 @@ for i, (num_neur, rate, span) in enumerate(conditions):
     # condition_samples = pd.Series(np.zeros(num_sets), name=descriptor, dtype=object)
     for j in range(num_sets):
         print(f'Sample #{j:>2}', end='\r')
+        beta_params = dict(span=span, mode=mode)
         data = gen_with_vesicle_release(
             rate=rate,
             num_neur=num_neur,
             duration_ms=duration,
-            span=span,
-            mode=mode,
+            beta_params=beta_params,
             num_ves=num_ves,
             set1_size=set_sizes,
             set2_size=set_sizes)

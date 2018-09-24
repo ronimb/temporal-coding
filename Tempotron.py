@@ -17,8 +17,9 @@ samples_tempshift = gen_with_temporal_shift(rate=rate,
 
 samples_ves = gen_with_vesicle_release(rate=rate,
                                        num_neur=num_neurons,
-                                       span=5,
-                                       mode=1,
+                                       beta_params=dict(
+                                           span=5,
+                                           mode=1),
                                        num_ves=20)
 
 # %% helper functions
