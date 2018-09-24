@@ -1,7 +1,6 @@
 from generation.transform.temporal_shift import forward_shift, symmetric_interval_shift
 from generation import make_stimulus
 import numpy as np
-
 # %%
 frequencies = [15, 50, 100]
 test_stimuli = {'exact': {freq: [] for freq in frequencies},
@@ -19,6 +18,7 @@ for freq in frequencies:
         )
 
 
+# %%
 def test_forward_shift():
     shifts = [5, 10, 50, 100]
     num_shifted = 30
@@ -45,34 +45,48 @@ def test_forward_shift():
 
 def test_symmetric_shift():
     intervals = [[0, 5], [0, 10], [0, 100], [5, 10], [5, 100], [25, 50]]
+    intervals = np.divide(intervals, 1000)
     num_shifted = 30
     for interval in intervals:
         for stimulus_type, all_freqs in test_stimuli.items():
             for frequency, stimuli in all_freqs.items():
-                for stimulus in stimuli:
+                for i, stimulus in enumerate(stimuli):
+                    condition_str = f'stimulus_type={stimulus_type}, interval={interval*1000}ms, frequency={frequency}Hz, stimulus #{i}'
                     # Generate shifted samples in current condition
-                    shifted = symmetric_interval_shift(stimulus, duration,
-                                                       interval=np.divide(interval, 1000),
-                                                       num_shifted=num_shifted)
+                    try:
+                        shifted = symmetric_interval_shift(stimulus, duration,
+                                                           interval=interval,
+                                                           num_shifted=num_shifted)
+                    except Exception as e:
+                        print(f'With {condition_str}\n')
+                        raise e
                     # Test for spikes exceeding max duration
                     exceeding_duration = [any([(neuron > (duration * 1000)).any() for neuron in shifted_stimulus]) for
                                           shifted_stimulus in shifted]
                     if any(exceeding_duration):
-                        raise Exception(f'Some neurons exceed maximal duration when shift={shift}')
+                        raise Exception(f'With {condition_str}\n'
+                                        f'Some neurons exceed maximal duration when shift={shift}')
                     # Test for spikes under t=0
                     before_start = [any([(neuron < 0).any() for neuron in shifted_stimulus]) for
                                     shifted_stimulus in shifted]
                     if any(before_start):
-                        raise Exception(f'Some neurons spike before t=0 with interval={interval}')
+                        raise Exception(f'With {condition_str}\n'
+                                        f'Some neurons spike before t=0 with interval={interval}')
                     difference = shifted - stimulus
-                    exceeding_shift = [any([((np.abs(diff) > interval[1]) | (np.abs(diff) < interval[0]))
+                    outside_interval = [any([((np.abs(diff) > (interval[1] * 1000)) | (np.abs(diff) < (interval[0] * 1000)))
                                            .any() for diff in shifted_diff])
                                        for shifted_diff in difference]
-                    if any(exceeding_shift):
-                        raise Exception(f'Some neurons shifted outside of interval with interval={interval}')
+                    if any(outside_interval):
+                        print('boom')
+                        return condition_str, stimulus, shifted
+                        raise Exception(f'With {condition_str}\n'
+                                        f'Some neurons shifted outside of interval with interval={interval}'
+                                        f'{difference[outside_interval]}')
     print('interval symmetric shifting passed testing successfully')
 
 
+# %%
+# ToDo: Find out why sometimes shifts occur outside of the specified interval
 if __name__ == '__main__':
     test_forward_shift()
-    test_symmetric_shift()
+    condition_str, stimulus, shifted = test_symmetric_shift()
