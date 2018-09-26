@@ -18,7 +18,12 @@ import time
 import datetime
 
 # %%
-target_folder = ''  # Set up where the sets will be saved
+# Set up file saving
+target_folder = '/mnt/disks/data'  # Set up where the sets will be saved
+if not(os.path.exists(target_folder)):
+    oldmask = os.umask(0)
+    os.mkdir(target_folder, 0o777)
+    os.umask(oldmask)
 
 # Stimuli generation parameters
 frequencies = [15, 50, 100]
@@ -34,7 +39,7 @@ temporal_shift_intervals = [[3e-3, 5e-3], [3e-3, 7e-3],
 # %%
 for interval in temporal_shift_intervals:
     start_time = datetime.datetime.now().strftime('%d/%m %H:%M:%S')
-    print(f'Creating stimuli for interval ±{np.multiply(interval, 1000)}ms - ')
+    print(f'Creating stimuli for interval ±{np.multiply(interval, 1000)}ms - started: {start_time}')
     for num_neur in number_of_neurons:
         print(f'\tNow working on stimuli with {num_neur} neurons')
         for freq in frequencies:
@@ -65,4 +70,5 @@ for interval in temporal_shift_intervals:
             pairs['stimulus_a'] = orig_stimuli
             pairs['stimulus_b'] = shifted_stimuli
             pairs['distance'] = distances
-
+    end_time = datetime.datetime.now().strftime('%d/%m %H:%M:%S')
+    print(f'Finished with interval ±{np.multiply(interval, 1000)}ms - done: {end_time}')
