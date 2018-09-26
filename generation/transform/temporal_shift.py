@@ -65,7 +65,11 @@ def forward_shift(stimulus: np.array, duration: float,
             shifted_stimulus.append(shifted_neuron)
         # Add shifted stimulus to list of shifted stimuli
         shifted_stimuli.append(shifted_stimulus)
-    shifted_stimuli = np.array(shifted_stimuli)  # Convert to numpy array for easier indexing
+    # Fixing output shape for single shift, convert to numpy array for easier indexing
+    if num_shifted == 1:
+        shifted_stimuli = np.array(shifted_stimuli)[0]
+    else:
+        shifted_stimuli = np.array(shifted_stimuli)
     return shifted_stimuli
 
 
@@ -200,6 +204,10 @@ def symmetric_interval_shift(stimulus, duration, interval, num_shifted):
             shifted_stimulus.append(shifted_neuron)
         # Add shifted stimulus to list of shifted stimuli
         shifted_stimuli.append(shifted_stimulus)
-    shifted_stimuli = np.array(shifted_stimuli)  # Convert to numpy array for easier indexing
+    # Fixing output shape for single shift, convert to numpy array for easier indexing
+    if num_shifted == 1:
+        shifted_stimuli = np.array(shifted_stimuli)[0]
+    else:
+        shifted_stimuli = np.array(shifted_stimuli)
     # %%
     return shifted_stimuli
