@@ -1,27 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="9670711e-1468-4038-b728-91416ca03bcb" name="Default Changelist" comment="">
+    <list default="true" id="9670711e-1468-4038-b728-91416ca03bcb" name="Default Changelist" comment="wtf">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Old/Tempotron.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/Tempotron.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tempotron.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tempotron.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Tempotron_Brian.py" beforeDir="false" afterPath="$PROJECT_DIR$/Tempotron_Brian.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/Tempotron_Brian_Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/Tempotron_Brian_Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/conversion_performance_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/conversion_performance_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/tempotron_dieuwke.py" beforeDir="false" afterPath="$PROJECT_DIR$/Testing/tempotron_dieuwke.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/compare_iternum.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/compare_iternum.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate_distance_prototypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/generate_distance_prototypes.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate_from_existing.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/generate_from_existing.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate_multi_samples_temporal_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/generate_multi_samples_temporal_shift.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate_multi_samples_vesicle_release.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/generate_multi_samples_vesicle_release.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make_test_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/make_test_samples.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/make_test_samples_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/make_test_samples_old.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/plot_stimulus.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/plot_stimulus.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/temporal_coding$generate_stimuli_pairs.coverage" NAME="generate_stimuli_pairs Coverage Results" MODIFIED="1537991086406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="FUSProjectUsageTrigger">
     <session id="191960859">
@@ -34,12 +25,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="txt" value="10" />
+          <entry key="Python Console" value="812" />
+          <entry key="py" value="4133" />
+          <entry key="txt" value="13" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="PLAIN_TEXT" value="10" />
+          <entry key="PLAIN_TEXT" value="13" />
+          <entry key="Python" value="4945" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -50,12 +44,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="2" />
+          <entry key="py" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="2" />
+          <entry key="Python" value="12" />
         </counts>
       </usages-collector>
     </session>
@@ -73,14 +67,35 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/Tempotron_Brian.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/generate_stimuli_pairs.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="324">
-                  <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+                <state relative-caret-position="397">
+                  <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
                   <folding>
-                    <element signature="e#0#18#0" expanded="true" />
+                    <element signature="e#387#423#0" expanded="true" />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/tools/plot_stimulus.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="72">
+                  <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+                  <folding>
+                    <element signature="e#75#93#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tools/__init__.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="54">
+                  <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
                 </state>
               </provider>
             </entry>
@@ -113,11 +128,20 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/generation/transform/temporal_shift.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="240">
-                  <caret line="170" column="33" lean-forward="true" selection-start-line="170" selection-start-column="33" selection-end-line="170" selection-end-column="33" />
+                <state relative-caret-position="172">
+                  <caret line="135" column="29" lean-forward="true" selection-start-line="135" selection-start-column="29" selection-end-line="135" selection-end-column="29" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/generation/make_stimulus.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="108">
+                  <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="112" />
                 </state>
               </provider>
             </entry>
@@ -126,12 +150,36 @@
       </split-second>
     </splitter>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>names</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
         <entry key="$PROJECT_DIR$" value="master" />
       </map>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/tools/__init__.py" />
+        <option value="$PROJECT_DIR$/generation/make_stimulus.py" />
+        <option value="$PROJECT_DIR$/tools/calc_stimuli_distance.py" />
+        <option value="$PROJECT_DIR$/Old/generate_multi_samples_temporal_shift.py" />
+        <option value="$PROJECT_DIR$/generate_stimuli_pairs.py" />
+        <option value="$PROJECT_DIR$/tools/plot_stimulus.py" />
+      </list>
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
@@ -160,6 +208,16 @@
               <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
               <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+              <item name="generation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -173,6 +231,11 @@
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/Old" />
+    </key>
+  </component>
   <component name="RunDashboard">
     <option name="ruleStates">
       <list>
@@ -184,6 +247,35 @@
         </RuleState>
       </list>
     </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="generate_stimuli_pairs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="temporal-coding" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generate_stimuli_pairs.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.generate_stimuli_pairs" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -203,18 +295,56 @@
       <option name="project" value="LOCAL" />
       <updated>1537811006151</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="wtf">
+      <created>1537990902254</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1537990902254</updated>
+    </task>
+    <task id="LOCAL-00003" summary="wtf">
+      <created>1537995923307</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1537995923307</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25751072" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4963351" visible="true" weight="0.25912017" />
+      <window_info id="Structure" order="1" sideWeight="0.5036649" side_tool="true" weight="0.16040772" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32984293" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005365" side_tool="true" weight="0.32984293" />
+      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49892703" weight="0.32879582" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.49946353" visible="true" weight="0.32984293" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" weight="0.3299356" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4984375" visible="true" weight="0.16040772" />
+      <window_info id="Structure" order="1" sideWeight="0.5015625" side_tool="true" visible="true" weight="0.16040772" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -224,36 +354,12 @@
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005365" side_tool="true" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49892703" weight="0.32879582" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" sideWeight="0.49946353" visible="true" weight="0.32984293" />
+      <window_info anchor="bottom" id="Python Console" order="12" sideWeight="0.49946353" visible="true" weight="0.32984293" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
-    </layout>
-    <layout-to-restore>
-      <window_info content_ui="combo" id="Project" order="0" weight="0.25751072" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.5005365" side_tool="true" weight="0.3297414" />
-      <window_info anchor="bottom" id="Terminal" order="11" sideWeight="0.49946353" weight="0.3297414" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="12" visible="true" weight="0.33973712" />
-      <window_info anchor="right" x="0" y="0" width="430" height="880" id="Documentation" order="0" side_tool="true" weight="0.3299356" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="1" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="2" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="3" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="4" />
-      <window_info anchor="right" id="Database" order="5" />
     </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -264,12 +370,23 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Syncing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Syncing" />
+    <MESSAGE value="wtf" />
+    <option name="LAST_COMMIT_MESSAGE" value="wtf" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Old/compare_iternum.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-486">
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Tempotron_Brian.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -283,12 +400,75 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Tempotron_Brian.py">
+    <entry file="file://$PROJECT_DIR$/generation/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="36">
+          <caret line="2" column="23" lean-forward="true" selection-end-line="2" selection-end-column="23" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#41#81#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/calc_stimuli_distance.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="360">
+          <caret line="20" column="40" lean-forward="true" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
+          <folding>
+            <element signature="e#0#21#0" expanded="true" />
+            <marker date="1537993388885" expanded="true" signature="164:165" ph="..." />
+            <marker date="1537993388885" expanded="true" signature="164:882" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Old/make_test_samples.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="376">
+          <caret line="374" column="27" lean-forward="true" selection-start-line="374" selection-start-column="27" selection-end-line="374" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Old/generate_multi_samples_temporal_shift.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-522">
+          <caret line="4" column="10" selection-start-line="4" selection-start-column="10" selection-end-line="4" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generate_stimuli_pairs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="397">
+          <caret line="56" column="47" lean-forward="true" selection-start-line="56" selection-start-column="47" selection-end-line="56" selection-end-column="47" />
+          <folding>
+            <element signature="e#387#423#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generation/make_stimulus.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="42" column="23" selection-start-line="42" selection-start-column="23" selection-end-line="42" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/plot_stimulus.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#75#93#0" expanded="true" />
           </folding>
         </state>
       </provider>
