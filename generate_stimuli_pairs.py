@@ -1,5 +1,5 @@
 '''
-This file is used to generate pairs of stimuli where one of the stimuli
+This script is used to generate pairs of stimuli where one of the stimuli
 is a temporally shifted version of the other.
 The difference between the stimuli is defined by how much
 the spikes in the original stimulus are allowed to shift, for
@@ -9,21 +9,15 @@ each spike to move forward or backward in time within a specified interval.
 # %%
 from generation import make_stimulus
 from generation.transform import symmetric_interval_shift
-from tools import calc_stimuli_distance
+from tools import calc_stimuli_distance, check_folder, gen_datestr
 import numpy as np
-import pyspike as spk
 import os
-import pickle
-import time
 import datetime
 
 # %%
 # Set up file saving
 target_folder = '/mnt/disks/data'  # Set up where the sets will be saved
-if not(os.path.exists(target_folder)):
-    oldmask = os.umask(0)
-    os.mkdir(target_folder, 0o777)
-    os.umask(oldmask)
+check_folder(target_folder)
 
 # Stimuli generation parameters
 frequencies = [15, 50, 100]
@@ -31,19 +25,24 @@ number_of_neurons = [30, 150, 500]
 duration = 0.5  # Units: Seconds
 
 # Pair generation parameters
-number_of_pairs = 30  # Number of stimulus pairs for each interval condition
+number_of_pairs = 100  # Number of stimulus pairs for each interval condition
 # Intervals to use for temporal shifting
 temporal_shift_intervals = [[3e-3, 5e-3], [3e-3, 7e-3],
-                            [3e-3, 10e-3], [3e-3, 15e-3]] # Units: Seconds
+                            [3e-3, 10e-3], [3e-3, 15e-3]]  # Units: Seconds
 
 # %%
-for interval in temporal_shift_intervals:
-    start_time = datetime.datetime.now().strftime('%d/%m %H:%M:%S')
-    print(f'Creating stimuli for interval ±{np.multiply(interval, 1000)}ms - started: {start_time}')
-    for num_neur in number_of_neurons:
-        print(f'\tNow working on stimuli with {num_neur} neurons')
-        for freq in frequencies:
-            print(f'\t\tNow working on stimuli of {freq}Hz')
+current_date = gen_datestr(with_time=False)
+for num_neur in number_of_neurons:
+    start_time = gen_datestr()
+    print(f'Creating stimuli with {num_neur} neurons -  - started: {start_time}')
+
+    current_folder = os.path.join(target_folder, current_date,
+                                  f'{num_neur}_neurons')
+    check_folder(current_folder)
+    for freq in frequencies:
+        print(f'\tNow working on stimuli of {freq}Hz')
+        for interval in temporal_shift_intervals:
+            print(f'\t\tCreating stimuli pairs by shifting ±{np.multiply(interval, 1000)}ms')
             # Creating placeholders for all stimuli in current condition
             orig_stimuli = []
             shifted_stimuli = []
@@ -70,5 +69,9 @@ for interval in temporal_shift_intervals:
             pairs['stimulus_a'] = orig_stimuli
             pairs['stimulus_b'] = shifted_stimuli
             pairs['distance'] = distances
-    end_time = datetime.datetime.now().strftime('%d/%m %H:%M:%S')
-    print(f'Finished with interval ±{np.multiply(interval, 1000)}ms - done: {end_time}')
+            # Save stimuli from current condition
+            condition_file_name = f'{freq}Hz_interval={int(interval[0] * 1000)}-{int(interval[1] * 1000)}ms.npy'
+            condition_file_location = os.path.join(current_folder, condition_file_name)
+            np.save(condition_file_name, pairs)
+    end_time = gen_datestr()
+    print(f'Finished creating stimuli with {num_neur} neurons - done: {end_time}\n')
