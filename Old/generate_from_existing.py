@@ -1,6 +1,6 @@
 import numpy as np
 import pickle
-from Old.make_test_samples import gen_with_vesicle_release, convert_multi_samples
+from make_test_samples import gen_with_vesicle_release, convert_multi_samples
 import os
 import re
 import time

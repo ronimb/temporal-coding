@@ -40,7 +40,7 @@ def make_stimulus(frequency: int, duration: float, num_neurons: int,
     :param exact_frequency: whether all spikes to use average frequency or exact frequency for all neurons
 
     :rtype: np.array
-    :return: stimulus: numpy  array where each element is a single neurons spike times, specified in milliseconds
+    :return: stimulus: numpy array where each element is a single neurons spike times, specified in milliseconds
     """
     
     def _return_exact(bool_stimulus: np.array) -> np.array:
