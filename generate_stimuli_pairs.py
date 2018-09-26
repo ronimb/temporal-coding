@@ -72,6 +72,7 @@ for num_neur in number_of_neurons:
             # Save stimuli from current condition
             condition_file_name = f'{freq}Hz_interval={int(interval[0] * 1000)}-{int(interval[1] * 1000)}ms.npy'
             condition_file_location = os.path.join(current_folder, condition_file_name)
-            np.save(condition_file_name, pairs)
+            with open(condition_file_location, 'wb') as file:
+                np.save(file, pairs)
     end_time = gen_datestr()
     print(f'Finished creating stimuli with {num_neur} neurons - done: {end_time}\n')
