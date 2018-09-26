@@ -1,6 +1,5 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from make_test_samples import gen_with_temporal_shift
 import pickle
 
 class Tempotron:

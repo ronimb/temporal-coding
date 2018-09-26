@@ -1,8 +1,8 @@
 # %%
-from numba import prange, jit, njit
+from numba import prange, jit
 import numpy as np
 from multiprocessing import Pool
-from make_test_samples import gen_with_vesicle_release
+from Old.make_test_samples import gen_with_vesicle_release
 import time
 
 # %%

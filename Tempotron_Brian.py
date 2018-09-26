@@ -2,12 +2,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 import re
 import brian2 as b2
-from brian2.units import Hz, ms
-from numba import jit, prange
+from brian2.units import ms
 
-from multiprocessing import Pool
 import pickle
-from make_test_samples import convert_single_sample, convert_multi_samples
+from Old.make_test_samples import convert_multi_samples
 # %% Helper functions
 def load_sample(loc):
     with open(loc, 'rb') as f:

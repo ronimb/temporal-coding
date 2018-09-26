@@ -1,12 +1,6 @@
-import numpy as np
-import brian2 as b2
-from brian2.units import ms
-import pickle
-import matplotlib.pyplot as plt
 import time
-import sys
 
-from make_test_samples import *
+from Old.make_test_samples import *
 
 # %% Generate samples for use in testing - REMOVE once done!
 num_neurons = 500

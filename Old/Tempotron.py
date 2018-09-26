@@ -1,11 +1,7 @@
-import numpy as np
-import brian2 as b2
-from brian2.units import second, ms
-import matplotlib.pyplot as plt
 import time
 import pickle
 
-from make_test_samples import *
+from Old.make_test_samples import *
 
 
 class Tempotron():

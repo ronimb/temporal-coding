@@ -1,13 +1,10 @@
 import numpy as np
-import pickle
 import time
 import brian2 as b2
 from brian2.units import ms
-import sys
-import matplotlib.pyplot as plt
-from numba import jit, prange, njit
+from numba import jit
 
-from make_test_samples import gen_with_vesicle_release
+from Old.make_test_samples import gen_with_vesicle_release
 
 import warnings
 warnings.filterwarnings("ignore")  # Used to ignore brian deprecation warnings
