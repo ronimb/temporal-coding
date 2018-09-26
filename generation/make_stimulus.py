@@ -42,7 +42,7 @@ def make_stimulus(frequency: int, duration: float, num_neurons: int,
     :rtype: np.array
     :return: stimulus: numpy array where each element is a single neurons spike times, specified in milliseconds
     """
-    
+
     def _return_exact(bool_stimulus: np.array) -> np.array:
         """
         Used for filtering the stimulus for neurons firing only at the exact frequency
@@ -56,10 +56,10 @@ def make_stimulus(frequency: int, duration: float, num_neurons: int,
         # Keep only those neurons firing at the correct frequency
         exact = bool_stimulus[correct_count]
         return exact
-        
+
     # Generate the stimulus in boolean form
     spikes_bool = _bool_poisson(frequency, duration, num_neurons, dt)
-    
+
     # Handle exact frequency requirement
     if exact_frequency:
         # Filter out neurons not firing at the exact frequency
@@ -78,6 +78,7 @@ def make_stimulus(frequency: int, duration: float, num_neurons: int,
     # Transforming the boolean stimulus to an array in which each object represents a neuron and its spike times
     neuron_index, firing_indexes = np.where(spikes_bool)  # Find indexes of neurons and indexes of spikes
     times = firing_indexes * dt * 1000  # Transform firing time indexes to seconds
-    stimulus = np.array([times[neuron_index == i] for i in range(num_neurons)]) # Create the array, a numpy object array is used for indexing reasons
+    stimulus = np.array([times[neuron_index == i] for i in
+                         range(num_neurons)])  # Create the array, a numpy object array is used for indexing reasons
 
     return stimulus

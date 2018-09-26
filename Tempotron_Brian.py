@@ -230,4 +230,3 @@ if __name__ == '__main__':
     print(T.accuracy('test', samples, labels).mean())
     T.train(samples, labels, batch_size=50, num_reps=20, learning_rate=1e-3)
     print(T.accuracy('test', samples, labels).mean())
-
