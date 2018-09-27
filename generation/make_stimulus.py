@@ -8,12 +8,12 @@ def _bool_poisson(frequency: int, duration: float, num_neurons: int, dt: float =
     a boolean array of spikes according to the specified duration and dt.
 
     :param frequency: The average firing frequency of each neuron in the sample, units: Hz
-    :param duration: Maximal duration of the stimulus, units: Sec
-    :param num_neurons: Number of neruons in the stimulus, units: Integer
+    :param duration: Maximal duration of the stimulus, units: ms
+    :param num_neurons: Number of neurons in the stimulus, units: Integer
     :param dt: Simulation time step, units: Sec
     """
-
-    num_bins = np.round(duration / dt).astype(int)  # Number of time bins in the simulation
+    duration_sec = duration / 1000
+    num_bins = np.round(duration_sec / dt).astype(int)  # Number of time bins in the simulation
 
     # Generate uniform random values between 0-1 in each time bin for each neuron
     random_vals = np.random.rand(num_neurons, num_bins)
@@ -33,7 +33,7 @@ def make_stimulus(frequency: int, duration: float, num_neurons: int,
     may be used to generate with either an average frequency or an exact frequency.
 
     :param frequency: The average firing frequency of each neuron in the sample, units: Hz
-    :param duration: Maximal duration of the stimulus, units: Sec
+    :param duration: Maximal duration of the stimulus, units: ms
     :param num_neurons: Number of neruons in the stimulus, units: Integer
     :param refractory_period: Length of minimal period between two spikes, units: Sec  CURRENTLY NOT IMPLEMENTED
     :param dt: Simulation time step, units: Sec
@@ -49,10 +49,11 @@ def make_stimulus(frequency: int, duration: float, num_neurons: int,
         :param bool_stimulus: stimulus to be filtered
         :return: exact: filtered boolean stimulus
         """
+        duration_sec = duration / 1000
         # Count spikes in each neuron
         spike_count = bool_stimulus.sum(1)
         # Find neurons firing at the correct frequency
-        correct_count = spike_count == np.round((frequency * duration))  # Rounding to handle edge cases
+        correct_count = spike_count == np.round((frequency * duration_sec))  # Rounding to handle edge cases
         # Keep only those neurons firing at the correct frequency
         exact = bool_stimulus[correct_count]
         return exact

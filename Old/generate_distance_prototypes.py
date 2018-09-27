@@ -1,15 +1,10 @@
 import numpy as np
-from numba import jit, prange
-from multiprocessing import Pool
-import pickle
 from time import time, strftime, gmtime, ctime
 import os
 import datetime
 import brian2 as b2
 b2.BrianLogger.suppress_name('method_choice')
-import pyspike as spk
-import matplotlib.pyplot as plt
-from make_test_samples import make_spk, find_match_dists, multi_shift, calc_distance
+from Old.make_test_samples import make_spk, find_match_dists, multi_shift, calc_distance
 # %%
 def find_for_neuron(neuron, distance, shift_params, eps=1e-3):
     shifted = multi_shift(neuron, **shift_params)

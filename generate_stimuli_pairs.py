@@ -22,13 +22,13 @@ check_folder(target_folder)
 # Stimuli generation parameters
 frequencies = [15, 50, 100]
 number_of_neurons = [30, 150, 500]
-duration = 0.5  # Units: Seconds
+duration = 500  # Units: ms
 
 # Pair generation parameters
 number_of_pairs = 100  # Number of stimulus pairs for each interval condition
 # Intervals to use for temporal shifting
-temporal_shift_intervals = [[3e-3, 5e-3], [3e-3, 7e-3],
-                            [3e-3, 10e-3], [3e-3, 15e-3]]  # Units: Seconds
+temporal_shift_intervals = [[3, 5], [3, 7],
+                            [3, 10], [3, 15]]  # Units: Seconds
 
 # %%
 current_date = gen_datestr(with_time=False)
@@ -42,7 +42,7 @@ for num_neur in number_of_neurons:
     for freq in frequencies:
         print(f'\tNow working on stimuli of {freq}Hz')
         for interval in temporal_shift_intervals:
-            print(f'\t\tCreating stimuli pairs by shifting ±{np.multiply(interval, 1000)}ms')
+            print(f'\t\tCreating stimuli pairs by shifting ±{interval}ms')
             # Creating placeholders for all stimuli in current condition
             orig_stimuli = []
             shifted_stimuli = []
@@ -70,7 +70,7 @@ for num_neur in number_of_neurons:
             pairs['stimulus_b'] = shifted_stimuli
             pairs['distance'] = distances
             # Save stimuli from current condition
-            condition_file_name = f'{freq}Hz_interval={int(interval[0] * 1000)}-{int(interval[1] * 1000)}ms.npy'
+            condition_file_name = f'{freq}Hz_interval={int(interval[0])}-{int(interval[1])}ms.npy'
             condition_file_location = os.path.join(current_folder, condition_file_name)
             with open(condition_file_location, 'wb') as file:
                 np.save(file, pairs)

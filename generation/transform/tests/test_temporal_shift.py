@@ -7,7 +7,7 @@ test_stimuli = {'exact': {freq: [] for freq in frequencies},
                 'average': {freq: [] for freq in frequencies}}
 num_neurons = 50
 num_stimuli = 10
-duration = .5
+duration = .500
 for freq in frequencies:
     for i in range(num_stimuli):
         test_stimuli['average'][freq].append(
@@ -31,7 +31,7 @@ def test_forward_shift():
                                             max_temporal_shift=shift / 1000,
                                             num_shifted=num_shifted)
                     # Test for spikes exceeding max duration
-                    exceeding_duration = [any([(neuron > (duration * 1000)).any() for neuron in shifted_stimulus]) for
+                    exceeding_duration = [any([(neuron > (duration)).any() for neuron in shifted_stimulus]) for
                                           shifted_stimulus in shifted]
                     if any(exceeding_duration):
                         raise Exception(f'Some neurons exceed maximal duration when shift={shift}')
@@ -61,7 +61,7 @@ def test_symmetric_shift():
                         print(f'With {condition_str}\n')
                         raise e
                     # Test for spikes exceeding max duration
-                    exceeding_duration = [any([(neuron > (duration * 1000)).any() for neuron in shifted_stimulus]) for
+                    exceeding_duration = [any([(neuron > (duration)).any() for neuron in shifted_stimulus]) for
                                           shifted_stimulus in shifted]
                     if any(exceeding_duration):
                         raise Exception(f'With {condition_str}\n'
@@ -88,4 +88,4 @@ def test_symmetric_shift():
 # ToDo: Find out why sometimes shifts occur outside of the specified interval
 if __name__ == '__main__':
     test_forward_shift()
-    condition_str, stimulus, shifted = test_symmetric_shift()
+    test_symmetric_shift()
