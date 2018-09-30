@@ -3,7 +3,6 @@ This file contains all the functions required for transforming a stimulus
 by transforming spikes into released vesicles
 """
 # %%
-from multiprocessing import Pool
 import numpy as np
 from scipy.stats import beta
 
