@@ -53,7 +53,7 @@ for num_neur in number_of_neurons:
                                               num_neurons=num_neur)
                 # Generate shifted stimulus
                 shifted_stimulus = symmetric_interval_shift(stimulus=orig_stimulus, duration=duration,
-                                                            interval=interval, num_shifted=1)
+                                                            interval=interval, num_transformed=1)
                 # Calculate distance metric between two stimuli for reference
                 distance = calc_stimuli_distance(stimulus_a=orig_stimulus,
                                                  stimulus_b=shifted_stimulus,

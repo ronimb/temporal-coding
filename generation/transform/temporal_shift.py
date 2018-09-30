@@ -3,7 +3,7 @@ import numpy as np
 
 
 def forward_shift(stimulus: np.array, duration: float,
-                  max_temporal_shift: float, num_shifted: int) -> np.array:
+                  max_temporal_shift: float, num_transformed: int) -> np.array:
     """
     Transforms stimuli by stochastically shifting all spike times in all neurons
     forward by up to max_temporal_shift seconds
@@ -11,7 +11,7 @@ def forward_shift(stimulus: np.array, duration: float,
     :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
     :param duration: Maximal duration of the stimulus, units: ms
     :param max_temporal_shift: The maximal temporal shift by which each spike can be moved, units: ms
-    :param num_shifted: Number of shifted versions of the stimulus to generate, units: Integer
+    :param num_transformed: Number of shifted versions of the stimulus to generate, units: Integer
 
     :return: shifted_stimuli: numpy array where each object is a temporally shifted version of the original stimulus
     """
@@ -56,7 +56,7 @@ def forward_shift(stimulus: np.array, duration: float,
         return new_neuron
 
     shifted_stimuli = []  # Placeholder list for all shifted stimuli
-    for i in range(num_shifted):
+    for i in range(num_transformed):
         shifted_stimulus = []  # Placeholder list for all neurons in current shifted stimulus
         for neuron in stimulus:
             # Create temporally shifted version of current neuron
@@ -66,24 +66,24 @@ def forward_shift(stimulus: np.array, duration: float,
         # Add shifted stimulus to list of shifted stimuli
         shifted_stimuli.append(shifted_stimulus)
     # Fixing output shape for single shift, convert to numpy array for easier indexing
-    if num_shifted == 1:
+    if num_transformed == 1:
         shifted_stimuli = np.array(shifted_stimuli)[0]
     else:
         shifted_stimuli = np.array(shifted_stimuli)
     return shifted_stimuli
 
 
-def symmetric_interval_shift(stimulus, duration, interval, num_shifted):
+def symmetric_interval_shift(stimulus, duration, interval, num_transformed):
     """
     Transforms stimuli by stochastically shifting all spike times either forward or backward
     within an interval specified in milliseconds.
     For example, specifying the interval (3, 5) will shift spikes either between -5 and -3 ms
     or between 3 and 5 ms.
 
-    :param stimulus: A numpy array representing the stimulus in which each line (or object) \is a neuron with spike times given in ms
+    :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
     :param duration: Maximal duration of the stimulus, units: ms
     :param interval: A tuple specifying the symmetric interval by which spikes are temporally shifted, see example. units: ms
-    :param num_shifted: Number of shifted versions of the stimulus to generate, units: Integer
+    :param num_transformed: Number of shifted versions of the stimulus to generate, units: Integer
 
     :return: shifted_stimuli: numpy array where each object is a temporally shifted version of the original stimulus
     """
@@ -195,7 +195,7 @@ def symmetric_interval_shift(stimulus, duration, interval, num_shifted):
         return new_neuron
     # %%
     shifted_stimuli = []  # Placeholder list for all shifted stimuli
-    for i in range(num_shifted):
+    for i in range(num_transformed):
         shifted_stimulus = []  # Placeholder list for anew_spikes.append(spike + spike_shift)  # Add newly shifted spike to list of new spikesll neurons in current shifted stimulus
         for neuron in stimulus:
             # Create temporally shifted version of current neuron
@@ -205,7 +205,7 @@ def symmetric_interval_shift(stimulus, duration, interval, num_shifted):
         # Add shifted stimulus to list of shifted stimuli
         shifted_stimuli.append(shifted_stimulus)
     # Fixing output shape for single shift, convert to numpy array for easier indexing
-    if num_shifted == 1:
+    if num_transformed == 1:
         shifted_stimuli = np.array(shifted_stimuli)[0]
     else:
         shifted_stimuli = np.array(shifted_stimuli)

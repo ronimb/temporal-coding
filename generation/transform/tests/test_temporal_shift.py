@@ -29,7 +29,7 @@ def test_forward_shift():
                     # Generate shifted samples in current condition
                     shifted = forward_shift(stimulus, duration,
                                             max_temporal_shift=shift / 1000,
-                                            num_shifted=num_shifted)
+                                            num_transformed=num_shifted)
                     # Test for spikes exceeding max duration
                     exceeding_duration = [any([(neuron > (duration)).any() for neuron in shifted_stimulus]) for
                                           shifted_stimulus in shifted]
@@ -56,7 +56,7 @@ def test_symmetric_shift():
                     try:
                         shifted = symmetric_interval_shift(stimulus, duration,
                                                            interval=interval,
-                                                           num_shifted=num_shifted)
+                                                           num_transformed=num_shifted)
                     except Exception as e:
                         print(f'With {condition_str}\n')
                         raise e
