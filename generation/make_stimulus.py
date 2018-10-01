@@ -61,6 +61,17 @@ def make_stimulus(frequency: int, duration: float, num_neurons: int,
     # Generate the stimulus in boolean form
     spikes_bool = _bool_poisson(frequency, duration, num_neurons, dt)
 
+    # Check that each neuron spikes at least once and re-generate otherwise
+    num_spikes = spikes_bool.sum(1)
+    zero_spikes = num_spikes == 0
+    while zero_spikes.any():
+        num_zero_spikes = zero_spikes.sum()  # Count  number of neurons with no spikes
+        new_neurons = _bool_poisson(frequency, duration, num_zero_spikes)  # Generate new neurons
+        spikes_bool[zero_spikes] = new_neurons
+        # Check again
+        num_spikes = spikes_bool.sum(1)
+        zero_spikes = num_spikes == 0
+
     # Handle exact frequency requirement
     if exact_frequency:
         # Filter out neurons not firing at the exact frequency

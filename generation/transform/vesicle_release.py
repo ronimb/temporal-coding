@@ -96,11 +96,21 @@ def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicle
         return transformed_neurons
 
     all_transformed_stimuli = []  # Placeholder for transformed stimuli
+    for i in range(num_transformed):
+        # Generate transformed stimulus
+        transformed_stimulus = _transform_stimulus()
+        # Add to array of transformed stimuli
+        all_transformed_stimuli.append(transformed_stimulus)
+    if num_transformed == 1:
+        all_transformed_stimuli = np.array(all_transformed_stimuli)[0]
+    else:
+        all_transformed_stimuli = np.array(all_transformed_stimuli)
+    return all_transformed_stimuli
 
 
 
 def stochastic_release(stimulus: np.array, release_duration: float, number_of_vesicles: int,
-                       max_duration: float, num_transformed: int, release_probability: float = 1,
+                       max_duration: float, num_transformed: int = 1, release_probability: float = 1,
                        distribution_mode: float = 1, mode_centrality: float = 3, decay_velocity: float = 2,
                        distribution_span: float = 15, expected_duration: float = 9) -> np.array:
     """
@@ -170,7 +180,10 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
         # Derive release time offsets from release inds and clipping to no more than the specified number of vesicles
         vesicle_time_offsets = np.array([possible_release_times[inds][:number_of_vesicles] for inds in release_inds])
         # Transform neuron by adding vesicle time offsets to spike times
-        transformed_neuron = np.hstack(neuron + vesicle_time_offsets)
+        if vesicle_time_offsets.ndim == 1: # This takes care of possible issues with the time offset array
+            transformed_neuron = np.hstack(neuron + vesicle_time_offsets)
+        elif vesicle_time_offsets.ndim == 2:
+            transformed_neuron = np.hstack(neuron[:, np.newaxis] + vesicle_time_offsets)
         # Remove spikes that exceed the maximal duration
         transformed_neuron = transformed_neuron[transformed_neuron < max_duration]
         # Handle release probability by excluding part of the vesicles
