@@ -29,7 +29,7 @@ def get_beta_params(beta_span: float, beta_mode: float,
     return beta_b, beta_b, beta_dist
 
 
-def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicles: int, max_duration: float,
+def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicles: int, max_stimulus_duration: float,
                   num_transformed: int = 1, release_probability: float = 1,
                   distribution_mode: int = 1, mode_centrality: int = 3, decay_velocity: int = 2) -> np.array:
     """
@@ -40,7 +40,7 @@ def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicle
     :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
     :param release_duration: Maximal duration of vesicle release process, Units : ms
     :param number_of_vesicles: Precise number of vesicles release for each spike
-    :param max_duration: maximal duration of stimulus, Units : ms
+    :param max_stimulus_duration: maximal duration of stimulus, Units : ms
     :param num_transformed: Number of transformed version of the original stimulus to generate
     :param release_probability: Probability of release for each vesicle, the fraction of vesicles released for each spike
     :param distribution_mode: The mode of the heavy-tailed beta distribution used to determine release times
@@ -68,7 +68,7 @@ def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicle
         # Transform neuron by adding vesicle time offsets to spike times
         transformed_neuron = (neuron + vesicle_time_offsets).flatten()
         # Remove spikes that exceed the maximal duration
-        transformed_neuron = transformed_neuron[transformed_neuron < max_duration]
+        transformed_neuron = transformed_neuron[transformed_neuron < max_stimulus_duration]
         # Handle release probability by excluding part of the vesicles
         if release_probability != 1:
             # Generate uniform 0-1 random values for each vesicle
@@ -110,7 +110,7 @@ def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicle
 
 
 def stochastic_release(stimulus: np.array, release_duration: float, number_of_vesicles: int,
-                       max_duration: float, num_transformed: int = 1, release_probability: float = 1,
+                       max_stimulus_duration: float, num_transformed: int = 1, release_probability: float = 1,
                        distribution_mode: float = 1, mode_centrality: float = 3, decay_velocity: float = 2,
                        distribution_span: float = 15, expected_duration: float = 9) -> np.array:
     """
@@ -122,7 +122,7 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
     :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
     :param release_duration: Maximal duration of vesicle release process, Units : ms
     :param number_of_vesicles: Expected number of vesicles release for each spike
-    :param max_duration: maximal duration of stimulus, Units : ms
+    :param max_stimulus_duration: maximal duration of stimulus, Units : ms
     :param num_transformed: Number of transformed version of the original stimulus to generate
     :param release_probability: Probability of release for each vesicle, the fraction of vesicles released for each spike
     :param distribution_mode: The mode of the heavy-tailed beta distribution used to determine release times
@@ -185,7 +185,7 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
         elif vesicle_time_offsets.ndim == 2:
             transformed_neuron = np.hstack(neuron[:, np.newaxis] + vesicle_time_offsets)
         # Remove spikes that exceed the maximal duration
-        transformed_neuron = transformed_neuron[transformed_neuron < max_duration]
+        transformed_neuron = transformed_neuron[transformed_neuron < max_stimulus_duration]
         # Handle release probability by excluding part of the vesicles
         if release_probability != 1:
             # Generate uniform 0-1 random values for each vesicle

@@ -36,7 +36,7 @@ for num_neur in number_of_neurons:
     start_time = gen_datestr()
     print(f'Creating stimuli with {num_neur} neurons -  - started: {start_time}')
 
-    current_folder = os.path.join(target_folder, current_date,
+    current_folder = os.path.join(target_folder, current_date, 'source_pairs',
                                   f'{num_neur}_neurons')
     check_folder(current_folder)
     for freq in frequencies:
