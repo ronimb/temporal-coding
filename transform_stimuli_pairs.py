@@ -48,8 +48,8 @@ conditional_transformation_params = {'release_probability': (0.25, 0.5, 0.75, 1)
                                      'release_duration': (3, 6, 9)}
 
 # Re-organizing the parameters for use in function
-condition_list = (dict(zip(conditional_transformation_params, x))
-                  for x in product(*conditional_transformation_params.values()))
+condition_list = list((dict(zip(conditional_transformation_params, x))
+                       for x in product(*conditional_transformation_params.values())))
 
 # %%
 for num_neur in number_of_neurons:
@@ -58,7 +58,8 @@ for num_neur in number_of_neurons:
     for freq in frequencies:
         print(f'\t{freq}Hz stimuli - {gen_datestr()}')
         # Create folder for saving transformed stimuli
-        frequency_folder = os.path.join(save_folder, f'{num_neur}_neurons', f'{freq}Hz')  # Folder for saving transformed stimuli of current num_nuer x frequency combination
+        frequency_folder = os.path.join(save_folder, f'{num_neur}_neurons',
+                                        f'{freq}Hz')  # Folder for saving transformed stimuli of current num_nuer x frequency combination
         check_folder(frequency_folder)
         for interval in temporal_shift_intervals:
             print(f'\t\tinterval = {interval} - {gen_datestr()}')
@@ -90,4 +91,3 @@ for num_neur in number_of_neurons:
                     save_file_location = os.path.join(frequency_folder, save_file_name)
                     with open(save_file_location, 'wb') as file:
                         np.save(file, all_transformed_stimuli)
-
