@@ -2,21 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9670711e-1468-4038-b728-91416ca03bcb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/generation/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generation/tests/stimuli_set_generation.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/tools/convert_stimulus.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generate_stimuli_pairs.py" beforeDir="false" afterPath="$PROJECT_DIR$/generate_stimuli_pairs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/Tempotron.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification/Tempotron.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generation/make_stimuli_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/make_stimuli_set.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generation/make_stimulus.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/make_stimulus.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generation/transform/temporal_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/transform/temporal_shift.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generation/transform/tests/test_vesicle_release.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/transform/tests/test_vesicle_release.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generation/transform/vesicle_release.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/transform/vesicle_release.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generation/transform/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/transform/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/calc_stimuli_distance.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/calc_stimuli_distance.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/set_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/set_tools.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/transform_stimuli_pairs.py" beforeDir="false" afterPath="$PROJECT_DIR$/transform_stimuli_pairs.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/convert_stimulus.py" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -44,74 +35,18 @@
     <expand />
     <select />
   </component>
-  <component name="DockManager">
-    <window id="1">
-      <content type="file-editors">
-        <state>
-          <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-            <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/generation/make_stimuli_set.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="578">
-                    <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
-                    <folding>
-                      <element signature="e#552#579#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/generation/transform/vesicle_release.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="1782">
-                    <caret line="100" column="52" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
-                    <folding>
-                      <element signature="e#133#151#0" expanded="true" />
-                      <marker date="1538481868231" expanded="true" signature="320:1278" ph="..." />
-                      <marker date="1538481868231" expanded="true" signature="1577:3267" ph="..." />
-                      <marker date="1538481868231" expanded="true" signature="8767:8956" ph="..." />
-                      <marker date="1538481868231" expanded="true" signature="9848:12605" ph="..." />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/generation/transform/temporal_shift.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="900">
-                    <caret line="50" column="63" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/generation/__init__.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="54">
-                    <caret line="3" column="69" selection-end-line="3" selection-end-column="72" />
-                  </state>
-                </provider>
-              </entry>
-            </file>
-          </leaf>
-        </state>
-      </content>
-    </window>
-  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="191960859">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="8" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.10" value="2" />
+          <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="3" />
-          <entry key="project.open.time.9" value="4" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.open.time.9" value="5" />
+          <entry key="project.opened" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -122,6 +57,7 @@
           <entry key="py" value="28193" />
           <entry key="sh" value="9" />
           <entry key="txt" value="405" />
+          <entry key="xml" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -131,6 +67,7 @@
           <entry key="PLAIN_TEXT" value="436" />
           <entry key="Python" value="33614" />
           <entry key="Scratch" value="2687" />
+          <entry key="XML" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.vcs.git.usages">
@@ -143,7 +80,7 @@
         <counts>
           <entry key="LICENSE" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="104" />
+          <entry key="py" value="106" />
           <entry key="sh" value="1" />
           <entry key="txt" value="1" />
           <entry key="yml" value="1" />
@@ -154,7 +91,7 @@
           <entry key="Bash" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="99" />
+          <entry key="Python" value="101" />
           <entry key="Scratch" value="5" />
           <entry key="YAML" value="1" />
         </counts>
@@ -169,8 +106,20 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="37">
-              <caret line="22" selection-start-line="22" selection-end-line="35" selection-end-column="42" />
+            <state relative-caret-position="522">
+              <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
+              <folding>
+                <element signature="e#0#36#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/generation/tests/stimuli_set_generation.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="343">
+              <caret line="54" column="39" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -181,11 +130,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
-              <folding>
-                <element signature="e#146#186#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="36">
+              <caret line="2" selection-start-line="2" selection-end-line="2" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/generation/__init__.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="54">
+              <caret line="3" column="69" selection-end-line="3" selection-end-column="72" />
             </state>
           </provider>
         </entry>
@@ -193,22 +148,10 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-234">
+            <state relative-caret-position="288">
               <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
               <folding>
                 <element signature="e#402#420#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/tools/convert_stimulus.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="415">
-              <caret line="38" column="34" lean-forward="true" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
-              <folding>
-                <element signature="e#108#126#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -229,8 +172,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generation/make_stimulus.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="433">
-              <caret line="41" column="112" lean-forward="true" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="112" />
+            <state relative-caret-position="738">
+              <caret line="41" column="112" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="112" />
             </state>
           </provider>
         </entry>
@@ -324,6 +267,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -365,7 +309,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -616,8 +559,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="-1" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.15343347" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.15772532" />
       <window_info id="Favorites" order="1" sideWeight="0.49842933" side_tool="true" weight="0.13948497" />
       <window_info id="Structure" order="2" sideWeight="0.5015707" weight="0.13948497" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -631,7 +575,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32984293" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50107294" side_tool="true" weight="0.32984293" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.49892703" visible="true" weight="0.32984293" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49892703" visible="true" weight="0.32984293" />
       <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49892703" weight="0.3068063" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -839,27 +783,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="612">
-          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/generation/transform/vesicle_release.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1782">
           <caret line="100" column="52" selection-start-line="100" selection-start-column="52" selection-end-line="100" selection-end-column="52" />
-          <folding>
-            <element signature="e#133#151#0" expanded="true" />
-            <marker date="1538481868231" expanded="true" signature="320:1278" ph="..." />
-            <marker date="1538481868231" expanded="true" signature="1577:3267" ph="..." />
-            <marker date="1538481868231" expanded="true" signature="8767:8956" ph="..." />
-            <marker date="1538481868231" expanded="true" signature="9848:12605" ph="..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -867,13 +794,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="900">
           <caret line="50" column="63" selection-start-line="50" selection-start-column="63" selection-end-line="50" selection-end-column="63" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generation/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="54">
-          <caret line="3" column="69" selection-end-line="3" selection-end-column="72" />
         </state>
       </provider>
     </entry>
@@ -888,29 +808,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
           <caret line="48" column="41" selection-start-line="48" selection-start-column="41" selection-end-line="48" selection-end-column="41" />
-          <folding>
-            <element signature="e#552#579#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generation/tests/stimuli_set_generation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="60" lean-forward="true" selection-start-line="60" selection-end-line="60" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="37">
-          <caret line="22" selection-start-line="22" selection-end-line="35" selection-end-column="42" />
+        <state relative-caret-position="522">
+          <caret line="34" column="28" selection-start-line="34" selection-start-column="28" selection-end-line="34" selection-end-column="28" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
@@ -919,24 +824,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="7" column="46" lean-forward="true" selection-start-line="7" selection-start-column="46" selection-end-line="7" selection-end-column="46" />
+        <state relative-caret-position="36">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
           <folding>
-            <element signature="e#146#186#0" expanded="true" />
+            <element signature="e#166#206#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/generation/make_stimulus.py">
+    <entry file="file://$PROJECT_DIR$/generation/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="41" column="112" lean-forward="true" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="112" />
+        <state relative-caret-position="54">
+          <caret line="3" column="69" selection-end-line="3" selection-end-column="72" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-234">
+        <state relative-caret-position="288">
           <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
           <folding>
             <element signature="e#402#420#0" expanded="true" />
@@ -946,10 +851,37 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/tools/convert_stimulus.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="415">
-          <caret line="38" column="34" lean-forward="true" selection-start-line="38" selection-start-column="34" selection-end-line="38" selection-end-column="34" />
+        <state relative-caret-position="306">
+          <caret line="18" column="7" lean-forward="true" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="7" />
           <folding>
             <element signature="e#108#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generation/make_stimulus.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="738">
+          <caret line="41" column="112" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generation/tests/stimuli_set_generation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="343">
+          <caret line="54" column="39" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
