@@ -1,7 +1,6 @@
-from Tempotron_Brian import Tempotron
+from classification.Tempotron import Tempotron
 import pickle
 import matplotlib.pyplot as plt
-import seaborn as sns
 import numpy as np
 # %%
 def load_sample(loc):

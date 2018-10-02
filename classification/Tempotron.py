@@ -20,17 +20,17 @@ def load_sample(loc):
 def return_subset(batch_size, samples, labels, num_samples, num_neurons):
     selected_inds = np.sort(np.random.choice(range(num_samples), batch_size, replace=False))
     batch_inds = (selected_inds * num_neurons + np.arange(num_neurons)[:, np.newaxis]).flatten()
-    ind_locs = np.in1d(samples['inds'], batch_inds)
-    subset = np.zeros(ind_locs.sum(), dtype={'names': ('inds', 'times', 'counts'),
+    ind_locs = np.in1d(samples['neuron_ind'], batch_inds)
+    subset = np.zeros(ind_locs.sum(), dtype={'names': ('neuron_ind', 'time', 'count'),
                                              'formats': (int, float, int)})
-    subset['inds'] = samples['inds'][ind_locs]
+    subset['neuron_ind'] = samples['neuron_ind'][ind_locs]
 
     samp_map = {v: i for i, v in enumerate(selected_inds)}
-    subset['inds'], neur = np.divmod(subset['inds'], num_neurons)
-    u, inv = np.unique(subset['inds'], return_inverse=True)
-    subset['inds'] = np.array([samp_map[x] for x in u])[inv] * num_neurons + neur
-    subset['times'] = samples['times'][ind_locs]
-    subset['counts'] = samples['counts'][ind_locs]
+    subset['neuron_ind'], neur = np.divmod(subset['neuron_ind'], num_neurons)
+    u, inv = np.unique(subset['neuron_ind'], return_inverse=True)
+    subset['neuron_ind'] = np.array([samp_map[x] for x in u])[inv] * num_neurons + neur
+    subset['time'] = samples['time'][ind_locs]
+    subset['count'] = samples['count'][ind_locs]
 
     return subset, labels[selected_inds]
 
@@ -108,12 +108,12 @@ class Tempotron():
     def accuracy(self, network_name, samples, labels, return_decision=False):
         network = self.networks[network_name]
         network['net'].restore()
-        network['driving'].set_spikes(samples['inds'], samples['times']*ms)
+        network['driving'].set_spikes(samples['neuron_ind'], samples['time']*ms)
         network['synapses'].w = np.tile(self.weights, reps=network['num_samples'])
         counts = network['count_mat'].copy()
         counts[
-            (samples['times'] * 10).astype(int),
-            samples['inds'].astype(int)] = samples['counts']
+            (samples['time'] * 10).astype(int),
+            samples['neuron_ind'].astype(int)] = samples['count']
         counts = b2.TimedArray(values=counts, dt=b2.defaultclock.dt)
         network['net'].run(self.duration)
         decisions = network['spike_mon'].count != 0
@@ -148,7 +148,7 @@ class Tempotron():
 
 
     def train(self, samples, labels, batch_size=50, num_reps=100, learning_rate=1e-3, verbose=False):
-        num_samples = int(np.unique(samples['inds']).shape[0] / self.num_neurons)
+        num_samples = int(np.unique(samples['neuron_ind']).shape[0] / self.num_neurons)
         self.make_classification_network(batch_size, 'batch')
         self.make_train_network(batch_size, 'train')
         for ind in range(num_reps):
@@ -168,11 +168,11 @@ class Tempotron():
             v_max_t = v_max_times[~correct].max()
             self.networks['train']['net'].restore()
             self.networks['train']['synapses'].w = np.tile(self.weights, reps=batch_size)
-            self.networks['train']['driving'].set_spikes(batch['inds'], batch['times'] * ms)
+            self.networks['train']['driving'].set_spikes(batch['neuron_ind'], batch['time'] * ms)
             counts = self.networks['train']['count_mat'].copy()
             counts[
-                (batch['times'] * 10).astype(int),
-                batch['inds'].astype(int)] = batch['counts']
+                (batch['time'] * 10).astype(int),
+                batch['neuron_ind'].astype(int)] = batch['count']
             counts = b2.TimedArray(values=counts, dt=b2.defaultclock.dt)
             if (v_max_t != 0):
                 self.networks['train']['net'].run(v_max_t * ms)
@@ -202,12 +202,12 @@ class Tempotron():
         sample = samples[samples['inds']==samp_num]
         network = self.networks['plot']
         network['net'].restore()
-        network['driving'].set_spikes(sample['inds'], sample['times']*ms)
+        network['driving'].set_spikes(sample['neuron_ind'], sample['time']*ms)
         network['synapses'].w = self.weights
         counts = network['count_mat'].copy()
         counts[
-            (sample['times'] * 10).astype(int),
-            sample['inds'].astype(int)] = sample['counts']
+            (sample['time'] * 10).astype(int),
+            sample['neuron_ind'].astype(int)] = sample['count']
         counts = b2.TimedArray(values=counts, dt=b2.defaultclock.dt)
         network['net'].run(self.duration)
         v = network['v_mon'].v[0]

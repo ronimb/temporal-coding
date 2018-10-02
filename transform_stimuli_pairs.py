@@ -39,7 +39,7 @@ transformation_function = stochastic_release  # Function to use for transforming
 
 # Parameters to use for all transformations
 fixed_transformation_params = {'number_of_vesicles': 20,
-                               'max_stimulus_duration': stimulus_duration,
+                               'stimulus_duration': stimulus_duration,
                                'num_transformed': num_transformed,
                                }  # Make sure these parameters are the correct ones for the chosen function
 

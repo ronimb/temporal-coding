@@ -2,14 +2,14 @@
 import numpy as np
 
 
-def forward_shift(stimulus: np.array, duration: float,
+def forward_shift(stimulus: np.array, stimulus_duration: float,
                   max_temporal_shift: float, num_transformed: int) -> np.array:
     """
     Transforms stimuli by stochastically shifting all spike times in all neurons
     forward by up to max_temporal_shift seconds
 
     :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
-    :param duration: Maximal duration of the stimulus, units: ms
+    :param stimulus_duration: Maximal duration of the stimulus, units: ms
     :param max_temporal_shift: The maximal temporal shift by which each spike can be moved, units: ms
     :param num_transformed: Number of shifted versions of the stimulus to generate, units: Integer
 
@@ -27,23 +27,23 @@ def forward_shift(stimulus: np.array, duration: float,
 
         # Generate uniform values by which to shift
         shift_values = np.random.uniform(low=0,
-                                         high=max_temporal_shift,  # Multiplying duration to get ms
+                                         high=max_temporal_shift,  # Multiplying stimulus_duration to get ms
                                          size=num_spikes)
 
         # Add shift values to original neurons spike times
         new_neuron = orig_neuron + shift_values
-        # Check for spikes which might have exceeded the maximal stimulus duration
-        exceed_duration = new_neuron > duration  # Multiplying duration to get ms
-        # Making sure spike times remain within the range specified by duration
+        # Check for spikes which might have exceeded the maximal stimulus stimulus_duration
+        exceed_duration = new_neuron > stimulus_duration  # Multiplying stimulus_duration to get ms
+        # Making sure spike times remain within the range specified by stimulus_duration
         if exceed_duration.any():
             # Remove exceeding spikes from shifted neuron
             new_neuron = new_neuron[~exceed_duration]
             # Obtain original spike times of exceeding spikes from original neuron
             exceeding_spikes = orig_neuron[exceed_duration]
-            # Re-Shift the exceeding spikes by an interval truncated so that it can't exceed the maximal duration
+            # Re-Shift the exceeding spikes by an interval truncated so that it can't exceed the maximal stimulus_duration
             new_spikes = []  # Placeholder for new spike times
             for spike in exceeding_spikes:
-                truncated_max_shift = duration - spike  # Compute maximal temporal shift for spike
+                truncated_max_shift = stimulus_duration - spike  # Compute maximal temporal shift for spike
                 # Shift spike by up to truncated_max_shift
                 spike_shift = np.random.uniform(low=0,
                                                 high=truncated_max_shift,
@@ -73,7 +73,7 @@ def forward_shift(stimulus: np.array, duration: float,
     return shifted_stimuli
 
 
-def symmetric_interval_shift(stimulus, duration, interval, num_transformed):
+def symmetric_interval_shift(stimulus, stimulus_duration, interval, num_transformed):
     """
     Transforms stimuli by stochastically shifting all spike times either forward or backward
     within an interval specified in milliseconds.
@@ -81,7 +81,7 @@ def symmetric_interval_shift(stimulus, duration, interval, num_transformed):
     or between 3 and 5 ms.
 
     :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
-    :param duration: Maximal duration of the stimulus, units: ms
+    :param stimulus_duration: Maximal duration of the stimulus, units: ms
     :param interval: A tuple specifying the symmetric interval by which spikes are temporally shifted, see example. units: ms
     :param num_transformed: Number of shifted versions of the stimulus to generate, units: Integer
 
@@ -92,7 +92,7 @@ def symmetric_interval_shift(stimulus, duration, interval, num_transformed):
         """
 
         :param orig_spike_time: Time during which the erroneusly shifted spiked occured in the original neuron
-        :return: new_shifted_spike: new spike time shifted so that it stays within the interval between t=0 and the maximal duration
+        :return: new_shifted_spike: new spike time shifted so that it stays within the interval between t=0 and the maximal stimulus_duration
         """
         # Check whether this spike occurs closer to t=0 than the minimal backward shift
         too_close_to_zero = (orig_spike_time - interval[0]) < 0
@@ -121,14 +121,14 @@ def symmetric_interval_shift(stimulus, duration, interval, num_transformed):
         return new_shifted_spike
     # %%
     def _correct_end_spikes(orig_spike_time: float) -> float:
-        # Check whether this spike occurs too close to the maximal duration for forward shifting
-        too_close_to_max_duration = (duration - orig_spike_time) < (interval[0] * 1000)
-        # If the spike is too close to the maximal duration, only backward shifting is possible
+        # Check whether this spike occurs too close to the maximal stimulus_duration for forward shifting
+        too_close_to_max_duration = (stimulus_duration - orig_spike_time) < (interval[0] * 1000)
+        # If the spike is too close to the maximal stimulus_duration, only backward shifting is possible
         if too_close_to_max_duration:
             spike_shift = np.random.uniform(low=interval[0],
                                             high=interval[1],
                                             size=1) * -1  # Multiply by -1 to shift backward
-        # If the spike is sufficiently far from the maximal duration, allow either backward shifting or
+        # If the spike is sufficiently far from the maximal stimulus_duration, allow either backward shifting or
         # clipped forward shifting with equal probability
         else:
             # Randomly decide whether to shift forward or backward
@@ -139,8 +139,8 @@ def symmetric_interval_shift(stimulus, duration, interval, num_transformed):
                                                 high=interval[1],
                                                 size=1) * -1  # Multiply by -1 to shift backward
             else:
-                # Set maximal forward shift so that spike can't move forward past the maximal duration
-                maximal_forward_shift = duration - orig_spike_time
+                # Set maximal forward shift so that spike can't move forward past the maximal stimulus_duration
+                maximal_forward_shift = stimulus_duration - orig_spike_time
                 spike_shift = np.random.uniform(low=interval[0],
                                                 high=maximal_forward_shift)
         new_shifted_spike = orig_spike_time + spike_shift
@@ -166,9 +166,9 @@ def symmetric_interval_shift(stimulus, duration, interval, num_transformed):
         shift_values *= signs
         # Add shift values to original neurons spike times
         new_neuron = orig_neuron + shift_values
-        # Check for spikes which exceed either the maximal stimulus duration or occur before t=0
-        outside_range = (new_neuron < 0) | (new_neuron > duration)
-        # Making sure spike times remain between 0 and duration
+        # Check for spikes which exceed either the maximal stimulus stimulus_duration or occur before t=0
+        outside_range = (new_neuron < 0) | (new_neuron > stimulus_duration)
+        # Making sure spike times remain between 0 and stimulus_duration
         if outside_range.any():
             # Obtain the erroneous spikes themselves
             spikes_outside_range = new_neuron[outside_range]
@@ -181,7 +181,7 @@ def symmetric_interval_shift(stimulus, duration, interval, num_transformed):
                 if np.sign(err_spike) == -1:
                     new_spike = _correct_start_spikes(orig_spike)
 
-                # Corrective action for spikes after maximal duration
+                # Corrective action for spikes after maximal stimulus_duration
                 elif np.sign(err_spike) == 1:
                     new_spike = _correct_end_spikes(orig_spike)
 
