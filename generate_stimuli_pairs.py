@@ -49,8 +49,7 @@ for num_neur in number_of_neurons:
             distances = []
             for i in range(number_of_pairs):
                 # Generate original stimulus
-                orig_stimulus = make_stimulus(frequency=freq, stimulus_duration=duration,
-                                              num_neurons=num_neur)
+                orig_stimulus = make_stimulus(frequency=freq, num_neurons=num_neur, stimulus_duration=duration)
                 # Generate shifted stimulus
                 shifted_stimulus = symmetric_interval_shift(stimulus=orig_stimulus, stimulus_duration=duration,
                                                             interval=interval, num_transformed=1)

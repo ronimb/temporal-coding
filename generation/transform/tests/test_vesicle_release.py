@@ -12,10 +12,10 @@ duration = 500
 for freq in frequencies:
     for i in range(num_stimuli):
         test_stimuli['average'][freq].append(
-            make_stimulus(freq, duration, num_neurons)
+            make_stimulus(freq, num_neurons, duration)
         )
         test_stimuli['exact'][freq].append(
-            make_stimulus(freq, duration, num_neurons, exact_frequency=True)
+            make_stimulus(freq, num_neurons, duration, exact_frequency=True)
         )
 # %%
 def test_stochastic_release():

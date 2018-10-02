@@ -11,10 +11,10 @@ duration = .500
 for freq in frequencies:
     for i in range(num_stimuli):
         test_stimuli['average'][freq].append(
-            make_stimulus(freq, .5, num_neurons)
+            make_stimulus(freq, num_neurons, .5)
         )
         test_stimuli['exact'][freq].append(
-            make_stimulus(freq, .5, num_neurons, exact_frequency=True)
+            make_stimulus(freq, num_neurons, .5, exact_frequency=True)
         )
 
 
