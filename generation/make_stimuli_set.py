@@ -8,10 +8,13 @@ available functions, or check the functions in the generation.transform modules 
 """
 # %%
 from tools import set_tools
+from generation import make_stimulus
+
+
 def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
                         set_size, set_transform_function, set_transform_params,
                         origin_transform_function=None, origin_transform_params=None,
-                        fixed_frequency=False):
+                        exact_frequency=False, shuffle_set_order=True):
     """
     This function accepts specifications for stimulus creation,
     creates two stimuli with these specifications,
@@ -33,12 +36,38 @@ def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
     :param set_transform_params: The parameters to be used with set_transformation_function
     :param origin_transform_function: A transformation from generation.transform to be applied to one original stimulus in order to generate the other
     :param origin_transform_params: The parameters to be used with origin_transform_function
-    :param fixed_frequency:
+    :param exact_frequency: whether all neurons fire with the same exact frequency, or the same average frequency
+    :param shuffle_set_order: Whether to return the set shuffled or ordered by original stimulus
     """
-    pass
+    # Creating at least one original stimulus
+    original_stimulus_a = make_stimulus(frequency=frequency, number_of_neurons=number_of_neurons,
+                                      stimulus_duration=stimulus_duration, exact_frequency=exact_frequency)
+    # Either creating a stimulus by applying origin_transform_function to original_stimulus_a, or creating an entirely
+    # New original_stimulus_b
+    if origin_transform_function and origin_transform_params:  # Check if both parameters required for transformation were supplied
+        # Create original_stimulus_b by transforming original_stimulus_a
+        original_stimulus_b = origin_transform_function(stimulus=original_stimulus_a, **origin_transform_params)
+    else:
+        original_stimulus_b = make_stimulus(frequency=frequency, number_of_neurons=number_of_neurons,
+                                          stimulus_duration=stimulus_duration, exact_frequency=exact_frequency)
+    # Determine how many transformed version to create from original_stimulus_a and original_stimulus_b
+    num_transformed = int(set_size / 2)
+    set_transform_params['num_transformed'] = num_transformed  # Add to parameter dictionary
+    # Create transformed versions from both stimuli
+    transformed_set_from_a = set_transform_function(stimulus=original_stimulus_a, **set_transform_params)
+    transformed_set_from_b = set_transform_function(stimulus=original_stimulus_b, **set_transform_params)
+
+    # Combine, label and also shuffle (or not)
+    stimuli_set = set_tools.combine_and_label(set_a=transformed_set_from_a,
+                                              set_b=transformed_set_from_b,
+                                              shuffle=shuffle_set_order)
+    return stimuli_set
+
+
 
 def make_set_from_stimuli(original_stimuli, stimulus_duration,
-                          set_size, set_transform_function, set_transform_params):
+                          set_size, set_transform_function, set_transform_params,
+                          shuffle_set_order=True):
     """
     This function takes two original_stimuli of identical stimulus_duration,
     and applies the set_transform_function with set_transform_params to each
@@ -49,7 +78,23 @@ def make_set_from_stimuli(original_stimuli, stimulus_duration,
     :param stimulus_duration: Maximal duration of the stimulus, units: ms
     :param set_transform_function: A transformation from generation.transform to be applied to the original stimuli
     :param set_transform_params: The parameters to be used with set_transformation_function
+    :param shuffle_set_order: Whether to return the set shuffled or ordered by original stimulus
     :return:
     """
+    # Unpack original_stimuli tuple
+    original_stimulus_a = original_stimuli[0]
+    original_stimulus_b = original_stimuli[1]
 
-    pass
+    # Determine how many transformed version to create from origin_stimulus_a and origin_stimulus_b
+    num_transformed = int(set_size / 2)
+    set_transform_params['num_transformed'] = num_transformed  # Add to parameter dictionary
+
+    # Create transformed versions from both stimuli
+    transformed_set_from_a = set_transform_function(stimulus=original_stimulus_a, **set_transform_params)
+    transformed_set_from_b = set_transform_function(stimulus=original_stimulus_b, **set_transform_params)
+
+    # Combine, label and also shuffle (or not)
+    stimuli_set = set_tools.combine_and_label(set_a=transformed_set_from_a,
+                                              set_b=transformed_set_from_b,
+                                              shuffle=shuffle_set_order)
+    return stimuli_set

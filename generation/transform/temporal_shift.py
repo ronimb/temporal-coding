@@ -3,7 +3,7 @@ import numpy as np
 
 
 def forward_shift(stimulus: np.array, stimulus_duration: float,
-                  max_temporal_shift: float, num_transformed: int) -> np.array:
+                  max_temporal_shift: float, num_transformed: int = 1) -> np.array:
     """
     Transforms stimuli by stochastically shifting all spike times in all neurons
     forward by up to max_temporal_shift seconds
@@ -73,7 +73,8 @@ def forward_shift(stimulus: np.array, stimulus_duration: float,
     return shifted_stimuli
 
 
-def symmetric_interval_shift(stimulus, stimulus_duration, interval, num_transformed):
+def symmetric_interval_shift(stimulus: np.array, stimulus_duration: float,
+                             interval: tuple, num_transformed: int = 1) -> np.array:
     """
     Transforms stimuli by stochastically shifting all spike times either forward or backward
     within an interval specified in milliseconds.
@@ -87,6 +88,7 @@ def symmetric_interval_shift(stimulus, stimulus_duration, interval, num_transfor
 
     :return: shifted_stimuli: numpy array where each object is a temporally shifted version of the original stimulus
     """
+
     # %%
     def _correct_start_spikes(orig_spike_time: float) -> float:
         """
@@ -119,6 +121,7 @@ def symmetric_interval_shift(stimulus, stimulus_duration, interval, num_transfor
                                                 size=1)
         new_shifted_spike = orig_spike_time + spike_shift
         return new_shifted_spike
+
     # %%
     def _correct_end_spikes(orig_spike_time: float) -> float:
         # Check whether this spike occurs too close to the maximal stimulus_duration for forward shifting
@@ -145,6 +148,7 @@ def symmetric_interval_shift(stimulus, stimulus_duration, interval, num_transfor
                                                 high=maximal_forward_shift)
         new_shifted_spike = orig_spike_time + spike_shift
         return new_shifted_spike
+
     # %%
     def _neuron_interval_shift(orig_neuron):
         """
@@ -185,7 +189,7 @@ def symmetric_interval_shift(stimulus, stimulus_duration, interval, num_transfor
                 elif np.sign(err_spike) == 1:
                     new_spike = _correct_end_spikes(orig_spike)
 
-                new_spikes.append(new_spike) # Add newly shifted spike to list of new spikes
+                new_spikes.append(new_spike)  # Add newly shifted spike to list of new spikes
             # Remove erroneus spikes from shifted neuron
             new_neuron = new_neuron[~outside_range]
             # Add corrected spikes to the shifted neuron
@@ -193,6 +197,7 @@ def symmetric_interval_shift(stimulus, stimulus_duration, interval, num_transfor
         # Sorting to fix order of spikes
         new_neuron.sort()
         return new_neuron
+
     # %%
     shifted_stimuli = []  # Placeholder list for all shifted stimuli
     for i in range(num_transformed):

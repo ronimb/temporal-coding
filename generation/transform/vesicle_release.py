@@ -30,8 +30,8 @@ def get_beta_params(beta_span: float, beta_mode: float,
 
 
 def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicles: int, stimulus_duration: float,
-                  num_transformed: int = 1, release_probability: float = 1,
-                  distribution_mode: int = 1, mode_centrality: int = 3, decay_velocity: int = 2) -> np.array:
+                  release_probability: float = 1, distribution_mode: int = 1, mode_centrality: int = 3,
+                  decay_velocity: int = 2, num_transformed: int = 1) -> np.array:
     """
     This function takes a stimulus, and creates transformed versions of it by generating vesicle release processes
     at each spikes occurence in each of the stimulus' neurons.
@@ -41,11 +41,11 @@ def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicle
     :param release_duration: Maximal duration of vesicle release process, Units : ms
     :param number_of_vesicles: Precise number of vesicles release for each spike
     :param stimulus_duration: maximal duration of stimulus, Units : ms
-    :param num_transformed: Number of transformed version of the original stimulus to generate
     :param release_probability: Probability of release for each vesicle, the fraction of vesicles released for each spike
     :param distribution_mode: The mode of the heavy-tailed beta distribution used to determine release times
     :param mode_centrality: Parameter controlling how tight the probability distribution is around the mode - Higher values will result in more values closer to the mode
     :param decay_velocity: Parameter controlling how fast the probability decays after the mode, higher values will lead to less extreme release times
+    :param num_transformed: Number of transformed version of the original stimulus to generate
 
     :return: all_transformed_stimuli: array where each object is a transformed stimulus
     """
@@ -108,11 +108,10 @@ def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicle
     return all_transformed_stimuli
 
 
-
-def stochastic_release(stimulus: np.array, release_duration: float, number_of_vesicles: int,
-                       stimulus_duration: float, num_transformed: int = 1, release_probability: float = 1,
-                       distribution_mode: float = 1, mode_centrality: float = 3, decay_velocity: float = 2,
-                       distribution_span: float = 15, expected_duration: float = 9) -> np.array:
+def stochastic_release(stimulus: np.array, release_duration: float, number_of_vesicles: int, stimulus_duration: float,
+                       release_probability: float = 1, distribution_mode: float = 1, mode_centrality: float = 3,
+                       decay_velocity: float = 2, distribution_span: float = 15, expected_duration: float = 9,
+                       num_transformed: int = 1) -> np.array:
     """
     This function is used to generate transformed versions of a stimulus by releasing vesicles in a stochastic manner
     in response to the spikes in the original stimulus.
@@ -123,13 +122,13 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
     :param release_duration: Maximal duration of vesicle release process, Units : ms
     :param number_of_vesicles: Expected number of vesicles release for each spike
     :param stimulus_duration: maximal duration of stimulus, Units : ms
-    :param num_transformed: Number of transformed version of the original stimulus to generate
     :param release_probability: Probability of release for each vesicle, the fraction of vesicles released for each spike
     :param distribution_mode: The mode of the heavy-tailed beta distribution used to determine release times
     :param mode_centrality: Parameter controlling how tight the probability distribution is around the mode - Higher values will result in more values closer to the mode
     :param decay_velocity: Parameter controlling how fast the probability decays after the mode, higher values will lead to less extreme release times
     :param distribution_span: Parameter controlling the length of the actual distribution, actual release times are from a clipped interval, MUST BE LARGER THAN RELEASE DURATION!
     :param expected_duration: The duration of time for which the expected number of vesicles released equals number_of_vesicles, MUST BET LARGER THAN RELEASE_DURATION, AND SMALLER THAN DISRIBUTION SPAN
+    :param num_transformed: Number of transformed version of the original stimulus to generate
 
     :return: all_transformed_stimuli: array where each object is a transformed stimulus
     """
@@ -180,7 +179,7 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
         # Derive release time offsets from release inds and clipping to no more than the specified number of vesicles
         vesicle_time_offsets = np.array([possible_release_times[inds][:number_of_vesicles] for inds in release_inds])
         # Transform neuron by adding vesicle time offsets to spike times
-        if vesicle_time_offsets.ndim == 1: # This takes care of possible issues with the time offset array
+        if vesicle_time_offsets.ndim == 1:  # This takes care of possible issues with the time offset array
             transformed_neuron = np.hstack(neuron + vesicle_time_offsets)
         elif vesicle_time_offsets.ndim == 2:
             transformed_neuron = np.hstack(neuron[:, np.newaxis] + vesicle_time_offsets)
@@ -211,7 +210,7 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
         transformed_neurons = np.array(transformed_neurons)
         return transformed_neurons
 
-    all_transformed_stimuli = [] # Placeholder for transformed stimuli
+    all_transformed_stimuli = []  # Placeholder for transformed stimuli
     for i in range(num_transformed):
         # Generate transformed stimulus
         transformed_stimulus = _transform_stimulus()

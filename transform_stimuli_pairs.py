@@ -38,14 +38,17 @@ num_transformed = 100  # Number of transformed stimuli from each stimulus
 transformation_function = stochastic_release  # Function to use for transforming each stimulus, choose from the existing functions in the generation.trasnform module
 
 # Parameters to use for all transformations
-fixed_transformation_params = {'number_of_vesicles': 20,
-                               'stimulus_duration': stimulus_duration,
-                               'num_transformed': num_transformed,
-                               }  # Make sure these parameters are the correct ones for the chosen function
+fixed_transformation_params = dict(
+    number_of_vesicles=20,
+    stimulus_duration=stimulus_duration,
+    num_transformed=num_transformed
+)  # Make sure these parameters are the correct ones for the chosen function
 
 # Parameters used to create different transformation conditions
-conditional_transformation_params = {'release_probability': (0.25, 0.5, 0.75, 1),
-                                     'release_duration': (3, 6, 9)}
+conditional_transformation_params = dict(
+    release_probability=(0.25, 0.5, 0.75, 1),
+    release_duration=(3, 6, 9)
+)
 
 # Re-organizing the parameters for use in function
 condition_list = list((dict(zip(conditional_transformation_params, x))

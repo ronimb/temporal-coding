@@ -27,7 +27,7 @@ def test_stochastic_release():
         for stimulus_type, all_freqs in test_stimuli.items():
             for frequency, stimuli in all_freqs.items():
                 for stimulus in stimuli:
-                    transformed = stochastic_release(stimulus, release_duration, num_ves, duration, 10, rel_prob)
+                    transformed = stochastic_release(stimulus, release_duration, num_ves, duration, rel_prob, 10)
 # %%
 if __name__ == '__main__':
     test_stochastic_release()

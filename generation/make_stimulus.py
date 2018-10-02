@@ -25,18 +25,18 @@ def _bool_poisson(frequency: int, num_neurons: int, stimulus_duration: float, dt
 
 
 ## REFRACTORY PERIOD NOT YET IMPLENETED!
-def make_stimulus(frequency: int, num_neurons: int, stimulus_duration: float, refractory_period: float = 2e-3,
+def make_stimulus(frequency: int, number_of_neurons: int, stimulus_duration: float, refractory_period: float = 2e-3,
                   dt: float = 1e-5, exact_frequency=False) -> np.array:
     """
     Used to create a stimulus which consists of multiple neurons all firing with the same frequency.
     may be used to generate with either an average frequency or an exact frequency.
 
     :param frequency: The average firing frequency of each neuron in the sample, units: Hz
-    :param num_neurons: Number of neruons in the stimulus, units: Integer
+    :param number_of_neurons: Number of neruons in the stimulus, units: Integer
     :param stimulus_duration: Maximal duration of the stimulus, units: ms
     :param refractory_period: Length of minimal period between two spikes, units: Sec  CURRENTLY NOT IMPLEMENTED
     :param dt: Simulation time step, units: Sec
-    :param exact_frequency: whether all spikes to use average frequency or exact frequency for all neurons
+    :param exact_frequency: whether all neurons fire with the same exact frequency, or the same average frequency
 
     :rtype: np.array
     :return: stimulus: numpy array where each element is a single neurons spike times, specified in milliseconds
@@ -58,7 +58,7 @@ def make_stimulus(frequency: int, num_neurons: int, stimulus_duration: float, re
         return exact
 
     # Generate the stimulus in boolean form
-    spikes_bool = _bool_poisson(frequency, num_neurons, stimulus_duration, dt)
+    spikes_bool = _bool_poisson(frequency, number_of_neurons, stimulus_duration, dt)
 
     # Check that each neuron spikes at least once and re-generate otherwise
     num_spikes = spikes_bool.sum(1)
@@ -76,20 +76,20 @@ def make_stimulus(frequency: int, num_neurons: int, stimulus_duration: float, re
         # Filter out neurons not firing at the exact frequency
         spikes_bool = _return_exact(spikes_bool)
         # Generate new neurons until we have the desired number of neurons firing at the exact frequency
-        while spikes_bool.shape[0] < num_neurons:
+        while spikes_bool.shape[0] < number_of_neurons:
             # Generate new neurons
-            new_neurons_bool = _bool_poisson(frequency, num_neurons * 2, stimulus_duration, dt)
+            new_neurons_bool = _bool_poisson(frequency, number_of_neurons * 2, stimulus_duration, dt)
             # Filter these new neurons
             new_neurons_bool = _return_exact(new_neurons_bool)
             # Add these correct neurons to the stimulus
             spikes_bool = np.append(spikes_bool, new_neurons_bool, 0)
         # Making sure we have precisely the desired number of neurons and no more
-        spikes_bool = spikes_bool[0:num_neurons, :]
+        spikes_bool = spikes_bool[0:number_of_neurons, :]
 
     # Transforming the boolean stimulus to an array in which each object represents a neuron and its spike times
     neuron_index, firing_indexes = np.where(spikes_bool)  # Find indexes of neurons and indexes of spikes
     times = firing_indexes * dt * 1000  # Transform firing time indexes to seconds
     stimulus = np.array([times[neuron_index == i] for i in
-                         range(num_neurons)])  # Create the array, a numpy object array is used for indexing reasons
+                         range(number_of_neurons)])  # Create the array, a numpy object array is used for indexing reasons
 
     return stimulus
