@@ -7,14 +7,15 @@ simply import the transform module from generation "from generation import trans
 available functions, or check the functions in the generation.transform modules by viewing the files in that module
 """
 # %%
-from tools import set_tools
+from tools import set_tools, calc_stimuli_distance
 from generation import make_stimulus
 
 
 def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
                         set_size, set_transform_function, set_transform_params,
                         origin_transform_function=None, origin_transform_params=None,
-                        exact_frequency=False, shuffle_set_order=True):
+                        exact_frequency=False, shuffle_set_order=True,
+                        return_original_stimuli=False) -> tuple:
     """
     This function accepts specifications for stimulus creation,
     creates two stimuli with these specifications,
@@ -38,10 +39,19 @@ def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
     :param origin_transform_params: The parameters to be used with origin_transform_function
     :param exact_frequency: whether all neurons fire with the same exact frequency, or the same average frequency
     :param shuffle_set_order: Whether to return the set shuffled or ordered by original stimulus
+    :param return_original_stimuli: whether to return the two original stimuli or not, default False
+
+    :return stimuli_set: A structured numpy array of the transformed stimuli
+                        containing set_size elements, with each element having two fields:
+                        'stimulus': contains the transformed stimulus as a numpy array of neurons and event times
+                        'label': True if stimulus originated from original_stimulus_a, False if from original_stimulus_b
+    :return distance_between_origins: The average spike-distance metric between neurons in the two stimuli
+    :return original_stimuli: (optional) tuple containing both original stimuli as numpy arrays of neurons and their
+                              corresponding event times (spikes or vesicle releases)
     """
     # Creating at least one original stimulus
     original_stimulus_a = make_stimulus(frequency=frequency, number_of_neurons=number_of_neurons,
-                                      stimulus_duration=stimulus_duration, exact_frequency=exact_frequency)
+                                        stimulus_duration=stimulus_duration, exact_frequency=exact_frequency)
     # Either creating a stimulus by applying origin_transform_function to original_stimulus_a, or creating an entirely
     # New original_stimulus_b
     if origin_transform_function and origin_transform_params:  # Check if both parameters required for transformation were supplied
@@ -49,7 +59,11 @@ def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
         original_stimulus_b = origin_transform_function(stimulus=original_stimulus_a, **origin_transform_params)
     else:
         original_stimulus_b = make_stimulus(frequency=frequency, number_of_neurons=number_of_neurons,
-                                          stimulus_duration=stimulus_duration, exact_frequency=exact_frequency)
+                                            stimulus_duration=stimulus_duration, exact_frequency=exact_frequency)
+    # Calculate distance between original stimuli
+    distance_between_origins = calc_stimuli_distance(stimulus_a=original_stimulus_a,
+                                                     stimulus_b=original_stimulus_b,
+                                                     stimulus_duration=stimulus_duration)
     # Determine how many transformed version to create from original_stimulus_a and original_stimulus_b
     num_transformed = int(set_size / 2)
     set_transform_params['num_transformed'] = num_transformed  # Add to parameter dictionary
@@ -61,13 +75,16 @@ def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
     stimuli_set = set_tools.combine_and_label(set_a=transformed_set_from_a,
                                               set_b=transformed_set_from_b,
                                               shuffle=shuffle_set_order)
-    return stimuli_set
-
+    # Handle returning of original stimuli
+    if return_original_stimuli:
+        original_stimuli =(original_stimulus_a, original_stimulus_b)
+    else:
+        return stimuli_set, distance_between_origins
 
 
 def make_set_from_stimuli(original_stimuli, stimulus_duration,
                           set_size, set_transform_function, set_transform_params,
-                          shuffle_set_order=True):
+                          shuffle_set_order=True) -> tuple:
     """
     This function takes two original_stimuli of identical stimulus_duration,
     and applies the set_transform_function with set_transform_params to each
@@ -79,12 +96,18 @@ def make_set_from_stimuli(original_stimuli, stimulus_duration,
     :param set_transform_function: A transformation from generation.transform to be applied to the original stimuli
     :param set_transform_params: The parameters to be used with set_transformation_function
     :param shuffle_set_order: Whether to return the set shuffled or ordered by original stimulus
-    :return:
+    :return stimuli_set: A structured numpy array of the transformed stimuli
+                        containing set_size elements, with each element having two fields:
+                        'stimulus': contains the transformed stimulus as a numpy array of neurons and event times
+                        'label': True if stimulus originated from original_stimulus_a, False if from original_stimulus_b
     """
     # Unpack original_stimuli tuple
     original_stimulus_a = original_stimuli[0]
     original_stimulus_b = original_stimuli[1]
-
+    # Calculate distance between original stimuli
+    distance_between_origins = calc_stimuli_distance(stimulus_a=original_stimulus_a,
+                                                     stimulus_b=original_stimulus_b,
+                                                     stimulus_duration=stimulus_duration)
     # Determine how many transformed version to create from origin_stimulus_a and origin_stimulus_b
     num_transformed = int(set_size / 2)
     set_transform_params['num_transformed'] = num_transformed  # Add to parameter dictionary
@@ -97,4 +120,4 @@ def make_set_from_stimuli(original_stimuli, stimulus_duration,
     stimuli_set = set_tools.combine_and_label(set_a=transformed_set_from_a,
                                               set_b=transformed_set_from_b,
                                               shuffle=shuffle_set_order)
-    return stimuli_set
+    return stimuli_set, distance_between_origins

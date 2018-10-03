@@ -52,20 +52,3 @@ def combine_and_label(set_a: np.array, set_b: np.array, shuffle: bool = True) ->
     if shuffle:
         shuffle_set(stimuli_set)
     return stimuli_set
-
-def convert_set(stimuli_set, number_of_neurons, stimulus_duration):
-    @jit(parallel=True)
-    def _convert_stimulus(stimulus):
-        inds = []
-        times = []
-        counts = []
-        num_events = []
-        for i in prange(stimulus.shape[0]):
-            neuron = np.trunc(stimulus[i] * 10) / 10
-            time, count = np.unique(neuron, return_counts=True)
-            num_events.append(time.shape[0])
-            inds.extend([i] * time.shape[0])
-            times.extend(time)
-            counts.extend(count)
-        return np.array([inds, times, counts])
-
