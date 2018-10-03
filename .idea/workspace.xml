@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9670711e-1468-4038-b728-91416ca03bcb" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/temporal-coding.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/temporal-coding.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generation/make_stimuli_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/make_stimuli_set.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generation/tests/stimuli_set_generation.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/tests/stimuli_set_generation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/set_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/set_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/__init__.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,18 +44,18 @@
           <entry key="project.open.time.6" value="2" />
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="3" />
-          <entry key="project.open.time.9" value="5" />
-          <entry key="project.opened" value="17" />
+          <entry key="project.open.time.9" value="6" />
+          <entry key="project.opened" value="18" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="8108" />
+          <entry key="Python Console" value="8234" />
           <entry key="dummy" value="31" />
           <entry key="md" value="1" />
-          <entry key="py" value="28602" />
+          <entry key="py" value="29088" />
           <entry key="sh" value="9" />
-          <entry key="txt" value="405" />
+          <entry key="txt" value="449" />
           <entry key="xml" value="18" />
         </counts>
       </usages-collector>
@@ -65,8 +63,8 @@
         <counts>
           <entry key="Bash" value="9" />
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="436" />
-          <entry key="Python" value="34023" />
+          <entry key="PLAIN_TEXT" value="480" />
+          <entry key="Python" value="34635" />
           <entry key="Scratch" value="2687" />
           <entry key="XML" value="18" />
         </counts>
@@ -81,7 +79,7 @@
         <counts>
           <entry key="LICENSE" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="107" />
+          <entry key="py" value="110" />
           <entry key="sh" value="1" />
           <entry key="txt" value="1" />
           <entry key="yml" value="1" />
@@ -92,7 +90,7 @@
           <entry key="Bash" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="102" />
+          <entry key="Python" value="105" />
           <entry key="Scratch" value="5" />
           <entry key="YAML" value="1" />
         </counts>
@@ -107,8 +105,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generation/tests/stimuli_set_generation.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
-              <caret line="54" column="39" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
+            <state relative-caret-position="166">
+              <caret line="26" column="59" lean-forward="true" selection-end-line="60" />
               <folding>
                 <element signature="e#0#36#0" expanded="true" />
               </folding>
@@ -116,63 +114,34 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/generation/make_stimuli_set.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1309">
-              <caret line="78" column="31" lean-forward="true" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
+            <state relative-caret-position="937">
+              <caret line="134" column="22" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="22" />
+              <folding>
+                <element signature="e#552#602#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/tools/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" selection-start-line="2" selection-end-line="2" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/generation/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="69" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="272">
-              <caret line="17" column="33" selection-start-line="17" selection-start-column="33" selection-end-line="17" selection-end-column="33" />
+            <state relative-caret-position="102">
+              <caret line="6" column="53" lean-forward="true" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
               <folding>
-                <element signature="e#402#420#0" expanded="true" />
+                <element signature="e#131#171#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
+        <entry file="file://$PROJECT_DIR$/experiment_template.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="578">
-              <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/generation/make_stimulus.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="697">
-              <caret line="41" column="112" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="112" />
-            </state>
+            <state relative-caret-position="-100" />
           </provider>
         </entry>
       </file>
@@ -240,11 +209,11 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
         <option value="$PROJECT_DIR$/tools/calc_stimuli_distance.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
-        <option value="$PROJECT_DIR$/generation/tests/stimuli_set_generation.py" />
         <option value="$PROJECT_DIR$/tools/set_tools.py" />
-        <option value="$PROJECT_DIR$/tools/__init__.py" />
         <option value="$PROJECT_DIR$/tools/convert_stimulus.py" />
         <option value="$PROJECT_DIR$/generation/make_stimuli_set.py" />
+        <option value="$PROJECT_DIR$/generation/tests/stimuli_set_generation.py" />
+        <option value="$PROJECT_DIR$/tools/__init__.py" />
       </list>
     </option>
   </component>
@@ -266,7 +235,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -303,6 +271,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -570,14 +539,21 @@
       <option name="project" value="LOCAL" />
       <updated>1538481361493</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="started work on experiment running template">
+      <created>1538593215005</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1538593215005</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.15987125" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.16201717" />
       <window_info id="Favorites" order="1" sideWeight="0.49842933" side_tool="true" weight="0.13948497" />
       <window_info id="Structure" order="2" sideWeight="0.5015707" weight="0.13948497" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -588,18 +564,18 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32903227" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32903227" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50107294" side_tool="true" weight="0.32984293" />
-      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49892703" weight="0.32903227" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.49892703" visible="true" weight="0.32903227" />
       <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49892703" weight="0.30645162" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49839744" visible="true" weight="0.3299356" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49679488" weight="0.3299356" />
       <window_info anchor="right" id="Database" order="4" weight="0.3299356" />
-      <window_info anchor="right" x="0" y="0" width="430" height="818" id="Documentation" order="5" sideWeight="0.5016026" side_tool="true" visible="true" weight="0.3299356" />
+      <window_info anchor="right" x="0" y="0" width="430" height="818" id="Documentation" order="5" sideWeight="0.5032051" side_tool="true" weight="0.3299356" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4984375" visible="true" weight="0.16040772" />
@@ -642,7 +618,8 @@
     <MESSAGE value="fixed condition list (generator -&gt; list)" />
     <MESSAGE value="variable renaming" />
     <MESSAGE value="Some more variable re orderind and renaming&#10;Expanded documentation&#10;Reorganized set creation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Some more variable re orderind and renaming&#10;Expanded documentation&#10;Reorganized set creation" />
+    <MESSAGE value="started work on experiment running template" />
+    <option name="LAST_COMMIT_MESSAGE" value="started work on experiment running template" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Old/compare_iternum.py">
@@ -805,23 +782,6 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
     <entry file="file://$PROJECT_DIR$/tools/convert_stimulus.py" />
-    <entry file="file://$PROJECT_DIR$/generation/tests/stimuli_set_generation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
-          <caret line="54" column="39" selection-start-line="54" selection-start-column="39" selection-end-line="54" selection-end-column="39" />
-          <folding>
-            <element signature="e#0#36#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/generation/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
@@ -856,10 +816,38 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/experiment_template.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-100" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/generation/make_stimuli_set.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1309">
-          <caret line="78" column="31" lean-forward="true" selection-start-line="78" selection-start-column="31" selection-end-line="78" selection-end-column="31" />
+        <state relative-caret-position="937">
+          <caret line="134" column="22" selection-start-line="134" selection-start-column="22" selection-end-line="134" selection-end-column="22" />
+          <folding>
+            <element signature="e#552#602#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generation/tests/stimuli_set_generation.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="166">
+          <caret line="26" column="59" lean-forward="true" selection-end-line="60" />
+          <folding>
+            <element signature="e#0#36#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="53" lean-forward="true" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
+          <folding>
+            <element signature="e#131#171#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

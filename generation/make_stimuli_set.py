@@ -9,13 +9,15 @@ available functions, or check the functions in the generation.transform modules 
 # %%
 from tools import set_tools, calc_stimuli_distance
 from generation import make_stimulus
+from collections import namedtuple
 
-
+# Define namedtuple type for the stimuli so that it includes additional data
+Stimuli_Set = namedtuple('stimuli_set', ['stimuli', 'original_stimuli', 'distance_between_originals'])
+# %%
 def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
                         set_size, set_transform_function, set_transform_params,
                         origin_transform_function=None, origin_transform_params=None,
-                        exact_frequency=False, shuffle_set_order=True,
-                        return_original_stimuli=False) -> tuple:
+                        exact_frequency=False, shuffle_set_order=True) -> namedtuple:
     """
     This function accepts specifications for stimulus creation,
     creates two stimuli with these specifications,
@@ -39,13 +41,12 @@ def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
     :param origin_transform_params: The parameters to be used with origin_transform_function
     :param exact_frequency: whether all neurons fire with the same exact frequency, or the same average frequency
     :param shuffle_set_order: Whether to return the set shuffled or ordered by original stimulus
-    :param return_original_stimuli: whether to return the two original stimuli or not, default False
 
     :return stimuli_set: A structured numpy array of the transformed stimuli
                         containing set_size elements, with each element having two fields:
                         'stimulus': contains the transformed stimulus as a numpy array of neurons and event times
                         'label': True if stimulus originated from original_stimulus_a, False if from original_stimulus_b
-    :return distance_between_origins: The average spike-distance metric between neurons in the two stimuli
+    :return distance_between_originals: The average spike-distance metric between neurons in the two stimuli
     :return original_stimuli: (optional) tuple containing both original stimuli as numpy arrays of neurons and their
                               corresponding event times (spikes or vesicle releases)
     """
@@ -61,7 +62,7 @@ def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
         original_stimulus_b = make_stimulus(frequency=frequency, number_of_neurons=number_of_neurons,
                                             stimulus_duration=stimulus_duration, exact_frequency=exact_frequency)
     # Calculate distance between original stimuli
-    distance_between_origins = calc_stimuli_distance(stimulus_a=original_stimulus_a,
+    distance_between_originals = calc_stimuli_distance(stimulus_a=original_stimulus_a,
                                                      stimulus_b=original_stimulus_b,
                                                      stimulus_duration=stimulus_duration)
     # Determine how many transformed version to create from original_stimulus_a and original_stimulus_b
@@ -75,16 +76,20 @@ def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
     stimuli_set = set_tools.combine_and_label(set_a=transformed_set_from_a,
                                               set_b=transformed_set_from_b,
                                               shuffle=shuffle_set_order)
+    # Package as Stimuli_Set type along with original stimuli and their respective distance calculated using averaged spike-distance
+    stimuli_set = Stimuli_Set(
+        stimuli=stimuli_set,
+        original_stimuli=(original_stimulus_a, original_stimulus_b),
+        distance_between_originals=distance_between_originals
+        
+    )
     # Handle returning of original stimuli
-    if return_original_stimuli:
-        original_stimuli =(original_stimulus_a, original_stimulus_b)
-    else:
-        return stimuli_set, distance_between_origins
+    return stimuli_set
 
 
 def make_set_from_stimuli(original_stimuli, stimulus_duration,
                           set_size, set_transform_function, set_transform_params,
-                          shuffle_set_order=True) -> tuple:
+                          shuffle_set_order=True) -> namedtuple:
     """
     This function takes two original_stimuli of identical stimulus_duration,
     and applies the set_transform_function with set_transform_params to each
@@ -105,7 +110,7 @@ def make_set_from_stimuli(original_stimuli, stimulus_duration,
     original_stimulus_a = original_stimuli[0]
     original_stimulus_b = original_stimuli[1]
     # Calculate distance between original stimuli
-    distance_between_origins = calc_stimuli_distance(stimulus_a=original_stimulus_a,
+    distance_between_originals = calc_stimuli_distance(stimulus_a=original_stimulus_a,
                                                      stimulus_b=original_stimulus_b,
                                                      stimulus_duration=stimulus_duration)
     # Determine how many transformed version to create from origin_stimulus_a and origin_stimulus_b
@@ -120,4 +125,11 @@ def make_set_from_stimuli(original_stimuli, stimulus_duration,
     stimuli_set = set_tools.combine_and_label(set_a=transformed_set_from_a,
                                               set_b=transformed_set_from_b,
                                               shuffle=shuffle_set_order)
-    return stimuli_set, distance_between_origins
+    # Package as Stimuli_Set type along with original stimuli and their respective distance calculated using averaged spike-distance
+    stimuli_set = Stimuli_Set(
+        stimuli=stimuli_set,
+        original_stimuli=(original_stimulus_a, original_stimulus_b),
+        distance_between_originals=distance_between_originals
+
+    )
+    return stimuli_set
