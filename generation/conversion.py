@@ -5,7 +5,7 @@ Event times
 import numpy as np
 from numba import jit, prange
 from multiprocessing import Pool
-
+from generation.set_classes import StimuliSet
 
 # %%
 @jit(parallel=True)
@@ -41,7 +41,7 @@ def convert_stimulus(stimulus: np.array) -> np.array:
     return converted_stimulus
 
 
-def convert_stimuli_set(stimuli_set: np.array,
+def convert_stimuli_set(stimuli_set: StimuliSet,
                         pool_size: int=8):
     """
     neuron index consider both neuron number and stimulus number
@@ -49,11 +49,10 @@ def convert_stimuli_set(stimuli_set: np.array,
     :param pool_size:
     :return:
     """
-    num_neurons = stimuli_set['stimulus'][0].shape[0]
+    num_neurons = stimuli_set.stimuli[0].shape[0]
 
-    labels = stimuli_set['label']
     with Pool(pool_size) as p:
-        res = p.map(convert_stimulus, stimuli_set['stimulus'])
+        res = p.map(convert_stimulus, stimuli_set.stimuli)
         p.close()
         p.join()
     ts = np.hstack(
@@ -67,4 +66,5 @@ def convert_stimuli_set(stimuli_set: np.array,
     converted_samples['index'] = ts[0]
     converted_samples['time'] = ts[1]
     converted_samples['count'] = ts[2]
-    return converted_samples, labels
+    stimuli_set.stimuli = converted_samples
+    stimuli_set.converted = True

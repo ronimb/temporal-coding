@@ -5,7 +5,7 @@ from tools import calc_stimuli_distance
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
-
+from generation.set_classes import StimuliSet
 # %%
 creation_params = dict(
     frequency=15,
@@ -31,7 +31,7 @@ origin_transform_params = dict(
 
 stimuli_set1 = make_set_from_specs(**creation_params, set_size=200,
                                    set_transform_function=set_transform_function,
-                                   set_transform_params=set_transform_params).stimuli
+                                   set_transform_params=set_transform_params)
 s1a = stimuli_set1['stimulus'][stimuli_set1['label'] == 0]
 s1b = stimuli_set1['stimulus'][stimuli_set1['label'] == 1]
 d1 = np.array([calc_stimuli_distance(a, b, stimulus_duration=creation_params['stimulus_duration']) for a,b in zip(s1a, s1b)])

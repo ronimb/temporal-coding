@@ -8,9 +8,23 @@ import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
+from tools import check_folder, gen_datestr
 
 # %% Parameter specification
-# These are the basic parameters for the spiking neuron stimuli from which the experiment originites
+# System parameters
+stimuli_save_location = ''  # Location at which to save stimuli_sets generated for current experiment, LEAVE EMPTY FOR NO-SAVING
+results_save_location = ''  # Location at which the results file will be saved, include filename
+# Base experiment parameters
+number_of_repetitions = 30  # Number of times to repeat the experiment with the exact same conditions
+set_size = 200  # The size of the set(s) to generate for this experiment
+
+training_set_size = 100  # Size of the set used for training
+test_set_size = 100  # Size of the set used for testing
+number_of_training_repetitions = 10  # Number of training batches from training set to train with
+training_batch_size = 50  # Size of each training batch
+
+# These are the basic parameters for the spiking neuron stimuli from which the experiment originates
+# Changes to this might be required for different modes of generation (e.g. comparing different frequencies)
 creation_params = dict(
     frequency=15,
     number_of_neurons=30,
@@ -36,3 +50,16 @@ set_transform_params = dict(  # The parameters with which to execute the specifi
 )
 
 # %%
+
+# Create pandas array to contain number_of_repetitions items with pre, post, diff and distance
+# Iterate number_of_repetitions times
+#   Create stimuli set
+#   TODO: Change the following behaviour, wrap the object in a training function
+#   Create tempotron object
+#   Create classification network
+#   Calculate accuracy  pre accuracy over entire set
+#   Divide set into training and test_sets (use indexes to conserve memory)
+#   Train with training set
+#   Calculate post accuracy over test_set
+#   Calculate diff
+# Do summary analytics and some plotting with the resulting array

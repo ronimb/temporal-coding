@@ -7,6 +7,7 @@ the collection are labelled, transformed versions of either stimulus a or stimul
 # %%
 import numpy as np
 from multiprocessing import Pool
+from generation.set_classes import StimuliSet
 
 
 # %%
@@ -14,11 +15,11 @@ def shuffle_set(stimuli_set):
     """
     This function is used to take a stimuli)set of stimuli shuffle their order in the list to
     randomize the order obtained by serial generation.
-
-    in other words, nothing but a wrapper for np.random.shuffle
-
     """
-    np.random.shuffle(stimuli_set)
+    num_stimuli = len(stimuli_set)
+    rand_inds = np.random.choice(range(num_stimuli), replace=False, size=num_stimuli).astype(int)
+    stimuli_set.labels = stimuli_set.labels[rand_inds]
+    stimuli_set.stimuli = stimuli_set.stimuli[rand_inds]
 
 
 def combine_and_label(set_a: np.array, set_b: np.array, shuffle: bool = True) -> np.array:
@@ -37,18 +38,15 @@ def combine_and_label(set_a: np.array, set_b: np.array, shuffle: bool = True) ->
     # Calculate total size
     total_size = a_size + b_size
     # Combine stimuli
-    combined_stimuli = [*set_a, *set_b]
+    combined_stimuli = np.array([*set_a, *set_b])
     # Create label vector
-    labels = [*[0] * a_size, *[1] * b_size]
+    labels = np.array([*[0] * a_size, *[1] * b_size])
     # Create combined array
-    stimuli_set = np.array(
-        np.zeros(total_size),
-        dtype=dict(
-            names=('stimulus', 'label'),
-            formats=(object, bool))
+    stimuli_set = StimuliSet(
+        stimuli=combined_stimuli,
+        labels=labels,
+        converted=False
     )
-    stimuli_set['stimulus'] = combined_stimuli
-    stimuli_set['label'] = labels
     if shuffle:
         shuffle_set(stimuli_set)
     return stimuli_set
