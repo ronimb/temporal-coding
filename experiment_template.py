@@ -22,6 +22,7 @@ training_set_size = 100  # Size of the set used for training
 test_set_size = 100  # Size of the set used for testing
 number_of_training_repetitions = 10  # Number of training batches from training set to train with
 training_batch_size = 50  # Size of each training batch
+learning_rate = 1e-3 # Learning rate for the training stage
 
 # These are the basic parameters for the spiking neuron stimuli from which the experiment originates
 # Changes to this might be required for different modes of generation (e.g. comparing different frequencies)

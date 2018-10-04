@@ -2,35 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9670711e-1468-4038-b728-91416ca03bcb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/classification/evaluate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classification/tests/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classification/tests/test_evaluate.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/classification/train.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generation/set_classes.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/generation/tests/test_Sets.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/run_experiment.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/analysis/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/classification/tests/test_train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/Tempotron_Brian_Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/Tempotron_Brian_Test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/beta_games.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/conversion_performance_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/conversion_performance_test.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/n150_r15.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/n150_r15.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/n150_r150.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/n150_r150.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/n150_r50.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/n150_r50.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/n30_r15.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/n30_r15.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/n30_r150.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/n30_r150.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/n30_r50.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/n30_r50.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/n500_r15.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/n500_r15.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/n500_r150.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/n500_r150.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/n500_r50.pickle" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/n500_r50.pickle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/random_vesrel.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/random_vesrel.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/tempotron_dieuwke.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/tempotron_dieuwke.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/tempotron_dieuwke_orig.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/tempotron_dieuwke_orig.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Testing/tensorboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/tensorboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old/generate_distance_prototypes.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/generate_distance_prototypes.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old/generate_multi_samples_temporal_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/generate_multi_samples_temporal_shift.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old/make_test_samples.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/make_test_samples.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Old/make_test_samples_old.py" beforeDir="false" afterPath="$PROJECT_DIR$/Old/make_test_samples_old.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/PySpike_testdata.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/analyze_results.py" beforeDir="false" afterPath="$PROJECT_DIR$/analysis/analyze_results.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/Tempotron.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification/Tempotron.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/evaluate.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification/evaluate.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/classification/train.py" beforeDir="false" afterPath="$PROJECT_DIR$/classification/train.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/experiment_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment_template.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/generation/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/__init__.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generation/conversion.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/conversion.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generation/make_stimuli_set.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/make_stimuli_set.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generation/make_stimulus.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/make_stimulus.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generation/set_classes.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/set_classes.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/generation/tests/stimuli_set_generation.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/tests/stimuli_set_generation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generation/transform/temporal_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/transform/temporal_shift.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generation/transform/tests/test_temporal_shift.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/transform/tests/test_temporal_shift.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/generation/transform/vesicle_release.py" beforeDir="false" afterPath="$PROJECT_DIR$/generation/transform/vesicle_release.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototyping/Tempotron_Brian_Test.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/Tempotron_Brian_Test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototyping/conversion_performance_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/conversion_performance_test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototyping/random_vesrel.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/random_vesrel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototyping/tempotron_dieuwke.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/tempotron_dieuwke.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototyping/tempotron_dieuwke_orig.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/tempotron_dieuwke_orig.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prototyping/tensorboard.py" beforeDir="false" afterPath="$PROJECT_DIR$/prototyping/tensorboard.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_times.xlsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/calc_stimuli_distance.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/calc_stimuli_distance.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/set_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/set_tools.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -65,22 +67,10 @@
         <state>
           <leaf>
             <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/generation/tests/stimuli_set_generation.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="648">
-                    <caret line="36" column="105" lean-forward="true" selection-start-line="36" selection-start-column="105" selection-end-line="36" selection-end-column="105" />
-                    <folding>
-                      <element signature="e#0#36#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/experiment_template.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="558">
-                    <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="32" />
+                  <state relative-caret-position="432">
+                    <caret line="24" column="59" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
                     <folding>
                       <element signature="e#61#103#0" expanded="true" />
                     </folding>
@@ -88,50 +78,23 @@
                 </provider>
               </entry>
             </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/generation/make_stimuli_set.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="728">
-                    <caret line="132" column="33" selection-start-line="132" selection-start-column="33" selection-end-line="132" selection-end-column="33" />
-                    <folding>
-                      <element signature="e#552#602#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
-              <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="602">
-                    <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
-                    <folding>
-                      <element signature="e#402#420#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
             <file pinned="false" current-in-tab="true">
-              <entry file="file://$PROJECT_DIR$/generation/conversion.py">
-                <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="494">
-                    <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
-                    <folding>
-                      <element signature="e#108#126#0" expanded="true" />
-                    </folding>
-                  </state>
-                </provider>
-              </entry>
-            </file>
-            <file pinned="false" current-in-tab="false">
               <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
                 <provider selected="true" editor-type-id="text-editor">
-                  <state relative-caret-position="153">
-                    <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
+                  <state relative-caret-position="54">
+                    <caret line="141" column="23" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="23" />
                     <folding>
-                      <element signature="e#0#18#0" expanded="true" />
+                      <element signature="e#91#109#0" expanded="true" />
                     </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/run_experiment.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="72">
+                    <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
                   </state>
                 </provider>
               </entry>
@@ -158,12 +121,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="9570" />
+          <entry key="Python Console" value="10135" />
           <entry key="dummy" value="56" />
           <entry key="md" value="1" />
-          <entry key="py" value="34097" />
+          <entry key="py" value="38071" />
           <entry key="sh" value="9" />
-          <entry key="txt" value="658" />
+          <entry key="txt" value="690" />
           <entry key="xml" value="18" />
         </counts>
       </usages-collector>
@@ -171,8 +134,8 @@
         <counts>
           <entry key="Bash" value="9" />
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="714" />
-          <entry key="Python" value="40980" />
+          <entry key="PLAIN_TEXT" value="746" />
+          <entry key="Python" value="45519" />
           <entry key="Scratch" value="2687" />
           <entry key="XML" value="18" />
         </counts>
@@ -187,7 +150,7 @@
         <counts>
           <entry key="LICENSE" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="129" />
+          <entry key="py" value="151" />
           <entry key="sh" value="1" />
           <entry key="txt" value="1" />
           <entry key="yml" value="1" />
@@ -198,7 +161,7 @@
           <entry key="Bash" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Python" value="124" />
+          <entry key="Python" value="146" />
           <entry key="Scratch" value="5" />
           <entry key="YAML" value="1" />
         </counts>
@@ -209,61 +172,50 @@
     <favorites_list name="temporal-coding" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5439914">
+    <splitter split-orientation="horizontal" split-proportion="0.50214595">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/run_experiment.py">
-              <provider selected="true" editor-type-id="text-editor" />
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="72">
+                  <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+                </state>
+              </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/classification/__init__.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="18">
-                  <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/classification/evaluate.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="180">
-                  <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+                <state relative-caret-position="72">
+                  <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
                   <folding>
-                    <element signature="e#316#352#0" expanded="true" />
-                    <marker date="1538637182850" expanded="true" signature="408:413" ph="..." />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/classification/train.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-9" />
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/classification/tests/test_evaluate.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <folding>
-                    <element signature="e#0#59#0" expanded="true" />
+                    <element signature="e#36#68#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/classification/train.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="535">
+                  <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/generation/set_classes.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="301">
-                  <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+                <state relative-caret-position="355">
+                  <caret line="35" column="68" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="68" />
                   <folding>
-                    <marker date="1538642771845" expanded="true" signature="1614:2129" ph="..." />
+                    <element signature="e#44#55#0" expanded="true" />
+                    <marker date="1538652130630" expanded="true" signature="1718:2334" ph="..." />
                   </folding>
                 </state>
               </provider>
@@ -274,10 +226,22 @@
       <split-second>
         <leaf>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/classification/tests/test_evaluate.py">
+            <entry file="file://$PROJECT_DIR$/generation/make_stimuli_set.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="463">
-                  <caret line="32" column="4" selection-start-line="32" selection-start-column="4" selection-end-line="32" selection-end-column="4" />
+                <state relative-caret-position="106">
+                  <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+                  <folding>
+                    <element signature="e#552#602#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/classification/tests/test_train.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="535">
+                  <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
                   <folding>
                     <element signature="e#0#59#0" expanded="true" />
                   </folding>
@@ -285,11 +249,27 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/generation/tests/test_Sets.py">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="62" selection-start-column="62" selection-end-column="62" />
+                <state relative-caret-position="1129">
+                  <caret line="63" column="28" lean-forward="true" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
+                  <folding>
+                    <element signature="e#402#420#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/classification/evaluate.py">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="342">
+                  <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="45" selection-end-column="78" />
+                  <folding>
+                    <element signature="e#0#18#0" expanded="true" />
+                    <marker date="1538653295602" expanded="true" signature="2136:2137" ph="..." />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -311,6 +291,7 @@
       <find>neuron_inds</find>
       <find>print</find>
       <find>2</find>
+      <find>down</find>
     </findStrings>
     <replaceStrings>
       <replace>3</replace>
@@ -347,8 +328,6 @@
         <option value="$PROJECT_DIR$/generation/transform/tests/test_vesicle_release.py" />
         <option value="$PROJECT_DIR$/generate_stimuli_pairs.py" />
         <option value="$PROJECT_DIR$/a.sh" />
-        <option value="$PROJECT_DIR$/classification/__init__.py" />
-        <option value="$PROJECT_DIR$/classification/Tempotron.py" />
         <option value="$PROJECT_DIR$/tools/shuffle_set.py" />
         <option value="$PROJECT_DIR$/generation/transform/make_stimuli_set.py" />
         <option value="$PROJECT_DIR$/generation/transform/__init__.py" />
@@ -360,20 +339,23 @@
         <option value="$PROJECT_DIR$/tools/calc_stimuli_distance.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
         <option value="$PROJECT_DIR$/tools/convert_stimulus.py" />
-        <option value="$PROJECT_DIR$/tools/__init__.py" />
-        <option value="$PROJECT_DIR$/experiment_template.py" />
         <option value="$PROJECT_DIR$/run_experiment.py" />
-        <option value="$PROJECT_DIR$/classification/train.py" />
-        <option value="$PROJECT_DIR$/classification/evaluate.py" />
-        <option value="$PROJECT_DIR$/classification/tests/test_evaluate.py" />
         <option value="$PROJECT_DIR$/generation/tests/test_Sets.py" />
         <option value="$PROJECT_DIR$/generation/__init__.py" />
         <option value="$PROJECT_DIR$/generation/Sets.py" />
         <option value="$PROJECT_DIR$/generation/tests/stimuli_set_generation.py" />
-        <option value="$PROJECT_DIR$/generation/set_classes.py" />
-        <option value="$PROJECT_DIR$/tools/set_tools.py" />
-        <option value="$PROJECT_DIR$/generation/make_stimuli_set.py" />
         <option value="$PROJECT_DIR$/generation/conversion.py" />
+        <option value="$PROJECT_DIR$/experiment_template.py" />
+        <option value="$PROJECT_DIR$/tools/__init__.py" />
+        <option value="$PROJECT_DIR$/classification/tests/test_evaluate.py" />
+        <option value="$PROJECT_DIR$/generation/set_classes.py" />
+        <option value="$PROJECT_DIR$/generation/make_stimuli_set.py" />
+        <option value="$PROJECT_DIR$/classification/tests/test_train.py" />
+        <option value="$PROJECT_DIR$/classification/evaluate.py" />
+        <option value="$PROJECT_DIR$/classification/__init__.py" />
+        <option value="$PROJECT_DIR$/tools/set_tools.py" />
+        <option value="$PROJECT_DIR$/classification/Tempotron.py" />
+        <option value="$PROJECT_DIR$/classification/train.py" />
       </list>
     </option>
   </component>
@@ -406,6 +388,11 @@
             <path>
               <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
               <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+              <item name="analysis" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
               <item name="classification" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -418,17 +405,6 @@
               <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
               <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
               <item name="generation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-              <item name="generation" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
@@ -450,6 +426,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/analysis" />
       <recent name="$PROJECT_DIR$/generation" />
       <recent name="$PROJECT_DIR$/classification" />
       <recent name="$PROJECT_DIR$/Old" />
@@ -726,14 +703,21 @@
       <option name="project" value="LOCAL" />
       <updated>1538594530799</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Added stimuli set object type">
+      <created>1538643943043</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1538643943043</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-4" y="0" width="1928" height="1084" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.23122318" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49528795" weight="0.23122318" />
       <window_info id="Favorites" order="1" sideWeight="0.49842933" side_tool="true" weight="0.13948497" />
       <window_info id="Structure" order="2" sideWeight="0.5015707" weight="0.13948497" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -747,7 +731,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32903227" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50107294" side_tool="true" weight="0.32984293" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.49892703" visible="true" weight="0.3204301" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49892703" visible="true" weight="0.3204301" />
       <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49892703" weight="0.30645162" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -801,7 +785,8 @@
     <MESSAGE value="started work on experiment running template" />
     <MESSAGE value="-re-added the conversion module that somehow went missing&#10;-create &quot;type&quot; using namedtuple to carry stimuli-set additional info&#10;  - Original stimuli&#10;  - The distance between them" />
     <MESSAGE value="-re-added the conversion module that somehow went missing, now fO rEalZ" />
-    <option name="LAST_COMMIT_MESSAGE" value="-re-added the conversion module that somehow went missing, now fO rEalZ" />
+    <MESSAGE value="Added stimuli set object type" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added stimuli set object type" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Old/compare_iternum.py">
@@ -876,7 +861,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/analyze_results.py">
+    <entry file="file://$PROJECT_DIR$/analysis/analyze_results.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="542">
           <caret line="88" column="49" selection-start-line="88" selection-start-column="49" selection-end-line="88" selection-end-column="49" />
@@ -957,73 +942,10 @@
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
     <entry file="file://$PROJECT_DIR$/tools/convert_stimulus.py" />
-    <entry file="file://$PROJECT_DIR$/generation/make_stimulus.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="697">
-          <caret line="41" column="112" selection-start-line="41" selection-start-column="23" selection-end-line="41" selection-end-column="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="53" selection-start-line="6" selection-start-column="53" selection-end-line="6" selection-end-column="53" />
-          <folding>
-            <element signature="e#131#171#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classification/train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="41" column="34" selection-start-line="41" selection-start-column="34" selection-end-line="41" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classification/evaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="10" column="13" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
-          <folding>
-            <element signature="e#316#352#0" expanded="true" />
-            <marker date="1538637182850" expanded="true" signature="408:413" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_experiment.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classification/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="32" selection-start-line="1" selection-start-column="32" selection-end-line="1" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/generation/tests/test_Sets.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <caret column="62" selection-start-column="62" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment_template.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="558">
-          <caret line="31" column="1" selection-start-line="31" selection-start-column="1" selection-end-line="32" />
-          <folding>
-            <element signature="e#61#103#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1037,61 +959,148 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classification/tests/test_evaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="602">
-          <caret line="40" column="49" selection-start-line="40" selection-start-column="49" selection-end-line="40" selection-end-column="49" />
-          <folding>
-            <element signature="e#402#420#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generation/make_stimuli_set.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="728">
-          <caret line="132" column="33" selection-start-line="132" selection-start-column="33" selection-end-line="132" selection-end-column="33" />
-          <folding>
-            <element signature="e#552#602#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generation/set_classes.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="301">
-          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
-          <folding>
-            <marker date="1538642771845" expanded="true" signature="1614:2129" ph="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/generation/tests/stimuli_set_generation.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="648">
-          <caret line="36" column="105" lean-forward="true" selection-start-line="36" selection-start-column="105" selection-end-line="36" selection-end-column="105" />
+        <state relative-caret-position="746">
+          <caret line="58" column="43" lean-forward="true" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
           <folding>
             <element signature="e#0#36#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tools/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="56" selection-start-line="1" selection-start-column="56" selection-end-line="1" selection-end-column="56" />
+          <folding>
+            <element signature="e#131#171#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generation/make_stimulus.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="35" column="82" lean-forward="true" selection-start-line="35" selection-start-column="30" selection-end-line="35" selection-end-column="82" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/generation/conversion.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="494">
-          <caret line="51" column="48" selection-start-line="51" selection-start-column="48" selection-end-line="51" selection-end-column="48" />
+        <state relative-caret-position="1224">
+          <caret line="68" column="28" selection-start-line="68" selection-start-column="28" selection-end-line="68" selection-end-column="28" />
           <folding>
             <element signature="e#108#126#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generation/set_classes.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="355">
+          <caret line="35" column="68" selection-start-line="35" selection-start-column="68" selection-end-line="35" selection-end-column="68" />
+          <folding>
+            <element signature="e#44#55#0" expanded="true" />
+            <marker date="1538652130630" expanded="true" signature="1718:2334" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/tests/test_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="33" lean-forward="true" selection-start-line="33" selection-end-line="33" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/tests/test_evaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="21" column="31" lean-forward="true" selection-end-line="33" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_experiment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="55" selection-start-line="4" selection-start-column="55" selection-end-line="4" selection-end-column="55" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/generation/make_stimuli_set.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="106">
+          <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
+          <folding>
+            <element signature="e#552#602#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+          <folding>
+            <element signature="e#36#68#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1129">
+          <caret line="63" column="28" lean-forward="true" selection-start-line="63" selection-start-column="28" selection-end-line="63" selection-end-column="28" />
+          <folding>
+            <element signature="e#402#420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/evaluate.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="40" column="4" selection-start-line="40" selection-start-column="4" selection-end-line="45" selection-end-column="78" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+            <marker date="1538653295602" expanded="true" signature="2136:2137" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment_template.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="432">
+          <caret line="24" column="59" selection-start-line="24" selection-start-column="59" selection-end-line="24" selection-end-column="59" />
+          <folding>
+            <element signature="e#61#103#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="54">
+          <caret line="141" column="23" selection-start-line="141" selection-start-column="23" selection-end-line="141" selection-end-column="23" />
+          <folding>
+            <element signature="e#91#109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="535">
+          <caret line="35" column="24" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>

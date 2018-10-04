@@ -14,7 +14,7 @@ def get_beta_params(beta_span: float, beta_mode: float,
     This function is used to derive the beta distribution A and B parameters
     for the customized heavy tailed beta_distribution
 
-    :param beta_span: Maximal duration of the heavy tailed beta distribution
+    :param beta_span: Maximal stimulus_duration of the heavy tailed beta distribution
     :param beta_mode: The mode of the distribution
     :param mode_centrality: Parameter controlling how tight the probability distribution is around the mode - Higher values will result in more values closer to the mode
     :param decay_velocity: Parameter controlling how fast the probability decays after the mode, higher values will lead to less extreme values
@@ -38,9 +38,9 @@ def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicle
     Returns a collection of transformed versions of the stimulus, where in each one the times correspond to times of vesicle release
 
     :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
-    :param release_duration: Maximal duration of vesicle release process, Units : ms
+    :param release_duration: Maximal stimulus_duration of vesicle release process, Units : ms
     :param number_of_vesicles: Precise number of vesicles release for each spike
-    :param stimulus_duration: maximal duration of stimulus, Units : ms
+    :param stimulus_duration: maximal stimulus_duration of stimulus, Units : ms
     :param release_probability: Probability of release for each vesicle, the fraction of vesicles released for each spike
     :param distribution_mode: The mode of the heavy-tailed beta distribution used to determine release times
     :param mode_centrality: Parameter controlling how tight the probability distribution is around the mode - Higher values will result in more values closer to the mode
@@ -67,7 +67,7 @@ def fixed_release(stimulus: np.array, release_duration: float, number_of_vesicle
                                               size=(number_of_vesicles, number_of_spikes)) * release_duration
         # Transform neuron by adding vesicle time offsets to spike times
         transformed_neuron = (neuron + vesicle_time_offsets).flatten()
-        # Remove spikes that exceed the maximal duration
+        # Remove spikes that exceed the maximal stimulus_duration
         transformed_neuron = transformed_neuron[transformed_neuron < stimulus_duration]
         # Handle release probability by excluding part of the vesicles
         if release_probability != 1:
@@ -119,15 +119,15 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
     input variables reflects the expected rather than the precise number of vesicles which will be released.
 
     :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
-    :param release_duration: Maximal duration of vesicle release process, Units : ms
+    :param release_duration: Maximal stimulus_duration of vesicle release process, Units : ms
     :param number_of_vesicles: Expected number of vesicles release for each spike
-    :param stimulus_duration: maximal duration of stimulus, Units : ms
+    :param stimulus_duration: maximal stimulus_duration of stimulus, Units : ms
     :param release_probability: Probability of release for each vesicle, the fraction of vesicles released for each spike
     :param distribution_mode: The mode of the heavy-tailed beta distribution used to determine release times
     :param mode_centrality: Parameter controlling how tight the probability distribution is around the mode - Higher values will result in more values closer to the mode
     :param decay_velocity: Parameter controlling how fast the probability decays after the mode, higher values will lead to less extreme release times
     :param distribution_span: Parameter controlling the length of the actual distribution, actual release times are from a clipped interval, MUST BE LARGER THAN RELEASE DURATION!
-    :param expected_duration: The duration of time for which the expected number of vesicles released equals number_of_vesicles, MUST BET LARGER THAN RELEASE_DURATION, AND SMALLER THAN DISRIBUTION SPAN
+    :param expected_duration: The stimulus_duration of time for which the expected number of vesicles released equals number_of_vesicles, MUST BET LARGER THAN RELEASE_DURATION, AND SMALLER THAN DISRIBUTION SPAN
     :param num_transformed: Number of transformed version of the original stimulus to generate
 
     :return: all_transformed_stimuli: array where each object is a transformed stimulus
@@ -136,7 +136,7 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
     # Calculate parameters for beta distribution and get representation of distribution
     beta_a, beta_b, beta_dist = get_beta_params(beta_span=distribution_span, beta_mode=distribution_mode,
                                                 mode_centrality=mode_centrality, decay_velocity=decay_velocity)
-    # Calculate probability scaling factor to set expected number of vesicles at the expected duration
+    # Calculate probability scaling factor to set expected number of vesicles at the expected stimulus_duration
     probability_scaling_factor = number_of_vesicles * beta_dist.cdf(expected_duration)
 
     def _make_bins():
@@ -153,7 +153,7 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
         # Calculate probability for each possible time value
         probabilities = beta_dist.cdf(bin_borders[1:]) - beta_dist.cdf(bin_borders[:-1])
 
-        # Retain only bins within the possible release duration
+        # Retain only bins within the possible release stimulus_duration
         possible_inds = centers <= release_duration
         centers = centers[possible_inds]
         probabilities = probabilities[possible_inds]
@@ -183,7 +183,7 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
             transformed_neuron = np.hstack(neuron + vesicle_time_offsets)
         elif vesicle_time_offsets.ndim == 2:
             transformed_neuron = np.hstack(neuron[:, np.newaxis] + vesicle_time_offsets)
-        # Remove spikes that exceed the maximal duration
+        # Remove spikes that exceed the maximal stimulus_duration
         transformed_neuron = transformed_neuron[transformed_neuron < stimulus_duration]
         # Handle release probability by excluding part of the vesicles
         if release_probability != 1:

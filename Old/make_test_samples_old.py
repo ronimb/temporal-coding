@@ -356,7 +356,7 @@ if __name__ == '__main__':
     duration = 500
     num_neur = 10
     set_size = 100
-    # data = gen_with_temporal_shift(rate, duration,
+    # data = gen_with_temporal_shift(rate, stimulus_duration,
     #                                num_neur, set_size, set_size)
     data = gen_with_vesicle_release(rate, num_neur, duration,
                                     span=5, mode=1, num_ves=20,

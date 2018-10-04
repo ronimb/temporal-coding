@@ -51,7 +51,7 @@ datestr = f'{date.day:02}{date.month:02}{date.year-2000}'
 with open(rf"D:\Data\Samples_{datestr}.pickle", 'wb') as handle:
     pickle.dump(multi_samples, handle, protocol=pickle.HIGHEST_PROTOCOL)
 
-param_str = f'''num_neurons={num_neurons}
+param_str = f'''number_of_neurons={number_of_neurons}
 rates={rates}
 shift_sizes={shift_sizes}
 

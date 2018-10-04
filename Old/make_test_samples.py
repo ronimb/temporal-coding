@@ -86,7 +86,7 @@ def make_spk(rate, duration_ms, n=1, dt=1 * ms, exact_freq=True):
         if exact_freq:
             trains = np.array(trains)
             actual_rates = [tr.size for tr in trains]
-            # ToDO: Handle the actual rates considering the duration of the stimulus
+            # ToDO: Handle the actual rates considering the stimulus_duration of the stimulus
             rate_match = np.equal(actual_rates, comp_rate)
             trains = trains[rate_match]
             real_N = trains.size
@@ -496,7 +496,7 @@ if __name__ == '__main__':
     duration = 500
     num_neur = 10
     set_size = 100
-    # data = gen_with_temporal_shift(rate, duration,
+    # data = gen_with_temporal_shift(rate, stimulus_duration,
     #                                num_neur, set_size, set_size)
     beta_params = dict(span=5, mode=1)
     data = gen_with_vesicle_release(rate, num_neur, duration,

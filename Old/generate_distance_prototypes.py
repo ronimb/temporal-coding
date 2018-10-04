@@ -122,7 +122,7 @@ for freq in frequencies:
                 loc += num_neur
             print('Saving')
 
-            with open(f'{freq_folder}{num_neur}Neurons_distance={dist}_{num_samples}Samples.npy', 'wb') \
+            with open(f'{freq_folder}{num_neur}Neurons_distance={dist}_{number_of_stimuli}Samples.npy', 'wb') \
                     as file:
                 np.save(file, all_samples)
 

@@ -8,7 +8,7 @@ def calc_stimuli_distance(stimulus_a: np.array, stimulus_b: np.array,
 
     :param stimulus_a: numpy array where each element is a single neurons spike times, specified in milliseconds
     :param stimulus_b: numpy array where each element is a single neurons spike times, specified in milliseconds
-    :param stimulus_duration: Maximal duration of the stimulus, units: Sec
+    :param stimulus_duration: Maximal stimulus_duration of the stimulus, units: Sec
     """
     # Verify stimuli are comparable
     if stimulus_a.size != stimulus_b.size:

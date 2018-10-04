@@ -30,11 +30,11 @@ def test_forward_shift():
                     shifted = forward_shift(stimulus, duration,
                                             max_temporal_shift=shift / 1000,
                                             num_transformed=num_shifted)
-                    # Test for spikes exceeding max duration
+                    # Test for spikes exceeding max stimulus_duration
                     exceeding_duration = [any([(neuron > (duration)).any() for neuron in shifted_stimulus]) for
                                           shifted_stimulus in shifted]
                     if any(exceeding_duration):
-                        raise Exception(f'Some neurons exceed maximal duration when shift={shift}')
+                        raise Exception(f'Some neurons exceed maximal stimulus_duration when shift={shift}')
                     difference = shifted - stimulus
                     exceeding_shift = [any([(diff > shift).any() for diff in shifted_diff])
                                        for shifted_diff in difference]
@@ -60,12 +60,12 @@ def test_symmetric_shift():
                     except Exception as e:
                         print(f'With {condition_str}\n')
                         raise e
-                    # Test for spikes exceeding max duration
+                    # Test for spikes exceeding max stimulus_duration
                     exceeding_duration = [any([(neuron > (duration)).any() for neuron in shifted_stimulus]) for
                                           shifted_stimulus in shifted]
                     if any(exceeding_duration):
                         raise Exception(f'With {condition_str}\n'
-                                        f'Some neurons exceed maximal duration when shift={shift}')
+                                        f'Some neurons exceed maximal stimulus_duration when shift={shift}')
                     # Test for spikes under t=0
                     before_start = [any([(neuron < 0).any() for neuron in shifted_stimulus]) for
                                     shifted_stimulus in shifted]

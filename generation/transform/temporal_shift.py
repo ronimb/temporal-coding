@@ -9,7 +9,7 @@ def forward_shift(stimulus: np.array, stimulus_duration: float,
     forward by up to max_temporal_shift seconds
 
     :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
-    :param stimulus_duration: Maximal duration of the stimulus, units: ms
+    :param stimulus_duration: Maximal stimulus_duration of the stimulus, units: ms
     :param max_temporal_shift: The maximal temporal shift by which each spike can be moved, units: ms
     :param num_transformed: Number of shifted versions of the stimulus to generate, units: Integer
 
@@ -82,7 +82,7 @@ def symmetric_interval_shift(stimulus: np.array, stimulus_duration: float,
     or between 3 and 5 ms.
 
     :param stimulus: A numpy array representing the stimulus in which each line (or object) is a neuron with spike times given in ms
-    :param stimulus_duration: Maximal duration of the stimulus, units: ms
+    :param stimulus_duration: Maximal stimulus_duration of the stimulus, units: ms
     :param interval: A tuple specifying the symmetric interval by which spikes are temporally shifted, see example. units: ms
     :param num_transformed: Number of shifted versions of the stimulus to generate, units: Integer
 

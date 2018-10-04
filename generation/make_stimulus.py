@@ -5,11 +5,11 @@ import numpy as np
 def _bool_poisson(frequency: int, num_neurons: int, stimulus_duration: float, dt: float = 1e-5) -> np.array:
     """
     Intended for internal use only, generates collection of poisson neurons and returns
-    a boolean array of spikes according to the specified duration and dt.
+    a boolean array of spikes according to the specified stimulus_duration and dt.
 
     :param frequency: The average firing frequency of each neuron in the sample, units: Hz
     :param num_neurons: Number of neurons in the stimulus, units: Integer
-    :param stimulus_duration: Maximal duration of the stimulus, units: ms
+    :param stimulus_duration: Maximal stimulus_duration of the stimulus, units: ms
     :param dt: Simulation time step, units: Sec
     """
     duration_sec = stimulus_duration / 1000
@@ -33,7 +33,7 @@ def make_stimulus(frequency: int, number_of_neurons: int, stimulus_duration: flo
 
     :param frequency: The average firing frequency of each neuron in the sample, units: Hz
     :param number_of_neurons: Number of neruons in the stimulus, units: Integer
-    :param stimulus_duration: Maximal duration of the stimulus, units: ms
+    :param stimulus_duration: Maximal stimulus_duration of the stimulus, units: ms
     :param refractory_period: Length of minimal period between two spikes, units: Sec  CURRENTLY NOT IMPLEMENTED
     :param dt: Simulation time step, units: Sec
     :param exact_frequency: whether all neurons fire with the same exact frequency, or the same average frequency

@@ -174,14 +174,14 @@ for i in range(num_reps):
 # x = []
 # print('Eval #1')
 # t = time.time()
-# b2.run(duration * ms)
+# b2.run(stimulus_duration * ms)
 # x.append(s.spike_trains())
 # t = time.time() - t
 # print(f'Finished first evaluation, took {sec_to_str(t)}')
 #
 # print('Eval #2')
 # t = time.time()
-# b2.run(duration * ms)
+# b2.run(stimulus_duration * ms)
 # x.append(s.spike_trains())
 # t = time.time() - t
 # print(f'Finished second evaluation, took {sec_to_str(t)}')
