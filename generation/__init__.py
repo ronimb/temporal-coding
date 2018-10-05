@@ -5,4 +5,4 @@ from .make_stimulus import make_stimulus
 from . import transform
 from .make_stimuli_set import make_set_from_specs, make_set_from_stimuli
 from .conversion import convert_stimulus, convert_stimuli_set
-from .set_classes import StimuliSet
+from data_classes import StimuliSet

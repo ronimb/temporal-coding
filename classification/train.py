@@ -1,13 +1,13 @@
 import numpy as np
-from . import Tempotron
-from generation.set_classes import StimuliSet
+from classification import Tempotron
+from data_classes import StimuliSet
 from generation.conversion import convert_stimuli_set
 
 
 # %%
 def batch_train(stimuli_set: StimuliSet,
                 learning_rate: float, batch_size: int, training_repetitions: int,
-                tempotron_tau: float, tempotron_threshold: float,
+                tempotron_tau: float=None, tempotron_threshold: float=None,
                 tempotron: Tempotron = None):
     # Handle stimuli set conversion if needed (SLOWS PERFORMANCE IF CONVERSION NEEDED)
     if not stimuli_set.converted:  # In this case we have a Normal stimuli set and must convert
@@ -18,6 +18,7 @@ def batch_train(stimuli_set: StimuliSet,
 
     # If no Tempotron object was passed for classification, create one and return it in the end
     if not Tempotron:
+        print('Tempotron object not passed, creating new object and returning')
         tempotron = Tempotron(number_of_neurons=number_of_neurons,
                               tau=tempotron_tau,
                               threshold=tempotron_threshold,

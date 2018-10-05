@@ -1,12 +1,12 @@
 import numpy as np
 from . import Tempotron
-from generation.set_classes import StimuliSet
+from data_classes import StimuliSet
 from generation.conversion import convert_stimuli_set
 
 
 # %%
 def evaluate(stimuli_set: StimuliSet,
-             tempotron_tau: float, tempotron_threshold: float,
+             tempotron_tau: float=None, tempotron_threshold: float=None,
              tempotron: Tempotron = None) -> float:
     """
     This function uses the Tempotron model to evaluate the accuracy of classification
@@ -40,6 +40,7 @@ def evaluate(stimuli_set: StimuliSet,
 
     # If no Tempotron object was passed for classification, create one
     if not Tempotron:
+        print('Tempotron object not passed, creating ad-hoc')
         tempotron = Tempotron(number_of_neurons=number_of_neurons,
                               tau=tempotron_tau,
                               threshold=tempotron_threshold,

@@ -1,3 +1,4 @@
+#ToDo: fix make from stimuli
 """
 This file is used to generate a set of labelled stimuli (each belonging to either category 0 or 1)
 according to various rules. Transformation functions from the transform module are used extensively. see comment below.
@@ -9,7 +10,7 @@ available functions, or check the functions in the generation.transform modules 
 # %%
 from tools import set_tools, calc_stimuli_distance
 from generation import make_stimulus
-from generation.set_classes import StimuliSet
+from data_classes import StimuliSet
 
 
 # %%

@@ -14,6 +14,7 @@ from tools import check_folder, gen_datestr
 # System parameters
 stimuli_save_location = ''  # Location at which to save stimuli_sets generated for current experiment, LEAVE EMPTY FOR NO-SAVING
 results_save_location = ''  # Location at which the results file will be saved, include filename
+
 # Base experiment parameters
 number_of_repetitions = 30  # Number of times to repeat the experiment with the exact same conditions
 set_size = 200  # The size of the set(s) to generate for this experiment

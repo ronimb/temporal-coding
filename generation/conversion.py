@@ -5,7 +5,7 @@ Event times
 import numpy as np
 from numba import jit, prange
 from multiprocessing import Pool
-from generation.set_classes import StimuliSet
+from data_classes import StimuliSet
 
 
 # %%
