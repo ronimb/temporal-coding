@@ -6,7 +6,7 @@ from generation.conversion import convert_stimuli_set
 
 # %%
 def evaluate(stimuli_set: StimuliSet,
-             tempotron_tau: float=None, tempotron_threshold: float=None,
+             tempotron_tau: float =None, tempotron_threshold: float =None,
              tempotron: Tempotron = None) -> float:
     """
     This function uses the Tempotron model to evaluate the accuracy of classification

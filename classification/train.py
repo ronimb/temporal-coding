@@ -7,7 +7,7 @@ from generation.conversion import convert_stimuli_set
 # %%
 def batch_train(stimuli_set: StimuliSet,
                 learning_rate: float, batch_size: int, training_repetitions: int,
-                tempotron_tau: float=None, tempotron_threshold: float=None,
+                tempotron_tau: float =None, tempotron_threshold: float =None,
                 tempotron: Tempotron = None):
     # Handle stimuli set conversion if needed (SLOWS PERFORMANCE IF CONVERSION NEEDED)
     if not stimuli_set.converted:  # In this case we have a Normal stimuli set and must convert
