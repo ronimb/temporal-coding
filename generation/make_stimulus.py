@@ -1,5 +1,6 @@
 # A stimulus is a collection of all the afferent neurons converging on the target neuron at the synapse
 import numpy as np
+from data_classes import Neuron, Stimulus
 
 
 def _bool_poisson(frequency: int, num_neurons: int, stimulus_duration: float, dt: float = 1e-5) -> np.array:
@@ -89,6 +90,7 @@ def make_stimulus(frequency: int, number_of_neurons: int, stimulus_duration: flo
     # Transforming the boolean stimulus to an array in which each object represents a neuron and its spike times
     neuron_index, firing_indexes = np.where(spikes_bool)  # Find indexes of neurons and indexes of spikes
     times = firing_indexes * dt * 1000  # Transform firing time indexes to seconds
+    # Create the stimulus object
     stimulus = np.array([times[neuron_index == i] for i in
                          range(number_of_neurons)])  # Create the array, a numpy object array is used for indexing reasons
 

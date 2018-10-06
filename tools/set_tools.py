@@ -25,6 +25,7 @@ def load_set(file_location):
     pass
 
 
+#ToDo: Finish split_train_test
 def split_train_test(stimuli_set, training_set_size):
     num_stimuli = len(stimuli_set)
     all_indexes = np.arange(num_stimuli)

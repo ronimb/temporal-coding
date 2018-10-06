@@ -3,6 +3,8 @@ Definitions for stimuli_set objects
 """
 import attr
 import numpy as np
+from multiprocessing import Pool
+from numba import jit, prange
 from tools import calc_stimuli_distance
 
 
@@ -46,16 +48,23 @@ class StimuliSet:
     def __len__(self):
         return len(self.labels)
 
-    def __getitem__(self, item):
-        pass
+    def size(self):  # Simple alias
+        return len(self)
 
-    def __delitem__(self, key):
+    def __getitem__(self, varargin):
         pass
 
     def __setitem__(self, key, value):
         pass
-    # Used to join two StimuliSet's together
+
     def __add__(self, other):
+        """
+        Used to join two StimuliSet's together into one set
+
+        :param other: another StimuliSet object of any size
+        :return: combined_stimuli_set: A StimuliSet made from both sets combined
+        """
+
         # Calculate total size
         new_size = len(self) + len(other)
         # Combine stimuli
@@ -69,36 +78,39 @@ class StimuliSet:
         # Combine labels
         labels = np.array([*self.labels, *other.labels])
         # Check if only two unique labels exist, and if so calculate distance
-        new_stimuli_set = StimuliSet(
+        combined_stimuli_set = StimuliSet(
             stimuli=combined_stimuli,
             labels=labels,
             stimulus_duration=self.stimulus_duration,
             original_stimuli=(self.original_stimuli, other.original_stimuli),
             converted=self.converted
         )
-        return new_stimuli_set
+        return combined_stimuli_set
 
     def shuffle(self):
         """
         This method is used to take a stimuli)set of stimuli shuffle their order in the list to
         randomize the order obtained by serial generation.
         """
-        num_stimuli = len(self)
-        rand_inds = np.random.choice(range(num_stimuli), replace=False, size=num_stimuli).astype(int)
+        number_of_stimuli = len(self)
+        randomized_indexes = np.random.permutation(number_of_stimuli)
         # Shuffle labels
-        self.labels = self.labels[rand_inds]
+        self.labels = self.labels[randomized_indexes]
         # Shuffle stimuli
         if self.converted:  # Need to handle indexes in converted stimuli slightly differently
             # Calculating number of neurons
-            number_of_neurons = self.stimuli.indexes %
+            number_of_neurons = np.unique(self.stimuli['index']).shape[0] / number_of_stimuli
             # using the modules operator to find the original index of the stimulus with the neuron index
-            normal_indexes = self.stimuli.indexes % num_stimuli
-            rearranged_indexes = []
-            for original_index, new_index in zip(range(num_stimuli), rand_inds):
-                self.stimuli['index'][normal_indexes == original_index] = original_index *
+            stimulus_indexes = self.stimuli['index'] % number_of_stimuli
+            neuron_indexes = self.stimuli['index'] % number_of_neurons
+            for original_stimulus_index, new_stimulus_index in zip(range(number_of_stimuli), randomized_indexes):
+                # Find location of indexes associated with stimulus #original_index
+                current_stimulus_indexes = [stimulus_indexes == original_stimulus_index]
+                new_indexes = (new_stimulus_index * number_of_neurons) + neuron_indexes[current_stimulus_indexes]
+                self.stimuli['index'] = new_indexes
 
         else:
-            self.stimuli = self.stimuli[rand_inds]
+            self.stimuli = self.stimuli[randomized_indexes]
 
     def select_subset(self):
         subset = None
@@ -123,14 +135,7 @@ class StimuliSet:
         pass
 
 
-@attr.s
-class Neuron:
-    generation_frequency = attr.ib()
-    actual_frequency = attr.ib()
-    origin = attr.ib(default=None)
-    # Calcualte real frequency
-
-
+# %%
 @attr.s
 class Stimulus:
     converted = attr.ib()
@@ -138,4 +143,33 @@ class Stimulus:
 
     @average_frequency.default
     def calc_average_frequency(self):
-        calc_average_frequency()
+        # calc_average_frequency()
+        pass
+
+    def __len__(self):
+        return
+
+    def convert(self):
+        return
+
+
+# %%
+@attr.s
+class Neuron:
+    events = attr.ib(converter=np.array)
+    frequency_generated = attr.ib()
+    stimulus_duration = attr.ib()
+    frequency_actual = attr.ib()
+    event_types = attr.ib(default='spikes')
+
+    # Calculate real frequency
+    @frequency_actual.default
+    def _calc_actual_frequency(self):
+        return self.size() * (1000 / self.stimulus_duration)
+
+    def __len__(self):
+        return self.events.shape[0]
+
+    def size(self):
+        return len(self)
+
