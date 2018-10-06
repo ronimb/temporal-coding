@@ -1,20 +1,9 @@
 import time
+import brian2 as b2
+import numpy as np
+from brian2.units import ms, Hz
+import matplotlib.pyplot as plt
 
-from Old.make_test_samples import *
-
-# %% Generate samples for use in testing - REMOVE once done!
-num_neurons = 500
-rate = 100
-samples_tempshift = gen_with_temporal_shift(rate=rate,
-                                  num_neur=num_neurons,
-                                  shift_size=5)
-
-samples_ves = gen_with_vesicle_release(rate=rate,
-                                       num_neur=num_neurons,
-                                       beta_params=dict(
-                                           span=5,
-                                           mode=1),
-                                       num_ves=20)
 
 # %% helper functions
 def flatten_sample_old(sample):
@@ -24,6 +13,7 @@ def flatten_sample_old(sample):
         inds.extend([i] * neuron.shape[0])
         times.extend(neuron)
     return np.array([inds, times])
+
 
 def convert_sample(sample):
     inds = []
@@ -37,10 +27,11 @@ def convert_sample(sample):
         counts.extend(count)
     return np.array([inds, times, counts])
 
+
 # %%
 class Tempotron:
     def __init__(self, num_neurons, tau, threshold, duration=500):
-        #TODO: Include t_max and v_max variables in the brian model, have them updated per-spike and try to create a custom event when t=t(end) to update the model weights
+        # TODO: Include t_max and v_max variables in the brian model, have them updated per-spike and try to create a custom event when t=t(end) to update the model weights
         #
         self.duration = duration * ms
         self.num_neurons = num_neurons
@@ -48,7 +39,7 @@ class Tempotron:
         self.tau = tau * ms
 
         # Helper variables
-        self._count_mat = np.zeros((duration*10, self.num_neurons), int)
+        self._count_mat = np.zeros((duration * 10, self.num_neurons), int)
         # Synaptic efficacies
         self.weights = np.random.normal(0, 1e-3, num_neurons)
 
@@ -90,13 +81,14 @@ class Tempotron:
                                     self.voltage_train)
         self.net_train.store()
 
-        self.debug_0 = 0 # For debugging problematic samples
+        self.debug_0 = 0  # For debugging problematic samples
 
     def convert(func):
         """
         This function is used to flatten Neuron X Time input to a form usable as input to a brian SpikeGeneratorGroup
         Object
         """
+
         def is_flat(sample):
             return (sample.shape[0] == 3) & (sample.ndim == 2)
 
@@ -120,6 +112,7 @@ class Tempotron:
                 args = list(args)
                 args[1] = convert_sample(args[1])
                 return func(*args, **kwargs)
+
         return internal
 
     def update_counts(self, sample):
@@ -144,13 +137,13 @@ class Tempotron:
     @convert
     def response(self, sample, plot=True, show=True, return_v=True):
         self.update_counts(sample)
-        counts = self.counts # Required because for some reason timedarrays can't be included in networks
+        counts = self.counts  # Required because for some reason timedarrays can't be included in networks
         self.prep_network()
         self.set_driving(sample)
         self.net.run(self.duration)
         if plot:
             plt.plot(self.voltage.t / ms, self.voltage.v[0])
-            plt.hlines(self.threshold, 0, self.duration/ms)
+            plt.hlines(self.threshold, 0, self.duration / ms)
         if show:
             plt.show()
         if return_v:
@@ -182,7 +175,7 @@ class Tempotron:
         decision = self.classify(sample)
         match = (decision == label)
 
-        if not(match):
+        if not (match):
             vmax_ind = self.voltage.v[0].argmax()
             t_vmax = self.voltage.t[vmax_ind]
             if t_vmax == 0:
@@ -207,13 +200,14 @@ class Tempotron:
             for i in inds:
                 self.train_sample(samples[i], labels[i], learning_rate)
 
+
 # %%
 def sec_to_str(sec):
     m, s = divmod(sec, 60)
     return f'{m:0>2.0f}:{s:0>2.2f}'
 
-def cycle(tempotron, samples, learning_rate=1e-4, n=[], iter=1):
 
+def cycle(tempotron, samples, learning_rate=1e-4, n=[], iter=1):
     time_eval_1 = time.time()
     acc_before = tempotron.accuracy(samples['data'], samples['labels'])
     time_eval_1 = time.time() - time_eval_1
@@ -222,7 +216,6 @@ def cycle(tempotron, samples, learning_rate=1e-4, n=[], iter=1):
     time_train = time.time()
     tempotron.train(samples['data'], samples['labels'], n=n, iter=iter)
     time_train = time.time() - time_train
-
 
     time_eval_2 = time.time()
     acc_after = tempotron.accuracy(samples['data'], samples['labels'])
@@ -237,28 +230,3 @@ def cycle(tempotron, samples, learning_rate=1e-4, n=[], iter=1):
     \t Training: {sec_to_str(time_train)}
     \t Second accuracy evaluation: {sec_to_str(time_eval_2)}''')
     return acc_before, acc_after, {'weights_pre': weights_pre, 'weights_post': weights_post}
-# %%
-if __name__ == '__main__':
-    # loc = r'E:\OneDrive\Documents\Masters\Parnas\temporal-coding\Data\n30_r15_tempshift_testset.pickle'
-    # loc = r'C:\Users\ron\OneDrive\Documents\Masters\Parnas\temporal-coding\Data\n30_r15_tempshift_testset.pickle'
-    # loc = sys.argv[1]
-    # with open(loc, 'rb') as file:
-        # samples = pickle.load(file)
-
-    samples = samples_ves
-    num_neurons = samples['data'][0].shape[0]
-
-    # %%
-    T = Tempotron(num_neurons, 2, 0.005)
-    data = cycle(T, samples, iter=5)
-    print(data[:2])
-    data[2]['weights_pre'] == data[2]['weights_post']
-
-
-# %%
-'''Current issue:
-When using a large number of inputs, particularly when there are many spikes,
-imbalance between positive and negative weights may cause spikes close to the beginning of the stimulus
-to drop the models voltage far below 0, such that the tempotrons vMax at the end occurs right at the beginning,
-this leads to problems with training'''
-# %%

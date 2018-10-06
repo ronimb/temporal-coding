@@ -65,6 +65,15 @@ def load_set(file_location):
     pass
 
 
-def split_train_test(stimuli_set):
-    pass
+def split_train_test(stimuli_set, training_set_size):
+    num_stimuli = len(stimuli_set)
+    all_indexes = np.arange(num_stimuli)
+    indexes_of_training_stimuli = np.random.choice(all_indexes, size=training_set_size, replace=False)
+    if stimuli_set.converted:
+        test_set = None
+        training_set = None
+    else:
+        test_set = None
+        training_set = None
+    return test_set, training_set
 

@@ -10,13 +10,13 @@ available functions, or check the functions in the generation.transform modules 
 from tools import set_tools, calc_stimuli_distance
 from generation import make_stimulus
 from generation.set_classes import StimuliSet
-
-
+from typing import Tuple, Callable
+import numpy as np
 # %%
-def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
-                        set_size, set_transform_function, set_transform_params,
-                        origin_transform_function=None, origin_transform_params=None,
-                        exact_frequency=False, shuffle_set_order=True) -> StimuliSet:
+def make_set_from_specs(frequency: float, number_of_neurons: int, stimulus_duration: float, set_size: int,
+                        set_transform_function: Callable, set_transform_params: dict,
+                        origin_transform_function: Callable = None, origin_transform_params: dict = None,
+                        exact_frequency: bool = False, shuffle_set_order: bool = True) -> StimuliSet:
     """
     This function accepts specifications for stimulus creation,
     creates two stimuli with these specifications,
@@ -65,7 +65,7 @@ def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
     else:
         original_stimulus_b = make_stimulus(frequency=frequency, number_of_neurons=number_of_neurons,
                                             stimulus_duration=stimulus_duration, exact_frequency=exact_frequency)
-    # Calculate distance between original stimuli
+    # Calculate distance between original stimuliW
     distance_between_originals = calc_stimuli_distance(stimulus_a=original_stimulus_a,
                                                        stimulus_b=original_stimulus_b,
                                                        stimulus_duration=stimulus_duration)
@@ -99,10 +99,10 @@ def make_set_from_specs(frequency, number_of_neurons, stimulus_duration,
     # Handle returning of original stimuli
     return stimuli_set
 
-
-def make_set_from_stimuli(original_stimuli, stimulus_duration,
-                          set_size, set_transform_function, set_transform_params,
-                          shuffle_set_order=True) -> StimuliSet:
+#Todo: add stimulus to callable type hints once done
+def make_set_from_stimuli(original_stimuli: Tuple[np.array, np.array], stimulus_duration: float, set_size: int,
+                          set_transform_function: Callable, set_transform_params: dict,
+                          shuffle_set_order: bool = True) -> StimuliSet:
     """
     This function takes two original_stimuli of identical stimulus_duration,
     and applies the set_transform_function with set_transform_params to each

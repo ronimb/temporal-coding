@@ -18,12 +18,19 @@ results_save_location = ''  # Location at which the results file will be saved, 
 number_of_repetitions = 30  # Number of times to repeat the experiment with the exact same conditions
 set_size = 200  # The size of the set(s) to generate for this experiment
 
-training_set_size = 100  # Size of the set used for training
-test_set_size = 100  # Size of the set used for testing
-number_of_training_repetitions = 10  # Number of training batches from training set to train with
-training_batch_size = 50  # Size of each training batch
-learning_rate = 1e-3 # Learning rate for the training stage
+# Machine learning model parameters
+model_params = dict(
+    tau=2,  # Voltage time decay constant
+    threshold=0.005  # Threshold for firing, firing will result in a "1" classification
+)
 
+# Model training parameters
+model_training_params = dict(
+    repetitions=10,  # Number of training batches from training set to train with
+    batch_size=50,  # Size of each training batch
+    learning_rate=1e-3,  # Learning rate for the training stage
+    training_set_size=100,  # Size of the set used for training, rest of the  set is used for testing
+)
 # These are the basic parameters for the spiking neuron stimuli from which the experiment originates
 # Changes to this might be required for different modes of generation (e.g. comparing different frequencies)
 creation_params = dict(
