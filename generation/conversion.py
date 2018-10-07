@@ -9,39 +9,6 @@ from data_classes import StimuliSet
 
 
 # %%
-@jit(parallel=True)
-def convert_stimulus(stimulus: np.array) -> np.array:
-    """
-
-    :param stimulus: Numpy array where each element is a single neurons spike time, specified in milliseconds
-    :return: converted_stimulus: A structured numpy array with the following fields: index, time, count
-                                 where each item represents events taking place at a 'time' from neuron #'index' in the
-                                 set, and with 'count' representing the number of events that took place at that junction.
-                                 count is required to account for numerous vesicles released in short time intervals
-    """
-    # create placeholder lists
-    indexes = []
-    times = []
-    counts = []
-    for i in prange(stimulus.shape[0]):
-        neuron = np.trunc(stimulus[i] * 10) / 10
-        event_times, event_counts = np.unique(neuron, return_counts=True)
-        indexes.extend([i] * event_times.shape[0])
-        times.extend(event_times)
-        counts.extend(event_counts)
-
-    converted_stimulus = np.array(
-        np.zeros(len(times)),
-        dtype=dict(
-            names=('index', 'time', 'count'),
-            formats=(int, float, int)
-        ))
-    converted_stimulus['index'] = indexes
-    converted_stimulus['time'] = times
-    converted_stimulus['count'] = counts
-    return converted_stimulus
-
-
 def convert_stimuli_set(stimuli_set: StimuliSet,
                         pool_size: int = 8):
     """

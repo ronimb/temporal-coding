@@ -6,8 +6,6 @@ the collection are labelled, transformed versions of either stimulus a or stimul
 """
 # %%
 import numpy as np
-from data_classes import StimuliSet
-
 
 # %%
 def shuffle_set(stimuli_set):
