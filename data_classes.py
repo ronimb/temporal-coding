@@ -4,27 +4,26 @@ from multiprocessing import Pool
 from numba import jit, prange
 from tools import calc_stimuli_distance
 import pickle
-
+from copy import copy
+from typing import Union
 
 # ToDo: implement loading functions
 # %% Helper functions
-def _numpy_arr_convert(neurons):
+def _numpy_obj_arr_convert(arr):
     """
-    used only due to possible cases where calling np.array on a list of neurons with similar length
-    results in a 2d numpy array instead of a 1d numpy array of Neurons
-    :param neurons:
+    Used to force creation of a numpy array of objects
     :return:
     """
     # If already numpy array, do nothing
-    if isinstance(neurons, np.ndarray):
-        return neurons
+    if isinstance(arr, np.ndarray):
+        return arr
 
     # if not, make sure its either a list or a tuple, and then manually create the array
-    elif isinstance(neurons, (list, tuple)):
-        neurons_array = np.empty(len(neurons), dtype=object)
-        for i, neuron in enumerate(neurons):
-            neurons_array[i] = neuron
-        return neurons_array
+    elif isinstance(arr, (list, tuple)):
+        np_obj_arr = np.empty(len(arr), dtype=object)
+        for i, neuron in enumerate(arr):
+            np_obj_arr[i] = neuron
+        return np_obj_arr
 
 
 def _bool_poisson(frequency: int, num_neurons: int, stimulus_duration: float, dt: float = 1e-5) -> np.array:
@@ -88,110 +87,12 @@ def _tempotron_format_convert(stimulus: object) -> np.array:
 
 
 # %% Classes
-@attr.s
-class StimuliSet:
-    """
-    This is a class intended to hold a collection of stimuli for use in the experiments,
-    it has the following two mandatory fields:
-        stimuli - A collection of stimuli in one of two formats:
-                        Normal:     A numpy object array where each item is a stimulus as an array of neurons
-                                    and their respective event times
-                        Converted:  A structured numpy array with the following fields: index, time, count
-                                    where each item represents events taking place at a 'time',
-                                    originating from neuron #'index' in the set,
-                                    and with 'count' representing the number of events that took place at that junction.
-                                    count is required to account for numerous vesicles released in short time intervals
-        labels - Label for each stimulus in the set according to its origin (from one of two possible original stimuli)
-        stimulus_duration - Maximal duration of the stimulus, units: ms
-
-    The following fields are optional:
-        original_stimuli -  tuple containing both original stimuli as numpy arrays of neurons and their
-                            corresponding event times (spikes or vesicle releases)
-        original_stimuli_distance - The average spike-distance metric between neurons in the two stimuli
-
-    In addition, the field "converted" specifies whether or not the stimuli in the object are of a normal or
-    converted format
-
-    """
-    # Initializing class attributes
-    stimuli = attr.ib()  # Contains all the stimuli, in either normal or converted format
-    labels = attr.ib(converter=np.array)  # Contains the labels for each of the stimuli
-    stimulus_duration = attr.ib()  # The maximal duration of the original stimulus
-    original_stimuli = attr.ib(
-        default=None)  # Can be used to contain the original stimuli from which the set was generated
-    original_stimuli_distance = attr.ib(
-        default=None)  # Can be used to contain the distance between the originating stimuli of a set
-
-    # Used to check the number of stimuli in the set
-    def __len__(self):
-        return len(self.labels)
-
-    @property  # Set as property to call without brackets
-    def size(self):  # Simple alias
-        return len(self)
-
-    def __getitem__(self, varargin):
-        pass
-
-    def __setitem__(self, key, value):
-        pass
-
-    def __add__(self, other):
-        """
-        Used to join two StimuliSet's together into one set
-
-        :param other: another StimuliSet object of any size
-        :return: combined_stimuli_set: A StimuliSet made from both sets combined
-        """
-
-        # Calculate total size
-        new_size = len(self) + len(other)
-        # Combine stimuli
-        combined_stimuli = np.array([*self.stimuli,
-                                     *other.stimuli])
-        # Combine labels
-        labels = np.array([*self.labels, *other.labels])
-        # Check if only two unique labels exist, and if so calculate distance
-        combined_stimuli_set = StimuliSet(
-            stimuli=combined_stimuli,
-            labels=labels,
-            stimulus_duration=self.stimulus_duration,
-            original_stimuli=(self.original_stimuli, other.original_stimuli),
-        )
-        return combined_stimuli_set
-
-    def shuffle(self):
-        """
-        This method is used to take a stimuli)set of stimuli shuffle their order in the list to
-        randomize the order obtained by serial generation.
-        """
-        number_of_stimuli = len(self)
-        randomized_indexes = np.random.permutation(number_of_stimuli)
-        # Shuffle labels
-        self.labels = self.labels[randomized_indexes]
-        # Shuffle stimuli
-        self.stimuli = self.stimuli[randomized_indexes]
-
-    def select_subset(self):
-        subset = None
-        return subset
-
-    def convert(self):
-        pass
-
-    def split(self):
-        pass
-
-    def save(self):
-        pass
-
-
 # %%
 @attr.s
 class Neuron:
     events = attr.ib(converter=np.array)
-    frequency_generated = attr.ib()
     stimulus_duration = attr.ib()
+    frequency_generated = attr.ib()
     event_type = attr.ib(default='spikes')  # 'spikes', 'vesicles' or other custom made
     frequency_actual = attr.ib()  # Is set automatically upon instantiation
 
@@ -213,13 +114,16 @@ class Neuron:
     def __setitem__(self, key, value):
         self.events[key] = value  # Relying on numpy indexing
 
+    def copy(self):
+        return copy(self)
+
 
 # %%
 @attr.s
 class Stimulus:
-    neurons = attr.ib(converter=_numpy_arr_convert)  # Must be a numpy array of Neuron objects
-    frequency_generated = attr.ib()
+    neurons = attr.ib(converter=_numpy_obj_arr_convert)  # Must be a numpy array of Neuron objects
     stimulus_duration = attr.ib()
+    frequency_generated = attr.ib()
     event_type = attr.ib(default='spikes')  # 'spikes', 'vesicles' or other custom made
     frequency_average = attr.ib()  # Is set automatically upon instantiation
 
@@ -250,7 +154,7 @@ class Stimulus:
         self.neurons[neuron_indexes] = values  # Relying on numpy indexing
 
     # Conversion method to get stimulus in a format that can be fed to the brian based Tempotron
-    def _tempotron_format_convert(self):
+    def _convert_for_tempotron(self):
         return _tempotron_format_convert(self)
 
     def calculate_distance_from(self, other):
@@ -267,6 +171,9 @@ class Stimulus:
     def save(self, filename):
         with open(filename, 'wb') as file:
             pickle.dump(self, file, protocol=pickle.HIGHEST_PROTOCOL)
+
+    def copy(self):
+        return copy(self)
 
     @staticmethod
     ## REFRACTORY PERIOD NOT YET IMPLEMENTED!
@@ -341,3 +248,144 @@ class Stimulus:
                             stimulus_duration=stimulus_duration,
                             event_type='spikes')
         return stimulus
+# %%
+@attr.s
+class StimuliSet:
+    """
+    This is a class intended to hold a collection of stimuli for use in the experiments,
+    it has the following two mandatory fields:
+        stimuli - A collection of stimuli in one of two formats:
+                        Normal:     A numpy object array where each item is a stimulus as an array of neurons
+                                    and their respective event times
+        labels - Label for each stimulus in the set according to its origin (from one of two possible original stimuli)
+        stimulus_duration - Maximal duration of the stimulus, units: ms
+
+    The following fields are optional:
+        original_stimuli -  tuple containing both original stimuli as numpy arrays of neurons and their
+                            corresponding event times (spikes or vesicle releases)
+        original_stimuli_distance - The average spike-distance metric between neurons in the two stimuli
+
+    In addition, the field "converted" specifies whether or not the stimuli in the object are of a normal or
+    converted format
+
+    """
+    # Initializing class attributes
+    stimuli = attr.ib(converter=_numpy_obj_arr_convert)  # Contains all the stimuli
+    labels = attr.ib(converter=np.array)  # Contains the labels for each of the stimuli
+    stimulus_duration = attr.ib()  # The maximal duration of the original stimulus
+    frequency_generated = attr.ib(default=None)  # Can be used to hold the original stimuli frequency
+    event_type = attr.ib(default='spikes') # 'spikes', 'vesicles' or other custom made
+    original_stimuli = attr.ib(
+        default=None)  # Can be used to contain the original stimuli from which the set was generated
+    original_stimuli_distance = attr.ib(
+        default=None)  # Can be used to contain the distance between the originating stimuli of a set
+
+
+    # Used to check the number of stimuli in the set
+    def __len__(self):
+        return len(self.labels)
+
+    @property  # Set as property to call without brackets
+    def size(self):  # Simple alias
+        return len(self)
+
+    def __getitem__(self, stimulus_indexes):
+        """
+        this will return a structured numpy array of the desired stimulus indexes with the following fields:
+            - stimulus: the stimulus at the index
+            - label: the label of the stimulus
+        """
+        selected_stimuli = self.stimuli[stimulus_indexes]
+        selected_labels = self.labels[stimulus_indexes]
+        combined_array = np.array(np.zeros(selected_labels.shape[0]),
+                                  dtype={'names': ('stimuli', 'labels'),
+                                         'formats': (object, bool)})
+        combined_array['stimuli'] = selected_stimuli
+        combined_array['labels'] = selected_labels
+        return combined_array
+
+    def __setitem__(self, key, value):
+        raise NotImplemented('Setting items not implemented for StimuliSet objects')
+
+    def __add__(self, other):
+        """
+        Used to join two StimuliSet's together into one set
+
+        :param other: another StimuliSet object of any size
+        :return: combined_stimuli_set: A StimuliSet made from both sets combined
+        """
+
+        # Combine stimuli
+        combined_stimuli = _numpy_obj_arr_convert([*self.stimuli,
+                                     *other.stimuli])
+        # Combine labels
+        labels = _numpy_obj_arr_convert([*self.labels, *other.labels])
+        # Check if only two unique labels exist, and if so calculate distance
+        combined_stimuli_set = StimuliSet(
+            stimuli=combined_stimuli,
+            labels=labels,
+            stimulus_duration=self.stimulus_duration,
+            original_stimuli=(self.original_stimuli, other.original_stimuli),
+        )
+        return combined_stimuli_set
+
+    def shuffle(self):
+        """
+        This method is used to take a stimuli)set of stimuli shuffle their order in the list to
+        randomize the order obtained by serial generation.
+        """
+        number_of_stimuli = len(self)
+        randomized_indexes = np.random.permutation(number_of_stimuli)
+        # Shuffle labels
+        self.labels = self.labels[randomized_indexes]
+        # Shuffle stimuli
+        self.stimuli = self.stimuli[randomized_indexes]
+        self._combined_array = self._combined_array[randomized_indexes]
+
+    def select_subset(self, size):
+        subset_indexes = np.random.choice(np.arange(self.size), size=size, replace=False)
+        selected_stimuli = self.stimuli[subset_indexes]
+        selected_labels = self.labels[subset_indexes]
+        subset = StimuliSet(stimuli=selected_stimuli,
+                            labels=selected_labels,
+                            stimulus_duration=self.stimulus_duration,
+                            frequency_generated=self.frequency_generated,
+                            event_type=self.event_type,
+                            original_stimuli=self.original_stimuli,
+                            original_stimuli_distance=self.original_stimuli_distance)
+        return subset
+
+    def convert(self):
+        pass
+
+    def split(self, fraction: float = 0.5):
+        """
+        splits the stimuli set into two parts, one with "fraction" of the stimuli and the other with "1-fraction",
+        handles rounding
+        :param fraction: Where to split the StimuliSet
+        :return: A tuple with two stimuli sets split from the original set
+        """
+        all_indexes = np.arange(self.size)
+
+        # Determine size of each of the split sets
+        num_stimuli_set_a = np.ceil(self.size * fraction).astype(int)
+        num_stimuli_set_b = np.floor(self.size * (1 - fraction)).astype(int)
+
+        # Determine number of labels in the set
+        number_of_labels = np.unique(self.labels).size
+        if number_of_labels == 2: # Make sure each of the split sets gets roughly half of each label type
+            pass
+        else: # Just split the set with random label assignment
+            stimuli_set_a_indices = np.random.choice(all_indexes, size=num_stimuli_set_a, replace=False)
+            stimuli_set_b_indices = np.setdiff1d(all_indexes, stimuli_set_a_indices)
+            stimuli_set_a = []
+            stimuli_set_b = []
+
+        return stimuli_set_a, stimuli_set_b
+
+    def save(self, filename):
+        with open(filename, 'wb') as file:
+            pickle.dump(self, file, protocol=pickle.HIGHEST_PROTOCOL)
+
+    def copy(self):
+        return copy(self)
