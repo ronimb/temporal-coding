@@ -4,6 +4,7 @@
 """
 from generation import transform
 from Experiment import Experiment
+from tools import save_obj
 
 # %% Parameter specification
 # System parameters
@@ -65,4 +66,4 @@ experiment = Experiment(
     repetitions=number_of_repetitions
 )
 experiment.run()
-# experiment.save(save_location, save_name)
+experiment.save(save_location, save_name)

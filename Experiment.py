@@ -5,7 +5,7 @@ from classification import Tempotron, evaluate, batch_train
 from generation import make_set_from_specs
 from types import FunctionType
 import os
-from tools import check_folder
+from tools import check_folder, save_obj, load_obj
 import pickle
 from tools import time_tools
 from time import time
@@ -209,23 +209,6 @@ class Experiment:
             print(f' | DONE! Started at {rep_start_date}, finished at {rep_end_date}, took {time_tools.sec_to_time(rep_time)}')
             self.rep_times.append(rep_time)
 
-    def save(self, location, name):
-        """
-        :param location: Folder to save at
-        :param name: name for both files
-        """
-        csv_fullpath = os.path.join(location, f'{name}.csv')
-        experiment_fullpath = os.path.join(location, f'{name}.experiment')
-        check_folder(folder_location=location)
-
-        # Saving results csv
-        self.results.to_csv(csv_fullpath)
-
-        # Saving experiment object
-        #TODO: This will have to be done in a bit of a more tricky way...
-        with open(experiment_fullpath, 'wb') as experiment_file:
-            pickle.dump(self, experiment_file, protocol=pickle.HIGHEST_PROTOCOL)
-
     @staticmethod
     def load(location):
         """
@@ -234,3 +217,18 @@ class Experiment:
         """
         with open(location, 'rb') as experiment_file:
             pickle.load(experiment_file)
+    def save(self, folder_name):
+        """
+        :param folder_name: Folder to save at
+        :param name: name for both files
+        """
+
+        csv_fullpath = os.path.join(folder_name, f'results.csv')
+
+        check_folder(folder_location=folder_name)
+
+        # Saving results csv
+        self.results.to_csv(csv_fullpath)
+
+        # Saving experiment object
+        params_folder = os.path(folder_name, )
