@@ -48,32 +48,14 @@ def combine_sets(transformed_from_a: np.array,
     combined_stimuli = np.array([*transformed_from_a.stimuli,
                                  *transformed_from_b.stimuli])
     # Create label vector
-    labels = np.array([*[0] * a_size, *[1] * b_size])
+    labels = np.array([*transformed_from_a.labels, *transformed_from_b.labels])
     # Create combined array
     stimuli_set = StimuliSet(
         stimuli=combined_stimuli,
         labels=labels,
-        converted=False,
         stimulus_duration=transformed_from_a.stimulus_duration
     )
     if shuffle:
         shuffle_set(stimuli_set)
     return stimuli_set
-
-
-def load_set(file_location):
-    pass
-
-
-def split_train_test(stimuli_set, training_set_size):
-    num_stimuli = len(stimuli_set)
-    all_indexes = np.arange(num_stimuli)
-    indexes_of_training_stimuli = np.random.choice(all_indexes, size=training_set_size, replace=False)
-    if stimuli_set.converted:
-        test_set = None
-        training_set = None
-    else:
-        test_set = None
-        training_set = None
-    return test_set, training_set
 

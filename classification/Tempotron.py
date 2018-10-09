@@ -137,7 +137,7 @@ class Tempotron():
                                                number_of_stimuli=batch_size,
                                                driving=driving)
         else:
-            self.networks[network_name]['synapses'].w = np.tile(self.weights, reps=self.number_of_stimuli)
+            self.networks[network_name]['synapses'].w = np.tile(self.weights, reps=batch_size)
 
     def train(self, stimuli, labels, batch_size=50, num_reps=100, learning_rate=1e-3, verbose=False):
         num_samples = int(np.unique(stimuli['index']).shape[0] / self.number_of_neurons)

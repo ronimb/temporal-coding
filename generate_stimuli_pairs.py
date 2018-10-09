@@ -9,7 +9,7 @@ each spike to move forward or backward in time within a specified interval.
 # %%
 from generation import make_stimulus
 from generation.transform import symmetric_interval_shift
-from tools import calc_stimuli_distance, check_folder, gen_datestr
+from tools import calc_stimuli_distance, check_folder, time_tools
 import numpy as np
 import os
 import datetime
@@ -31,9 +31,9 @@ temporal_shift_intervals = [[3, 5], [3, 7],
                             [3, 10], [3, 15]]  # Units: Seconds
 
 # %%
-current_date = gen_datestr(with_time=False)
+current_date = time_tools(with_time=False)
 for num_neur in number_of_neurons:
-    start_time = gen_datestr()
+    start_time = time_tools()
     print(f'Creating stimuli with {num_neur} neurons -  - started: {start_time}')
 
     current_folder = os.path.join(target_folder, current_date, 'source_pairs',
@@ -73,5 +73,5 @@ for num_neur in number_of_neurons:
             condition_file_location = os.path.join(current_folder, condition_file_name)
             with open(condition_file_location, 'wb') as file:
                 np.save(file, pairs)
-    end_time = gen_datestr()
+    end_time = time_tools()
     print(f'Finished creating stimuli with {num_neur} neurons - done: {end_time}\n')

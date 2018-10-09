@@ -20,13 +20,13 @@ set_transform_params = dict(
     number_of_vesicles=20,
     stimulus_duration=creation_params['stimulus_duration'],
     release_probability=1,
-    num_transformed=50
+    # num_transformed=50
 )
 
 origin_transform_function = transform.symmetric_interval_shift
 origin_transform_params = dict(
     stimulus_duration=creation_params['stimulus_duration'],
-    interval=(3, 7)
+    interval=(1, 3)
 )
 # %%
 
@@ -61,4 +61,4 @@ s3b = stimuli_set3.stimuli[stimuli_set3.labels == 1]
 d3 = np.array(
     [calc_stimuli_distance(a, b, stimulus_duration=creation_params['stimulus_duration']) for a, b in zip(s3a, s3b)])
 
-all_ds = -np.log10([d1, d2, d3])
+all_ds = -np.log10([d1, d2, d3]) ** -1

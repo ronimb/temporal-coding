@@ -1,6 +1,6 @@
 from generation.make_stimuli_set import make_set_from_specs
-from generation.conversion import  convert_stimuli_set
 from generation import transform
+from classification import evaluate
 # %%
 set_size = 200
 
@@ -28,6 +28,7 @@ origin_transform_params = dict(
 stimuli_set = make_set_from_specs(**creation_params, set_size=set_size,
                                    set_transform_function=set_transform_function,
                                    set_transform_params=set_transform_params)
+stimuli_set.shuffle()
 
-convert_stimuli_set(stimuli_set)
+evaluate(stimuli_set=stimuli_set, tempotron_tau=2, tempotron_threshold=0.05)
 # %%

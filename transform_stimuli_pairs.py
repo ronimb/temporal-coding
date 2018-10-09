@@ -19,7 +19,7 @@ Sep_09/source_pairs/150/15Hz_interval=3-5ms.npy
 from generation.transform import temporal_shift, fixed_release, stochastic_release
 import os
 import numpy as np
-from tools import check_folder, gen_datestr
+from tools import check_folder, time_tools
 from itertools import product
 
 # %%
@@ -56,16 +56,16 @@ condition_list = list((dict(zip(conditional_transformation_params, x))
 
 # %%
 for num_neur in number_of_neurons:
-    print(f'Started working on transform stimuli with {num_neur} neurons - {gen_datestr()}')
+    print(f'Started working on transform stimuli with {num_neur} neurons - {time_tools()}')
     stimuli_folder = os.path.join(load_folder, f'{num_neur}_neurons')  # Folder from which to actually load the stimuli
     for freq in frequencies:
-        print(f'\t{freq}Hz stimuli - {gen_datestr()}')
+        print(f'\t{freq}Hz stimuli - {time_tools()}')
         # Create folder for saving transformed stimuli
         frequency_folder = os.path.join(save_folder, f'{num_neur}_neurons',
                                         f'{freq}Hz')  # Folder for saving transformed stimuli of current num_nuer x frequency combination
         check_folder(frequency_folder)
         for interval in temporal_shift_intervals:
-            print(f'\t\tinterval = {interval} - {gen_datestr()}')
+            print(f'\t\tinterval = {interval} - {time_tools()}')
             # Load the file containing all the pairs in the current condition
             all_pairs_file_location = os.path.join(stimuli_folder,
                                                    f'{freq}Hz_interval={interval[0]}-{interval[1]}ms.npy')

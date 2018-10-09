@@ -92,7 +92,6 @@ def make_set_from_specs(frequency: float, number_of_neurons: int, stimulus_durat
         labels=stimuli_set.labels,
         original_stimuli=(original_stimulus_a, original_stimulus_b),
         original_stimuli_distance=distance_between_originals,
-        converted=False,
         stimulus_duration=stimulus_duration
 
     )
@@ -139,8 +138,16 @@ def make_set_from_stimuli(original_stimuli: Tuple[np.array, np.array], stimulus_
     set_transform_params['num_transformed'] = num_transformed  # Add to parameter dictionary
 
     # Create transformed versions from both stimuli
-    transformed_set_from_a = set_transform_function(stimulus=original_stimulus_a, **set_transform_params)
-    transformed_set_from_b = set_transform_function(stimulus=original_stimulus_b, **set_transform_params)
+    transformed_set_from_a = StimuliSet(
+        stimuli=set_transform_function(stimulus=original_stimulus_a, **set_transform_params),
+        labels=[*[0] * num_transformed],
+        stimulus_duration=stimulus_duration
+    )
+    transformed_set_from_b = StimuliSet(
+        stimuli=set_transform_function(stimulus=original_stimulus_b, **set_transform_params),
+        labels=[*[1] * num_transformed],
+        stimulus_duration=stimulus_duration
+    )
 
     # Combine, label and also shuffle (or not)
     stimuli_set = set_tools.combine_sets(transformed_from_a=transformed_set_from_a,
@@ -152,7 +159,6 @@ def make_set_from_stimuli(original_stimuli: Tuple[np.array, np.array], stimulus_
         labels=stimuli_set.labels,
         original_stimuli=(original_stimulus_a, original_stimulus_b),
         original_stimuli_distance=distance_between_originals,
-        converted=False,
         stimulus_duration=stimulus_duration
 
     )

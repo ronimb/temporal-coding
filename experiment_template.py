@@ -2,21 +2,17 @@
 """
 
 """
-from generation import make_set_from_specs
 from generation import transform
-import numpy as np
-import pandas as pd
-import matplotlib.pyplot as plt
-import seaborn as sns
-from tools import check_folder, gen_datestr
+from Experiment import Experiment
 
 # %% Parameter specification
 # System parameters
-stimuli_save_location = ''  # Location at which to save stimuli_sets generated for current experiment, LEAVE EMPTY FOR NO-SAVING
-results_save_location = ''  # Location at which the results file will be saved, include filename
+save_location = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/'
+save_name = 'test_experiment'
 # Base experiment parameters
-number_of_repetitions = 30  # Number of times to repeat the experiment with the exact same conditions
+number_of_repetitions = 2  # Number of times to repeat the experiment with the exact same conditions
 set_size = 200  # The size of the set(s) to generate for this experiment
+fraction_training = 0.5 # Fraction of samples to be used in training, the rest go to testing
 
 # Machine learning model parameters
 model_params = dict(
@@ -25,26 +21,27 @@ model_params = dict(
 )
 
 # Model training parameters
-model_training_params = dict(
-    repetitions=10,  # Number of training batches from training set to train with
-    batch_size=50,  # Size of each training batch
+training_params = dict(
+    training_repetitions=3,  # Number of training batches from training set to train with
+    batch_size=10,  # Size of each training batch
     learning_rate=1e-3,  # Learning rate for the training stage
-    training_set_size=100,  # Size of the set used for training, rest of the  set is used for testing
+    fraction_training=fraction_training,  # Fraction of set to be used for training
 )
 # These are the basic parameters for the spiking neuron stimuli from which the experiment originates
 # Changes to this might be required for different modes of generation (e.g. comparing different frequencies)
-creation_params = dict(
-    frequency=15,
-    number_of_neurons=30,
-    stimulus_duration=500,
+stimuli_creation_params = dict(
+    frequency=50,
+    number_of_neurons=5,
+    stimulus_duration=100,
+    set_size=set_size
 )
 
 # These parameters control how similar the basic two original stimuli will be, if random generation is desired,
 # Assign each of these with None
 origin_transform_function = transform.symmetric_interval_shift  # The function to use for transfrom stimulus_a to stimulus_b
 origin_transform_params = dict(  # The parameters with which to execute the specified transformation function
-    stimulus_duration=creation_params['stimulus_duration'],
-    interval=(3, 5)
+    stimulus_duration=stimuli_creation_params['stimulus_duration'],
+    interval=(1, 3)
 )
 
 # These parameters set the function that will be used to generate the transformed version of both stimuli
@@ -52,22 +49,20 @@ set_transform_function = transform.stochastic_release  # The function to use whe
 set_transform_params = dict(  # The parameters with which to execute the specified transformation function
     release_duration=5,
     number_of_vesicles=20,
-    stimulus_duration=creation_params['stimulus_duration'],
+    stimulus_duration=stimuli_creation_params['stimulus_duration'],
     release_probability=1,
-    num_transformed=50
 )
 
 # %%
-
-# Create pandas array to contain number_of_repetitions items with pre, post, diff and distance
-# Iterate number_of_repetitions times
-#   Create stimuli set
-#   TODO: Change the following behaviour, wrap the object in a training function
-#   Create tempotron object
-#   Create classification network
-#   Calculate accuracy  pre accuracy over entire set
-#   Divide set into training and test_sets (use indexes to conserve memory)
-#   Train with training set
-#   Calculate post accuracy over test_set
-#   Calculate diff
-# Do summary analytics and some plotting with the resulting array
+experiment = Experiment(
+    stimuli_creation_params=stimuli_creation_params,
+    model=model_params,
+    training_params=training_params,
+    origin_transform_function=origin_transform_function,
+    origin_transform_params=origin_transform_params,
+    set_transform_function=set_transform_function,
+    set_transform_params=set_transform_params,
+    repetitions=number_of_repetitions
+)
+experiment.run()
+# experiment.save(save_location, save_name)

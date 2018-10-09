@@ -7,7 +7,7 @@ from generation.conversion import convert_stimuli_set
 # %%
 def evaluate(stimuli_set: StimuliSet,
              tempotron_tau: float = None, tempotron_threshold: float = None,
-             tempotron: Tempotron = None) -> float:
+             tempotron: Tempotron = None, conversion_pool_size: int=8) -> float:
     """
     This function uses the Tempotron model to evaluate the accuracy of classification
     over a given stimuli_set.
@@ -31,15 +31,16 @@ def evaluate(stimuli_set: StimuliSet,
 
     :return mean_success: Average fraction of correct classifications over the entire set
     """
-    # Handle stimuli set conversion if needed (SLOWS PERFORMANCE IF CONVERSION NEEDED)
-    if not stimuli_set.converted:  # In this case we have a Normal stimuli set and must convert
-        convert_stimuli_set(stimuli_set)
+    # Converting to format requierd for processing in brian module
+    if not hasattr(stimuli_set, '_tempotron_converted_stimuli'): #handling conversion-on-demand
+        stimuli_set._make_tempotron_converted(pool_size=conversion_pool_size)
+    tempotron_converted_stimuli = stimuli_set._tempotron_converted_stimuli
 
-    # Extract number of neurons - This assumes stimuli of Converted type
-    number_of_neurons = int(np.unique(stimuli_set.stimuli['index']).shape[0] / len(stimuli_set))
+    # Extract number of neurons
+    number_of_neurons = stimuli_set.stimuli.shape[0]
 
     # If no Tempotron object was passed for classification, create one
-    if not Tempotron:
+    if not tempotron:
         tempotron = Tempotron(number_of_neurons=number_of_neurons,
                               tau=tempotron_tau,
                               threshold=tempotron_threshold,
@@ -50,7 +51,7 @@ def evaluate(stimuli_set: StimuliSet,
     # Classify each stimulus with current weights and return result
     correct_classifications = tempotron.accuracy(
         network_name='evaluation',
-        stimuli=stimuli_set.stimuli,
+        stimuli=tempotron_converted_stimuli,
         labels=stimuli_set.labels,
     )
     # Average results for mean accuracy over entire set
