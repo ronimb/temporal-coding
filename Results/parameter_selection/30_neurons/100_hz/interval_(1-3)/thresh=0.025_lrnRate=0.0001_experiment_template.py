@@ -15,11 +15,11 @@ start_date = gen_datestr()
 print(f"---- Started experiment : {start_date}")
 # %% Specific parameters for parameter selection, easier to control from here
 threshold = 25e-3
-learning_rate = 1e-3
+learning_rate = 1e-4
 # %% Parameter specification
 # Set location of root report (results) folder
 # report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/' # For laptop
-report_folder = '/home/ronimber/PycharmProjects/temporal-coding/Results/' # For Google-Compute-Engine
+report_folder = '/home/ronimber/PycharmProjects/temporal-coding/Results/' # For Compute-Engine
 # Optional: Set ordered sub-folders according to condition keywords
 condition_folders = ('parameter_selection', '30_neurons', '100_hz', 'interval_(1-3)')  # If empty, saves at report folder
 
