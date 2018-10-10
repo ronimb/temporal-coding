@@ -73,7 +73,7 @@ class Experiment:
 
     results = attr.ib(init=False)
 
-    rep_times = attr.ib(init=[])
+    rep_times = attr.ib(default=[])
     last_run_time = attr.ib(init=False)
 
     def _results_initializer(self):
