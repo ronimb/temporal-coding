@@ -4,36 +4,35 @@
 """
 from generation import transform
 from Experiment import Experiment
-from tools import save_obj
 
 # %% Parameter specification
 # System parameters
-save_location = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/'
-save_name = 'test_experiment'
+save_location = 'Data/Experiments/Parameter selection/30_neurons/15_hz/interval_(1-3)'
+save_name = 'lrnRate=5e-5_thresh=5e-2'  # This can be left empty
 # Base experiment parameters
-number_of_repetitions = 2  # Number of times to repeat the experiment with the exact same conditions
+number_of_repetitions = 15  # Number of times to repeat the experiment with the exact same conditions
 set_size = 200  # The size of the set(s) to generate for this experiment
 fraction_training = 0.5 # Fraction of samples to be used in training, the rest go to testing
 
 # Machine learning model parameters
 model_params = dict(
     tau=2,  # Voltage time decay constant
-    threshold=0.005  # Threshold for firing, firing will result in a "1" classification
+    threshold=0.05  # Threshold for firing, firing will result in a "1" classification
 )
 
 # Model training parameters
 training_params = dict(
-    training_repetitions=3,  # Number of training batches from training set to train with
-    batch_size=10,  # Size of each training batch
+    training_repetitions=15,  # Number of training batches from training set to train with
+    batch_size=50,  # Size of each training batch
     learning_rate=1e-3,  # Learning rate for the training stage
     fraction_training=fraction_training,  # Fraction of set to be used for training
 )
 # These are the basic parameters for the spiking neuron stimuli from which the experiment originates
 # Changes to this might be required for different modes of generation (e.g. comparing different frequencies)
 stimuli_creation_params = dict(
-    frequency=50,
-    number_of_neurons=5,
-    stimulus_duration=100,
+    frequency=15,
+    number_of_neurons=30,
+    stimulus_duration=500,
     set_size=set_size
 )
 
