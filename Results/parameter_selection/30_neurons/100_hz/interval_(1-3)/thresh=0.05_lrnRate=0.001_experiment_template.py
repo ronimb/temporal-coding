@@ -15,7 +15,7 @@ start_date = gen_datestr()
 print(f"---- Started experiment : {start_date}")
 # %% Specific parameters for parameter selection, easier to control from here
 threshold = 50e-3
-learning_rate = 1e-4
+learning_rate = 1e-3
 # %% Parameter specification
 # Set location of root report (results) folder
 # report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/' # For laptop
