@@ -2,7 +2,7 @@ import pickle
 import os
 from tools import check_folder, load_obj, save_obj
 # %%
-wd = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)'
+wd = '/home/ronimber/PycharmProjects/temporal-coding/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)'
 files = os.listdir(wd)
 
 def fix_experiment(file_loc):
