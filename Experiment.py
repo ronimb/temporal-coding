@@ -5,7 +5,7 @@ from classification import Tempotron, evaluate, batch_train
 from generation import make_set_from_specs
 from types import FunctionType
 import os
-from tools import check_folder
+from tools import check_folder, save_obj, load_obj
 import pickle
 from tools import time_tools
 from time import time
@@ -81,7 +81,7 @@ class Experiment:
                         'pre', 'post', 'diff')
         df = pd.DataFrame(
             np.zeros((self.repetitions, len(data_columns))),  # Currently written for a specific experiment mode
-                     columns=data_columns)
+            columns=data_columns)
         df['frequency'] = self.stimuli_creation_params['frequency']
         df['number_of_neurons'] = self.stimuli_creation_params['number_of_neurons']
         df['model_threshold'] = self.model.threshold
@@ -89,6 +89,7 @@ class Experiment:
         df['duration'] = self.stimuli_creation_params['stimulus_duration']
         df['set_size'] = self.stimuli_creation_params['set_size']
         df['number_of_vesicles'] = self.set_transform_params['number_of_vesicles']
+        df['release_duration'] = self.set_transform_params['release_duration']
         df['release_probability'] = self.set_transform_params['release_probability']
         df['orig_difference'] = str(self.origin_transform_params['interval'])
         return df
@@ -143,19 +144,21 @@ class Experiment:
             self.stimuli_sets['test'].append(test_set)
         else:
             if reassign_test_training:
-                # Join training and test sets together again
-                stimuli_set = self.entire_stimuli_sets[stimuli_set_index]
-                # Reassign test and training sets
-                test_set, training_set = stimuli_set.split(self.training_params['fraction_training'])
-                # Set reassigned sets
-                self.stimuli_sets['training'][stimuli_set_index] = training_set
-                self.stimuli_sets['test'][stimuli_set_index] = test_set
+                ### PARTIALLY WORKING CODE
+                # # Join training and test sets together again
+                # stimuli_set = self.entire_stimuli_sets[stimuli_set_index]
+                # # Reassign test and training sets
+                # test_set, training_set = stimuli_set.split(self.training_params['fraction_training'])
+                # # Set reassigned sets
+                # self.stimuli_sets['training'][stimuli_set_index] = training_set
+                # self.stimuli_sets['test'][stimuli_set_index] = test_set
+                pass
 
             else:
-                test_set = self.stimuli_sets['test'][stimuli_set_index]
-                training_set = self.stimuli_sets['training'][stimuli_set_index]
-
-
+                ### PARTIALLY WORKING CODE
+                # test_set = self.stimuli_sets['test'][stimuli_set_index]
+                # training_set = self.stimuli_sets['training'][stimuli_set_index]
+                pass
 
         # Handle conversion to tempotron format once
         test_set._make_tempotron_converted
@@ -193,8 +196,8 @@ class Experiment:
         :param regenerate_sets:
         :return:
         """
-        if not(number_of_repetitions):
-            number_of_repetitions=self.repetitions
+        if not (number_of_repetitions):
+            number_of_repetitions = self.repetitions
         # Repeat experiment number_of_repetitions time
         for i in range(number_of_repetitions):
             rep_start = time()
@@ -203,34 +206,74 @@ class Experiment:
             current_results = self._single_run()
             for column in current_results.index:
                 # Write results of current run to experimemnt results
-                self.results.loc[i, column] = current_results[column]  # Todo: fix, this probably doesnt assign correct currently, test assignement on made up dataframes
+                self.results.loc[i, column] = current_results[
+                    column]  # Todo: fix, this probably doesnt assign correct currently, test assignement on made up dataframes
             rep_time = time() - rep_start
             rep_end_date = time_tools.gen_datestr()
-            print(f' | DONE! Started at {rep_start_date}, finished at {rep_end_date}, took {time_tools.sec_to_time(rep_time)}')
+            print(
+                f' | DONE! Started at {rep_start_date}, finished at {rep_end_date}, took {time_tools.sec_to_time(rep_time)}')
             self.rep_times.append(rep_time)
 
-    def save(self, location, name):
+    def save(self, folder_location, experiment_name=''):
         """
-        :param location: Folder to save at
+        :param folder_location: Folder to save at
         :param name: name for both files
         """
-        csv_fullpath = os.path.join(location, f'{name}.csv')
-        experiment_fullpath = os.path.join(location, f'{name}.experiment')
-        check_folder(folder_location=location)
+        # Append underscored to experiment name if one was provided
+        if experiment_name:
+            if not experiment_name[-1] == '_':
+                experiment_name = experiment_name + '_'
 
-        # Saving results csv
-        self.results.to_csv(csv_fullpath)
+        check_folder(folder_location=folder_location)
 
-        # Saving experiment object
-        #TODO: This will have to be done in a bit of a more tricky way...
-        with open(experiment_fullpath, 'wb') as experiment_file:
-            pickle.dump(self, experiment_file, protocol=pickle.HIGHEST_PROTOCOL)
+        # --- Saving Tempotron ---
+        # Determine file name for tempotron parameters
+        tempotron_params_location = os.path.join(folder_location, f'{experiment_name}params.tempotron')
+        # Get reference dictionary of tempotron parameters
+        model_params_dict = self.model.__dict__
+        # Select only the params to be saved
+        model_save_params = ['number_of_neurons', 'tau', 'threshold', 'stimulus_duration', 'weights', 'eqs']
+        # Create new dictionary with only desired parameters
+        model_params_savedict = {key: model_params_dict[key] for key in model_save_params}
 
-    @staticmethod
-    def load(location):
-        """
-        Loads experiment file from specified location
-        :param location: the full location of the experiment file to load
-        """
-        with open(location, 'rb') as experiment_file:
-            pickle.load(experiment_file)
+        # Handle network saving
+        model_networks = model_params_dict['networks']
+        # Excluding the plotting network
+        if 'plot' in model_networks:
+            model_networks.pop('plot')
+
+        # Adding network sizes to parameter dictionary
+        network_sizes = {name: network['number_of_stimuli'] for name, network in model_networks.items()}
+        model_params_savedict['network_sizes'] = network_sizes
+
+        # Saving
+        save_obj(model_params_savedict, tempotron_params_location)
+
+        # --- Saving Experiment params and data ---
+        # Determine file name for experiment parameters
+        experiment_params_location = os.path.join(folder_location, f'{experiment_name}params.experiment')
+        # Get reference dictionary of experiment parameters
+        experiment_params_dict = self.__dict__
+        # Select only the params to be saved
+        experiment_save_params = ['stimuli_creation_params', 'training_params',
+                                  'origin_transform_function', 'origin_transform_params',
+                                  'set_transform_function', 'set_transform_params', 'repetitions',
+                                  'stimuli_sets', 'rep_times', 'results']
+        # Create new dictionary with only desired parameters
+        experiment_params_savedict = {key: experiment_params_dict[key] for key in experiment_save_params}
+        # Save experiment parameters
+        save_obj(experiment_params_savedict, experiment_params_location)
+
+        # Determine file name for results file
+        csv_full_path = os.path.join(folder_location, f'{experiment_name}results.csv')
+        # Save experiment results file
+        self.results.to_csv(csv_full_path)
+
+        @staticmethod
+        def load(location):
+            """
+            Loads experiment file from specified location
+            :param location: the full location of the experiment file to load
+            """
+            with open(location, 'rb') as experiment_file:
+                pickle.load(experiment_file)
