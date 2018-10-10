@@ -18,8 +18,8 @@ threshold = 5e-5
 learning_rate = 5e-4
 # %% Parameter specification
 # Set location of root report (results) folder
-# report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/' # For laptop
-report_folder = '/home/ronimber/PycharmProjects/temporal-coding/Results/' # For Google-Compute-Engine
+report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/' # For laptop
+# report_folder = '/home/ronimber/PycharmProjects/temporal-coding/Results/' # For Google-Compute-Engine
 # Optional: Set ordered sub-folders according to condition keywords
 condition_folders = ('parameter_selection', '30_neurons', '15_hz', 'interval_(1-3)')  # If empty, saves at report folder
 
