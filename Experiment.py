@@ -249,7 +249,7 @@ class Experiment:
         experiment_save_params = ['stimuli_creation_params', 'training_params',
                                   'origin_transform_function', 'origin_transform_params',
                                   'set_transform_function', 'set_transform_params', 'repetitions',
-                                  'last_run_time', 'results']
+                                  'last_run_time', 'results', 'random_seed']
         # Create new dictionary with only desired parameters
         experiment_params_savedict = {key: experiment_params_dict[key] for key in experiment_save_params}
         # Save experiment parameters
