@@ -2,18 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9670711e-1468-4038-b728-91416ca03bcb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.005_lrnRate=0.0001_results.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.001_results.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=5e-05_lrnRate=0.0005_results.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-4.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-3.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.0001_experiment_template.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.0001_results.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=5e-05_experiment_template.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=5e-05_results.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.05_lrnRate=5e-05_experiment_template.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.05_lrnRate=5e-05_results.csv" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.001_results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.001_results.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -22,10 +21,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/temporal_coding$test_temporal_shift.coverage" NAME="test_temporal_shift Coverage Results" MODIFIED="1538296009362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generation/transform/tests" />
-    <SUITE FILE_PATH="coverage/temporal_coding$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1538477783024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/temporal_coding$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1538477761678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/temporal_coding$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1538477783024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
     <SUITE FILE_PATH="coverage/temporal_coding$generate_stimuli_pairs.coverage" NAME="generate_stimuli_pairs Coverage Results" MODIFIED="1537991086406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/temporal_coding$test_temporal_shift.coverage" NAME="test_temporal_shift Coverage Results" MODIFIED="1538296009362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generation/transform/tests" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -114,13 +113,31 @@
     <session id="-319162935">
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="128" />
-          <entry key="py" value="53" />
+          <entry key="Python Console" value="130" />
+          <entry key="py" value="61" />
+          <entry key="threshold=250e-3_lrnrate=5e-5" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="181" />
+          <entry key="Python" value="192" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="py" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="Python" value="7" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="1" />
+          <entry key="project.open.time.5" value="1" />
+          <entry key="project.opened" value="1" />
         </counts>
       </usages-collector>
     </session>
@@ -131,10 +148,10 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py">
+        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="204">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+            <state relative-caret-position="165">
+              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -142,17 +159,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="238">
-              <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+            <state relative-caret-position="165">
+              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py">
+        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="22" column="67" lean-forward="true" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+            <state relative-caret-position="225">
+              <caret line="64" column="26" lean-forward="true" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="39" />
             </state>
           </provider>
         </entry>
@@ -234,15 +251,15 @@
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-3.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-5.py" />
-        <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-4.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-4.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-3.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-4.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-4.py" />
-        <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-3.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py" />
       </list>
     </option>
   </component>
@@ -264,41 +281,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-              <item name="generation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -310,12 +292,6 @@
               <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="Results" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Results" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Old" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -363,6 +339,41 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+              <item name="generation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -400,7 +411,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.threshold=250e-3_lrnrate=1e-4">
+  <component name="RunManager" selected="Python.threshold=250e-3_lrnrate=5e-5">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -423,17 +434,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="threshold=250e-3_lrnrate=1e-3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="threshold=250e-3_lrnrate=5e-5" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -442,17 +456,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="threshold=250e-3_lrnrate=1e-4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="threshold=25e-3_lrnrate=1e-4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -461,17 +478,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="threshold=250e-3_lrnrate=5e-4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="threshold=50e-3_lrnrate=1e-3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-3.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -480,17 +500,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="threshold=25e-3_lrnrate=1e-3" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="threshold=50e-3_lrnrate=5e-4" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -499,17 +522,20 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="threshold=5e-3_lrnrate=5e-4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="threshold=50e-3_lrnrate=5e-5" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -519,19 +545,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.threshold=25e-3_lrnrate=1e-3" />
-      <item itemvalue="Python.threshold=5e-3_lrnrate=5e-4" />
-      <item itemvalue="Python.threshold=250e-3_lrnrate=1e-3" />
-      <item itemvalue="Python.threshold=250e-3_lrnrate=5e-4" />
-      <item itemvalue="Python.threshold=250e-3_lrnrate=1e-4" />
+      <item itemvalue="Python.threshold=25e-3_lrnrate=1e-4" />
+      <item itemvalue="Python.threshold=50e-3_lrnrate=5e-5" />
+      <item itemvalue="Python.threshold=50e-3_lrnrate=5e-4" />
+      <item itemvalue="Python.threshold=50e-3_lrnrate=1e-3" />
+      <item itemvalue="Python.threshold=250e-3_lrnrate=5e-5" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.threshold=250e-3_lrnrate=1e-4" />
-        <item itemvalue="Python.threshold=250e-3_lrnrate=5e-4" />
-        <item itemvalue="Python.threshold=250e-3_lrnrate=1e-3" />
-        <item itemvalue="Python.threshold=25e-3_lrnrate=1e-3" />
-        <item itemvalue="Python.threshold=5e-3_lrnrate=5e-4" />
+        <item itemvalue="Python.threshold=250e-3_lrnrate=5e-5" />
+        <item itemvalue="Python.threshold=50e-3_lrnrate=1e-3" />
+        <item itemvalue="Python.threshold=50e-3_lrnrate=5e-4" />
+        <item itemvalue="Python.threshold=50e-3_lrnrate=5e-5" />
+        <item itemvalue="Python.threshold=25e-3_lrnrate=1e-4" />
       </list>
     </recent_temporary>
   </component>
@@ -742,10 +768,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <frame x="0" y="22" width="1920" height="1034" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" x="1928" y="93" width="238" height="886" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.29220086" />
+      <window_info content_ui="combo" x="1928" y="93" width="238" height="886" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.35790598" />
       <window_info id="Favorites" order="1" sideWeight="0.49842933" side_tool="true" weight="0.13942307" />
       <window_info x="2198" y="89" width="277" height="957" id="Structure" order="2" sideWeight="0.5015707" weight="0.13942307" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -759,7 +785,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3271795" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.28846154" side_tool="true" weight="0.31692308" />
-      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.71153843" visible="true" weight="0.31692308" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.71153843" visible="true" weight="0.31614348" />
       <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49892703" weight="0.30564103" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -769,6 +795,31 @@
       <window_info anchor="right" id="Database" order="4" show_stripe_button="false" weight="0.3299356" />
       <window_info anchor="right" x="0" y="0" width="430" height="818" id="Documentation" order="5" sideWeight="0.5026427" side_tool="true" weight="0.31997862" />
     </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.16738197" />
+      <window_info id="Favorites" order="1" sideWeight="0.49842933" side_tool="true" weight="0.13948497" />
+      <window_info id="Structure" order="2" sideWeight="0.5015707" weight="0.13948497" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32903227" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32903227" />
+      <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50107294" side_tool="true" weight="0.32984293" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.49892703" visible="true" weight="0.31612903" />
+      <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.32984293" />
+      <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49892703" weight="0.30645162" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" sideWeight="0.49679488" weight="0.3299356" />
+      <window_info anchor="right" id="Database" order="4" weight="0.3299356" />
+      <window_info anchor="right" x="0" y="0" width="430" height="818" id="Documentation" order="5" sideWeight="0.5032051" side_tool="true" weight="0.3299356" />
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -972,9 +1023,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="731">
           <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
-          <folding>
-            <element signature="e#44#55#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1000,20 +1048,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py" />
     <entry file="file://$PROJECT_DIR$/tests/test_Experiment.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="782">
           <caret line="49" column="23" selection-start-line="49" selection-start-column="23" selection-end-line="49" selection-end-column="23" />
-          <folding>
-            <element signature="e#9#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1031,9 +1070,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
-          <folding>
-            <element signature="e#164#204#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1041,9 +1077,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="295">
           <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
-          <folding>
-            <element signature="e#91#109#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1051,36 +1084,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="577">
           <caret line="93" selection-start-line="93" selection-end-line="93" />
-          <folding>
-            <element signature="e#61#93#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Experiment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
-          <caret line="81" column="26" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="32" column="121" selection-start-line="32" selection-start-column="121" selection-end-line="32" selection-end-column="121" />
-          <folding>
-            <element signature="e#61#93#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="32" column="121" selection-start-line="32" selection-start-column="121" selection-end-line="32" selection-end-column="121" />
         </state>
       </provider>
     </entry>
@@ -1105,13 +1108,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="32" column="121" selection-start-line="32" selection-start-column="121" selection-end-line="32" selection-end-column="121" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-3.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="187">
@@ -1133,24 +1129,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py">
+    <entry file="file://$PROJECT_DIR$/Experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+        <state relative-caret-position="-1963">
+          <caret line="81" column="26" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-3.py">
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="46" lean-forward="true" selection-start-line="19" selection-start-column="46" selection-end-line="19" selection-end-column="46" />
+        <state relative-caret-position="375">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="899">
+          <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="22" column="67" lean-forward="true" selection-start-line="22" selection-start-column="67" selection-end-line="22" selection-end-column="67" />
+        <state relative-caret-position="165">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="64" column="26" lean-forward="true" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="39" />
         </state>
       </provider>
     </entry>
