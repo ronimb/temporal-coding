@@ -5,9 +5,7 @@ from classification import Tempotron, evaluate, batch_train
 from generation import make_set_from_specs
 from types import FunctionType
 import os
-from tools import check_folder, save_obj, load_obj
-import pickle
-from tools import time_tools
+from tools import check_folder, save_obj, load_obj, sec_to_time, gen_datestr
 from time import time
 
 
@@ -46,6 +44,7 @@ class Experiment:
     :param set_transform_function
     :param set_transform_params
     :param repetitions
+    :param random_seed
 
 
     After the experiment has run, the following fields will be added to it:
@@ -67,11 +66,15 @@ class Experiment:
     set_transform_params = attr.ib(validator=attr.validators.instance_of(dict))
     repetitions = attr.ib(default=15)
 
+    # Setting random seed for current experiment
+    random_seed = attr.ib(default=np.random.randint(100000))
+
     stimuli_sets = attr.ib(default=dict(training=[], test=[]))
 
     results = attr.ib(init=False)
 
-    rep_times = attr.ib(default=[])
+    rep_times = attr.ib(init=False)
+    last_run_time = attr.ib(init=False)
 
     def _results_initializer(self):
         data_columns = ('duration', 'frequency', 'number_of_neurons',
@@ -122,44 +125,29 @@ class Experiment:
         elif isinstance(self.model, dict):
             self.model = self._setup_tempotron(model_params=self.model)
         self.results = self._results_initializer()
+        self._experiment_start_time = time()
+
+        # Set random seed
+        np.random.seed(self.random_seed)
 
     # Set up an ad-hoc tempotron model if one was not provided
 
-    def _single_run(self, stimuli_set_index=None, reassign_test_training=False):
+    def _single_run(self):
         # Reset model weights
         self.model.reset()
-        if not stimuli_set_index:
             # Generate set for this run
-            stimuli_set = make_set_from_specs(
-                origin_transform_function=self.origin_transform_function,
-                origin_transform_params=self.origin_transform_params,
-                set_transform_function=self.set_transform_function,
-                set_transform_params=self.set_transform_params,
-                **self.stimuli_creation_params)
-            # Split into training and test
-            test_set, training_set = stimuli_set.split(self.training_params['fraction_training'])
+        stimuli_set = make_set_from_specs(
+            origin_transform_function=self.origin_transform_function,
+            origin_transform_params=self.origin_transform_params,
+            set_transform_function=self.set_transform_function,
+            set_transform_params=self.set_transform_params,
+            **self.stimuli_creation_params)
+        # Split into training and test
+        test_set, training_set = stimuli_set.split(self.training_params['fraction_training'])
 
-            # Add Current StimuliSet to list of StimuliSets in the Experiment object
-            self.stimuli_sets['training'].append(training_set)
-            self.stimuli_sets['test'].append(test_set)
-        else:
-            if reassign_test_training:
-                ### PARTIALLY WORKING CODE
-                # # Join training and test sets together again
-                # stimuli_set = self.entire_stimuli_sets[stimuli_set_index]
-                # # Reassign test and training sets
-                # test_set, training_set = stimuli_set.split(self.training_params['fraction_training'])
-                # # Set reassigned sets
-                # self.stimuli_sets['training'][stimuli_set_index] = training_set
-                # self.stimuli_sets['test'][stimuli_set_index] = test_set
-                pass
-
-            else:
-                ### PARTIALLY WORKING CODE
-                # test_set = self.stimuli_sets['test'][stimuli_set_index]
-                # training_set = self.stimuli_sets['training'][stimuli_set_index]
-                pass
-
+        # Add Current StimuliSet to list of StimuliSets in the Experiment object
+        self.stimuli_sets['training'].append(training_set)
+        self.stimuli_sets['test'].append(test_set)
         # Handle conversion to tempotron format once
         test_set._make_tempotron_converted
         training_set._make_tempotron_converted()
@@ -201,18 +189,21 @@ class Experiment:
         # Repeat experiment number_of_repetitions time
         for i in range(number_of_repetitions):
             rep_start = time()
-            rep_start_date = time_tools.gen_datestr()
+            rep_start_date = gen_datestr()
             print(f'Running repetition #{i+1} ', end='')
             current_results = self._single_run()
+            # Write from indexes returned from the single run
             for column in current_results.index:
                 # Write results of current run to experimemnt results
-                self.results.loc[i, column] = current_results[
-                    column]  # Todo: fix, this probably doesnt assign correct currently, test assignement on made up dataframes
-            rep_time = time() - rep_start
-            rep_end_date = time_tools.gen_datestr()
+                self.results.loc[i, column] = current_results[column]
+            # Add repetition time to results
+            rep_time = sec_to_time(time() - rep_start)
+            self.results.loc[i, 'run_time'] = rep_time
+            rep_end_date = gen_datestr()
             print(
-                f' | DONE! Started at {rep_start_date}, finished at {rep_end_date}, took {time_tools.sec_to_time(rep_time)}')
+                f' | DONE! Started at {rep_start_date}, finished at {rep_end_date}, took {rep_time}')
             self.rep_times.append(rep_time)
+        self.last_run_time = sec_to_time(time() - self._experiment_start_time)
 
     def save(self, folder_location, experiment_name=''):
         """
@@ -246,7 +237,7 @@ class Experiment:
         network_sizes = {name: network['number_of_stimuli'] for name, network in model_networks.items()}
         model_params_savedict['network_sizes'] = network_sizes
 
-        # Saving
+        # Saving tempotron parameters
         save_obj(model_params_savedict, tempotron_params_location)
 
         # --- Saving Experiment params and data ---
@@ -258,7 +249,7 @@ class Experiment:
         experiment_save_params = ['stimuli_creation_params', 'training_params',
                                   'origin_transform_function', 'origin_transform_params',
                                   'set_transform_function', 'set_transform_params', 'repetitions',
-                                  'stimuli_sets', 'rep_times', 'results']
+                                  'last_run_time', 'results']
         # Create new dictionary with only desired parameters
         experiment_params_savedict = {key: experiment_params_dict[key] for key in experiment_save_params}
         # Save experiment parameters
@@ -275,5 +266,4 @@ class Experiment:
             Loads experiment file from specified location
             :param location: the full location of the experiment file to load
             """
-            with open(location, 'rb') as experiment_file:
-                pickle.load(experiment_file)
+            raise NotImplemented('Automatic loaded for experiments not yet implemented')

@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9670711e-1468-4038-b728-91416ca03bcb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.0001_experiment_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.0001_results.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=5e-05_experiment_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=5e-05_results.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.05_lrnRate=5e-05_experiment_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.05_lrnRate=5e-05_results.csv" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/Processed results/remove_stimulisets.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.001_results.csv" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.001_results.csv" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-5.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,12 +32,31 @@
     <expand />
     <select />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="191">
+                    <caret line="31" column="50" lean-forward="true" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="191960859">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="10" />
-          <entry key="project.open.time.0" value="2" />
+          <entry key="project.open.time.0" value="3" />
           <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="2" />
@@ -54,19 +65,19 @@
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.9" value="13" />
-          <entry key="project.opened" value="29" />
+          <entry key="project.opened" value="30" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="18158" />
+          <entry key="Python Console" value="18716" />
           <entry key="dummy" value="132" />
           <entry key="experiment_template" value="63" />
           <entry key="md" value="1" />
-          <entry key="py" value="66864" />
+          <entry key="py" value="67911" />
           <entry key="scratch_6" value="155" />
           <entry key="sh" value="9" />
-          <entry key="txt" value="908" />
+          <entry key="txt" value="925" />
           <entry key="xml" value="18" />
         </counts>
       </usages-collector>
@@ -74,8 +85,8 @@
         <counts>
           <entry key="Bash" value="9" />
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="1040" />
-          <entry key="Python" value="79247" />
+          <entry key="PLAIN_TEXT" value="1057" />
+          <entry key="Python" value="80852" />
           <entry key="Scratch" value="5993" />
           <entry key="XML" value="18" />
         </counts>
@@ -92,7 +103,7 @@
         <counts>
           <entry key="LICENSE" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="307" />
+          <entry key="py" value="316" />
           <entry key="sh" value="1" />
           <entry key="test_train_split" value="1" />
           <entry key="txt" value="1" />
@@ -104,7 +115,7 @@
           <entry key="Bash" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="293" />
+          <entry key="Python" value="302" />
           <entry key="Scratch" value="14" />
           <entry key="YAML" value="1" />
         </counts>
@@ -148,28 +159,36 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py">
+        <entry file="file://$PROJECT_DIR$/Experiment.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-3.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+            <state relative-caret-position="100">
+              <caret line="246" column="46" lean-forward="true" selection-start-line="246" selection-start-column="46" selection-end-line="246" selection-end-column="46" />
+              <folding>
+                <element signature="e#0#19#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py">
+        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/Processed results/remove_stimulisets.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="64" column="26" lean-forward="true" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="39" />
+            <state relative-caret-position="221">
+              <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+              <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+              <folding>
+                <element signature="e#0#13#0" expanded="true" />
+                <marker date="1539198009799" expanded="true" signature="303:308" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/experiment_template.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="440">
+              <caret line="83" column="23" lean-forward="true" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -190,6 +209,8 @@
       <find>print</find>
       <find>2</find>
       <find>down</find>
+      <find>rando</find>
+      <find>time_tools.</find>
     </findStrings>
     <replaceStrings>
       <replace>3</replace>
@@ -209,8 +230,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/tools/calc_stimuli_distance.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.py" />
         <option value="$PROJECT_DIR$/tools/convert_stimulus.py" />
         <option value="$PROJECT_DIR$/generation/tests/test_Sets.py" />
         <option value="$PROJECT_DIR$/generation/__init__.py" />
@@ -246,7 +265,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py" />
         <option value="$PROJECT_DIR$/tests/test_Experiment.py" />
         <option value="$PROJECT_DIR$/experiment_template.py" />
-        <option value="$PROJECT_DIR$/Experiment.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-5.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-3.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py" />
@@ -260,6 +278,9 @@
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py" />
+        <option value="$PROJECT_DIR$/classification/rand_test.py" />
+        <option value="$PROJECT_DIR$/Experiment.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/Processed results/remove_stimulisets.py" />
       </list>
     </option>
   </component>
@@ -287,6 +308,11 @@
             <path>
               <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="classification" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -322,13 +348,6 @@
               <item name="30_neurons" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="15_hz" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="interval_(1-3)" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Results" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="parameter_selection" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
@@ -764,14 +783,21 @@
       <option name="project" value="LOCAL" />
       <updated>1539173321280</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="syncing data from laptop">
+      <created>1539194793507</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1539194793507</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1034" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" x="1928" y="93" width="238" height="886" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.35790598" />
+      <window_info content_ui="combo" x="1928" y="89" width="462" height="954" id="Project" order="0" sideWeight="0.49528795" type="WINDOWED" visible="true" weight="0.3621795" />
       <window_info id="Favorites" order="1" sideWeight="0.49842933" side_tool="true" weight="0.13942307" />
       <window_info x="2198" y="89" width="277" height="957" id="Structure" order="2" sideWeight="0.5015707" weight="0.13942307" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -785,7 +811,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.3271795" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.28846154" side_tool="true" weight="0.31692308" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.71153843" visible="true" weight="0.31614348" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.71153843" visible="true" weight="0.31692308" />
       <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49892703" weight="0.30564103" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -793,7 +819,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="SciView" order="3" sideWeight="0.49679488" weight="0.32959402" />
       <window_info anchor="right" id="Database" order="4" show_stripe_button="false" weight="0.3299356" />
-      <window_info anchor="right" x="0" y="0" width="430" height="818" id="Documentation" order="5" sideWeight="0.5026427" side_tool="true" weight="0.31997862" />
+      <window_info anchor="right" x="0" y="0" width="430" height="818" id="Documentation" order="5" sideWeight="0.5026427" side_tool="true" visible="true" weight="0.31997862" />
     </layout>
     <layout-to-restore>
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.16738197" />
@@ -849,7 +875,8 @@
     <MESSAGE value="Finished experiment coding." />
     <MESSAGE value="started creating templates for parameter selection" />
     <MESSAGE value="syncing" />
-    <option name="LAST_COMMIT_MESSAGE" value="syncing" />
+    <MESSAGE value="syncing data from laptop" />
+    <option name="LAST_COMMIT_MESSAGE" value="syncing data from laptop" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -872,24 +899,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/data_classes.py" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="320">
-          <caret line="20" column="43" lean-forward="true" selection-start-line="20" selection-start-column="43" selection-end-line="20" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Old/Tempotron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="14" column="34" lean-forward="true" selection-start-line="14" selection-start-column="34" selection-end-line="14" selection-end-column="34" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_classes.py" />
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1066,38 +1075,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="97" column="13" selection-start-line="97" selection-start-column="13" selection-end-line="97" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/experiment_template.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="577">
-          <caret line="93" selection-start-line="93" selection-end-line="93" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="170">
           <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
-          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -1129,16 +1110,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Experiment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1963">
-          <caret line="81" column="26" selection-start-line="81" selection-start-column="26" selection-end-line="81" selection-end-column="26" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="375">
@@ -1160,10 +1131,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py">
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        <state relative-caret-position="225">
+          <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
         </state>
       </provider>
     </entry>
@@ -1174,10 +1152,59 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py">
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="64" column="26" lean-forward="true" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="39" />
+        <state relative-caret-position="165">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/obj_tools.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/experiment_template.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="83" column="23" lean-forward="true" selection-start-line="83" selection-start-column="23" selection-end-line="83" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/rand_test.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="31" column="50" lean-forward="true" selection-start-line="31" selection-start-column="50" selection-end-line="31" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Experiment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="246" column="46" lean-forward="true" selection-start-line="246" selection-start-column="46" selection-end-line="246" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#19#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/Processed results/remove_stimulisets.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="10" column="39" selection-start-line="10" selection-start-column="39" selection-end-line="10" selection-end-column="39" />
+          <caret line="13" column="30" selection-start-line="13" selection-start-column="30" selection-end-line="13" selection-end-column="30" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+            <marker date="1539198009799" expanded="true" signature="303:308" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
