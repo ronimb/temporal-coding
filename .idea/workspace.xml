@@ -2,26 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9670711e-1468-4038-b728-91416ca03bcb" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.005_lrnRate=0.001_experiment_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.005_lrnRate=0.001_params.experiment" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.005_lrnRate=0.001_params.tempotron" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.005_lrnRate=0.001_results.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.005_lrnRate=5e-05_experiment_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.005_lrnRate=5e-05_params.experiment" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.005_lrnRate=5e-05_params.tempotron" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.005_lrnRate=5e-05_results.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.0001_params.experiment" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.0005_experiment_template.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.0005_params.experiment" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.0005_params.tempotron" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=0.0005_results.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.025_lrnRate=5e-05_params.experiment" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.05_lrnRate=0.0005_params.experiment" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.05_lrnRate=0.001_params.experiment" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.05_lrnRate=5e-05_params.experiment" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/thresh=0.25_lrnRate=5e-05_params.experiment" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/remove_stimulisets.py" beforeDir="false" afterPath="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/remove_stimulisets.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -123,30 +104,35 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="Python Console" value="130" />
-          <entry key="py" value="62" />
+          <entry key="py" value="64" />
           <entry key="threshold=250e-3_lrnrate=5e-5" value="1" />
+          <entry key="txt" value="23" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="Python" value="193" />
+          <entry key="PLAIN_TEXT" value="23" />
+          <entry key="Python" value="195" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="py" value="12" />
+          <entry key="py" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="Python" value="12" />
+          <entry key="Python" value="24" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.5" value="2" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.open.time.8" value="1" />
+          <entry key="project.open.time.9" value="1" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
     </session>
@@ -157,52 +143,37 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-5.py">
+        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=1e-4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
+            <state relative-caret-position="270">
+              <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-3.py">
+        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=5e-4.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
+            <state relative-caret-position="165">
+              <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-4.py">
+        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=1e-3.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="150">
-              <caret line="15" column="70" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Experiment.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="3600">
-              <caret line="248" column="33" selection-start-line="248" selection-start-column="33" selection-end-line="248" selection-end-column="33" />
-              <folding>
-                <element signature="e#0#19#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="330">
+              <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/remove_stimulisets.py">
+        <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=5e-3_lrnrate=5e-5.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-              <folding>
-                <element signature="e#0#13#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="375">
+              <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
             </state>
           </provider>
         </entry>
@@ -246,13 +217,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/classification/__init__.py" />
-        <option value="$PROJECT_DIR$/tools/calc_average_frequency.py" />
-        <option value="$PROJECT_DIR$/data_classes.py" />
-        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
-        <option value="$PROJECT_DIR$/Old/Tempotron.py" />
-        <option value="$PROJECT_DIR$/run_experiment.py" />
-        <option value="$PROJECT_DIR$/tests/sanity_test.py" />
         <option value="$PROJECT_DIR$/generation/make_stimuli_set.py" />
         <option value="$PROJECT_DIR$/generation/tests/conversion.py" />
         <option value="$PROJECT_DIR$/generation/tests/stimuli_set_generation.py" />
@@ -297,6 +261,13 @@
         <option value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-3.py" />
         <option value="$PROJECT_DIR$/Experiment.py" />
         <option value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/remove_stimulisets.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=50e-3_lrnrate=1e-4.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=50e-3_lrnrate=5e-5.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=250e-3_lrnrate=1e-3.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=250e-3_lrnrate=5e-4.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=250e-3_lrnrate=1e-4.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=1e-3.py" />
+        <option value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=5e-3_lrnrate=5e-5.py" />
       </list>
     </option>
   </component>
@@ -318,41 +289,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-              <item name="generation" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-              <item name="tests" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
-              <item name="tools" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
-              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
           <expand>
@@ -397,7 +333,15 @@
               <item name="Results" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="parameter_selection" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="30_neurons" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="15_hz" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="100_hz" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Results" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="parameter_selection" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="30_neurons" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="100_hz" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="interval_(1-3)" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
@@ -405,12 +349,54 @@
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="Results" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="parameter_selection" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="30_neurons" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+              <item name="100_hz" type="9f88c78c:ScopeViewTreeModel$FileNode" />
               <item name="Templates" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
             <path>
               <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
               <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="tests" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
               <item name="tools" type="9f88c78c:ScopeViewTreeModel$FileNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+              <item name="generation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="temporal-coding" type="462c0819:PsiDirectoryNode" />
+              <item name="tools" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
+              <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
             </path>
           </expand>
           <select />
@@ -453,7 +439,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.threshold=25e-3_lrnrate=5e-4">
+  <component name="RunManager" selected="Python.threshold=5e-3_lrnrate=5e-5">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -484,12 +470,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=250e-3_lrnrate=1e-4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -498,7 +484,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="threshold=250e-3_lrnrate=5e-4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="threshold=25e-3_lrnrate=1e-3" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -506,12 +492,34 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-4.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=1e-3.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="threshold=25e-3_lrnrate=1e-4" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="temporal-coding" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=1e-4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -528,34 +536,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-4.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="true" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="threshold=5e-3_lrnrate=1e-3" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="temporal-coding" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-3.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=5e-4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -572,12 +558,12 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/Templates" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-5.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=5e-3_lrnrate=5e-5.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -587,18 +573,18 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.threshold=250e-3_lrnrate=5e-4" />
       <item itemvalue="Python.threshold=250e-3_lrnrate=1e-4" />
-      <item itemvalue="Python.threshold=5e-3_lrnrate=5e-5" />
-      <item itemvalue="Python.threshold=5e-3_lrnrate=1e-3" />
+      <item itemvalue="Python.threshold=25e-3_lrnrate=1e-4" />
       <item itemvalue="Python.threshold=25e-3_lrnrate=5e-4" />
+      <item itemvalue="Python.threshold=25e-3_lrnrate=1e-3" />
+      <item itemvalue="Python.threshold=5e-3_lrnrate=5e-5" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.threshold=25e-3_lrnrate=5e-4" />
-        <item itemvalue="Python.threshold=5e-3_lrnrate=1e-3" />
         <item itemvalue="Python.threshold=5e-3_lrnrate=5e-5" />
-        <item itemvalue="Python.threshold=250e-3_lrnrate=5e-4" />
+        <item itemvalue="Python.threshold=25e-3_lrnrate=1e-3" />
+        <item itemvalue="Python.threshold=25e-3_lrnrate=5e-4" />
+        <item itemvalue="Python.threshold=25e-3_lrnrate=1e-4" />
         <item itemvalue="Python.threshold=250e-3_lrnrate=1e-4" />
       </list>
     </recent_temporary>
@@ -841,16 +827,29 @@
       <option name="project" value="LOCAL" />
       <updated>1539202106843</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="Sync to laptop">
+      <created>1539205717433</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1539205717434</updated>
+    </task>
+    <task id="LOCAL-00034" summary="Sync to laptop">
+      <created>1539212935095</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1539212935095</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="22" width="1920" height="1034" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" x="673" y="329" width="573" height="441" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.3621795" />
+      <window_info active="true" content_ui="combo" x="673" y="329" width="573" height="441" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.37446582" />
       <window_info id="Favorites" order="1" sideWeight="0.49842933" side_tool="true" weight="0.13942307" />
       <window_info x="2198" y="89" width="277" height="957" id="Structure" order="2" sideWeight="0.5015707" weight="0.13942307" />
-      <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.3271795" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
@@ -859,12 +858,13 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32623318" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.3251121" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.28846154" side_tool="true" weight="0.31692308" />
-      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.71153843" weight="0.31578946" />
+      <window_info anchor="bottom" id="Python Console" order="11" sideWeight="0.71153843" visible="true" weight="0.31390134" />
       <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49892703" weight="0.30564103" />
+      <window_info anchor="bottom" id="Messages" order="14" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -905,7 +905,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Syncing" />
     <MESSAGE value="wtf" />
     <MESSAGE value="Changed function input units from second to ms" />
     <MESSAGE value="Finished vesicle release processes" />
@@ -930,7 +929,8 @@
     <MESSAGE value="implemented seed based generation for experiment&#10;added tool to remove stimuli sets from experiment params as seeding makes this redundant" />
     <MESSAGE value="bug fix" />
     <MESSAGE value="added fix stimuliset for realsies" />
-    <option name="LAST_COMMIT_MESSAGE" value="added fix stimuliset for realsies" />
+    <MESSAGE value="Sync to laptop" />
+    <option name="LAST_COMMIT_MESSAGE" value="Sync to laptop" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -953,74 +953,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/generation/tests/conversion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="22" selection-start-line="22" selection-end-line="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generation/transform/tests/test_vesicle_release.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="442">
-          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generation/transform/tests/test_temporal_shift.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototyping/test_train_split">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="327">
-          <caret line="24" column="33" lean-forward="true" selection-start-line="24" selection-start-column="33" selection-end-line="24" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_3.py" />
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_4.py" />
-    <entry file="file://$PROJECT_DIR$/prototyping/test_train_split.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="30" selection-start-line="30" selection-end-line="30" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generation/tests/stimuli_set_generation.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="30" column="4" lean-forward="true" selection-start-line="30" selection-start-column="4" selection-end-line="30" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/classification/tests/test_evaluate.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/prototyping/split_method.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="476">
-          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generation/conversion.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="83" column="9" selection-start-line="83" selection-start-column="9" selection-end-line="83" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Old/generate_multi_samples_temporal_shift.py">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/Old/generate_multi_samples_vesicle_release.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1098,68 +1030,17 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="15" column="37" selection-start-line="15" selection-start-column="37" selection-end-line="15" selection-end-column="37" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="14" column="48" selection-start-line="14" selection-start-column="48" selection-end-line="14" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="33" selection-start-line="33" selection-end-line="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="15" column="66" selection-start-line="15" selection-start-column="66" selection-end-line="15" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="899">
-          <caret line="73" column="18" selection-start-line="73" selection-start-column="18" selection-end-line="73" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="64" column="26" selection-start-line="64" selection-start-column="26" selection-end-line="64" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-4.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-3.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-5.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=1e-4.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-5.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-5.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-3.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=5e-4.py" />
     <entry file="file://$PROJECT_DIR$/tools/obj_tools.py" />
     <entry file="file://$PROJECT_DIR$/tools/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
@@ -1177,27 +1058,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="900">
-          <caret line="65" column="98" selection-start-line="65" selection-start-column="98" selection-end-line="65" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="12" column="19" selection-start-line="12" selection-start-column="19" selection-end-line="12" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=5e-4.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-4.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-4.py" />
     <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -1205,58 +1068,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-4.py">
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=50e-3_lrnrate=1e-4.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-3.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-5.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-3.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-4.py" />
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/remove_stimulisets.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="21" column="98" lean-forward="true" selection-start-line="21" selection-start-column="98" selection-end-line="21" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=250e-3_lrnrate=1e-3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="204">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=5e-5.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="9" column="30" selection-start-line="9" selection-start-column="30" selection-end-line="9" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=5e-3_lrnrate=1e-3.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="17" column="20" selection-start-line="17" selection-start-column="20" selection-end-line="17" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/Templates/threshold=25e-3_lrnrate=5e-4.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="15" column="70" selection-start-line="15" selection-start-column="70" selection-end-line="15" selection-end-column="70" />
+        <state relative-caret-position="255">
+          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="3600">
+        <state relative-caret-position="518">
           <caret line="248" column="33" selection-start-line="248" selection-start-column="33" selection-end-line="248" selection-end-column="33" />
-          <folding>
-            <element signature="e#0#19#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/15_hz/interval_(1-3)/remove_stimulisets.py">
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=50e-3_lrnrate=1e-3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="13" column="26" lean-forward="true" selection-start-line="13" selection-start-column="26" selection-end-line="13" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=50e-3_lrnrate=1e-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="31" column="58" lean-forward="true" selection-start-line="31" selection-start-column="58" selection-end-line="31" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=50e-3_lrnrate=5e-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="35" column="94" lean-forward="true" selection-start-line="35" selection-start-column="94" selection-end-line="35" selection-end-column="94" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=50e-3_lrnrate=5e-5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="39" lean-forward="true" selection-start-line="38" selection-start-column="58" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=250e-3_lrnrate=1e-3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="315">
+          <caret line="26" column="58" selection-start-line="26" selection-start-column="58" selection-end-line="26" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=250e-3_lrnrate=1e-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="30" column="65" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=250e-3_lrnrate=5e-4.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
-          <caret line="17" column="24" selection-start-line="17" selection-start-column="24" selection-end-line="17" selection-end-column="24" />
-          <folding>
-            <element signature="e#0#13#0" expanded="true" />
-          </folding>
+          <caret line="22" column="46" selection-start-line="22" selection-start-column="46" selection-end-line="22" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=250e-3_lrnrate=5e-5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="30" column="12" selection-start-line="30" selection-start-column="12" selection-end-line="30" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=1e-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="23" column="37" selection-start-line="23" selection-start-column="37" selection-end-line="23" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=5e-4.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="16" column="17" selection-start-line="16" selection-start-column="17" selection-end-line="16" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=25e-3_lrnrate=1e-3.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="27" column="21" selection-start-line="27" selection-start-column="21" selection-end-line="27" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Results/parameter_selection/30_neurons/100_hz/Templates/threshold=5e-3_lrnrate=5e-5.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
         </state>
       </provider>
     </entry>
