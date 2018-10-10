@@ -30,7 +30,7 @@ def combine_sets(transformed_from_a: np.array,
     :param transformed_from_b: A StimuliSet of transformed versions from stimulus_b
     :param shuffle: Whether to shuffle the order of the items in the returned stimuli_set
     :return: stimuli_set:  A StimuliSet object with the following fields:
-                         stimuli -  A collection of stimuli in the following format:
+                         stimssuli -  A collection of stimuli in the following format:
                                     Normal:     A numpy object array where each item is a stimulus as an array of
                                                 neurons and their respective event times
                          labels -   Label for each stimulus in the set according to its origin
