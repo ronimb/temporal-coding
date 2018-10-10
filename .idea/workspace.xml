@@ -3,7 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9670711e-1468-4038-b728-91416ca03bcb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tools/set_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/set_tools.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/Experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/experiment_template.py" beforeDir="false" afterPath="$PROJECT_DIR$/experiment_template.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/test_Experiment.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/test_Experiment.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/check_folder.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/obj_tools.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/file_tools.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -12,10 +17,10 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="CoverageDataManager">
-    <SUITE FILE_PATH="coverage/temporal_coding$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1538477761678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
-    <SUITE FILE_PATH="coverage/temporal_coding$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1538477783024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
-    <SUITE FILE_PATH="coverage/temporal_coding$generate_stimuli_pairs.coverage" NAME="generate_stimuli_pairs Coverage Results" MODIFIED="1537991086406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/temporal_coding$test_temporal_shift.coverage" NAME="test_temporal_shift Coverage Results" MODIFIED="1538296009362" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/generation/transform/tests" />
+    <SUITE FILE_PATH="coverage/temporal_coding$scratch.coverage" NAME="scratch Coverage Results" MODIFIED="1538477783024" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$APPLICATION_CONFIG_DIR$/scratches" />
+    <SUITE FILE_PATH="coverage/temporal_coding$__init__.coverage" NAME="__init__ Coverage Results" MODIFIED="1538477761678" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/tools" />
+    <SUITE FILE_PATH="coverage/temporal_coding$generate_stimuli_pairs.coverage" NAME="generate_stimuli_pairs Coverage Results" MODIFIED="1537991086406" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -31,13 +36,59 @@
     <expand />
     <select />
   </component>
+  <component name="DockManager">
+    <window id="1">
+      <content type="file-editors">
+        <state>
+          <leaf>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/tools/file_tools.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="255">
+                    <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+                    <folding>
+                      <element signature="e#0#13#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="true">
+              <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="278">
+                    <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+                    <folding>
+                      <element signature="e#91#109#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+            <file pinned="false" current-in-tab="false">
+              <entry file="file://$PROJECT_DIR$/tools/__init__.py">
+                <provider selected="true" editor-type-id="text-editor">
+                  <state relative-caret-position="102">
+                    <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
+                    <folding>
+                      <element signature="e#164#204#0" expanded="true" />
+                    </folding>
+                  </state>
+                </provider>
+              </entry>
+            </file>
+          </leaf>
+        </state>
+      </content>
+    </window>
+  </component>
   <component name="FUSProjectUsageTrigger">
     <session id="191960859">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
           <entry key="project.closed" value="9" />
           <entry key="project.open.time.0" value="2" />
-          <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.1" value="2" />
           <entry key="project.open.time.10" value="3" />
           <entry key="project.open.time.11" value="2" />
           <entry key="project.open.time.13" value="1" />
@@ -45,15 +96,16 @@
           <entry key="project.open.time.7" value="1" />
           <entry key="project.open.time.8" value="3" />
           <entry key="project.open.time.9" value="12" />
-          <entry key="project.opened" value="27" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Python Console" value="16994" />
-          <entry key="dummy" value="115" />
+          <entry key="Python Console" value="18067" />
+          <entry key="dummy" value="126" />
           <entry key="md" value="1" />
-          <entry key="py" value="61240" />
+          <entry key="py" value="66563" />
+          <entry key="scratch_6" value="155" />
           <entry key="sh" value="9" />
           <entry key="txt" value="812" />
           <entry key="xml" value="18" />
@@ -63,9 +115,9 @@
         <counts>
           <entry key="Bash" value="9" />
           <entry key="Markdown" value="1" />
-          <entry key="PLAIN_TEXT" value="927" />
-          <entry key="Python" value="72365" />
-          <entry key="Scratch" value="5869" />
+          <entry key="PLAIN_TEXT" value="938" />
+          <entry key="Python" value="78792" />
+          <entry key="Scratch" value="5993" />
           <entry key="XML" value="18" />
         </counts>
       </usages-collector>
@@ -80,7 +132,7 @@
         <counts>
           <entry key="LICENSE" value="1" />
           <entry key="md" value="1" />
-          <entry key="py" value="276" />
+          <entry key="py" value="283" />
           <entry key="sh" value="1" />
           <entry key="test_train_split" value="1" />
           <entry key="txt" value="1" />
@@ -92,8 +144,8 @@
           <entry key="Bash" value="1" />
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="3" />
-          <entry key="Python" value="263" />
-          <entry key="Scratch" value="13" />
+          <entry key="Python" value="269" />
+          <entry key="Scratch" value="14" />
           <entry key="YAML" value="1" />
         </counts>
       </usages-collector>
@@ -122,8 +174,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Experiment.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="227">
-                  <caret line="219" column="32" lean-forward="true" selection-start-line="219" selection-start-column="32" selection-end-line="219" selection-end-column="32" />
+                <state relative-caret-position="268">
+                  <caret line="266" column="80" selection-start-line="266" selection-start-column="80" selection-end-line="266" selection-end-column="80" />
                   <folding>
                     <element signature="e#0#19#0" expanded="true" />
                   </folding>
@@ -131,25 +183,13 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/classification/tests/test_train.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="975">
-                  <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
-                  <folding>
-                    <element signature="e#0#59#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/experiment_template.py">
+            <entry file="file://$PROJECT_DIR$/tests/test_Experiment.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+                <state relative-caret-position="391">
+                  <caret line="74" column="19" lean-forward="true" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
                   <folding>
-                    <element signature="e#61#93#0" expanded="true" />
+                    <element signature="e#9#41#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -162,61 +202,22 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/Experiment.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="3360">
-                  <caret line="233" column="46" selection-start-line="233" selection-start-column="46" selection-end-line="233" selection-end-column="46" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tools/time_tools.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="330">
-                  <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/tools/__init__.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="75">
-                  <caret line="5" column="48" lean-forward="true" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+                <state relative-caret-position="4112">
+                  <caret line="256" column="29" selection-start-line="256" selection-start-column="29" selection-end-line="256" selection-end-column="29" />
                   <folding>
-                    <element signature="e#164#204#0" expanded="true" />
+                    <element signature="e#0#19#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="300">
-                  <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/experiment_template.py">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="285">
-                  <caret line="19" column="70" selection-start-line="19" selection-start-column="70" selection-end-line="19" selection-end-column="70" />
+                <state relative-caret-position="135">
+                  <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
                   <folding>
                     <element signature="e#61#93#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/generation/set_classes.py">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="645">
-                  <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
-                  <folding>
-                    <element signature="e#44#55#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -259,9 +260,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/Tempotron.py" />
-        <option value="$PROJECT_DIR$/Tempotron_Brian.py" />
-        <option value="$PROJECT_DIR$/test_conditions.py" />
         <option value="$PROJECT_DIR$/test_conditions_lowdist.py" />
         <option value="$PROJECT_DIR$/generation/transform/tests/test_temporal_shift.py" />
         <option value="$PROJECT_DIR$/Old/make_test_samples.py" />
@@ -287,7 +285,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch.py" />
         <option value="$PROJECT_DIR$/Old/Tempotron.py" />
         <option value="$PROJECT_DIR$/run_experiment.py" />
-        <option value="$PROJECT_DIR$/tests/test_Experiment.py" />
         <option value="$PROJECT_DIR$/tests/sanity_test.py" />
         <option value="$PROJECT_DIR$/generation/make_stimuli_set.py" />
         <option value="$PROJECT_DIR$/generation/tests/conversion.py" />
@@ -304,12 +301,16 @@
         <option value="$PROJECT_DIR$/tools/time_tools.py" />
         <option value="$PROJECT_DIR$/tools/save_serialize.py" />
         <option value="$PROJECT_DIR$/tools/save_obj.py" />
-        <option value="$PROJECT_DIR$/tools/__init__.py" />
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
-        <option value="$PROJECT_DIR$/tools/obj_tools.py" />
-        <option value="$PROJECT_DIR$/Experiment.py" />
-        <option value="$PROJECT_DIR$/experiment_template.py" />
         <option value="$PROJECT_DIR$/tools/set_tools.py" />
+        <option value="$PROJECT_DIR$/tools/check_folder.py" />
+        <option value="$PROJECT_DIR$/tools/obj_tools.py" />
+        <option value="$PROJECT_DIR$/tools/__init__.py" />
+        <option value="$PROJECT_DIR$/tools/file_tools.py" />
+        <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py" />
+        <option value="$PROJECT_DIR$/Experiment.py" />
+        <option value="$PROJECT_DIR$/tests/test_Experiment.py" />
+        <option value="$PROJECT_DIR$/experiment_template.py" />
       </list>
     </option>
   </component>
@@ -331,52 +332,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope">
-        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
-          <expand>
-            <path>
-              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Experiments" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Experiments" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Parameter selection" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Experiments" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Parameter selection" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="30_neurons" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-            <path>
-              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
-              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
-              <item name="Data" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Experiments" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="Parameter selection" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="30_neurons" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-              <item name="15_hz" type="9f88c78c:ScopeViewTreeModel$FileNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -407,6 +362,22 @@
               <item name="temporal-coding" type="b2602c69:ProjectViewProjectNode" />
               <item name="Scratches and Consoles" type="1a2a3e82:ScratchProjectViewPane$MyProjectNode" />
               <item name="Scratches" type="d62648e6:ScratchProjectViewPane$MyRootNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Scope 'Project Files'; set:Project Files; class com.intellij.psi.search.scope.ProjectFilesScope">
+          <expand>
+            <path>
+              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+            </path>
+            <path>
+              <item name="temporal-coding" type="3d21c010:ScopeViewTreeModel$ProjectNode" />
+              <item name="" type="442cc68d:ScopeViewTreeModel$RootNode" />
+              <item name="Results" type="9f88c78c:ScopeViewTreeModel$FileNode" />
             </path>
           </expand>
           <select />
@@ -448,29 +419,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.stimuli_set_generation">
-    <configuration name="__init__" type="PythonConfigurationType" factoryName="Python" temporary="true">
-      <module name="temporal-coding" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tools" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tools/__init__.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Python.experiment_template">
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -493,22 +442,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="generate_stimuli_pairs" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="experiment_template" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generate_stimuli_pairs.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/experiment_template.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -537,6 +483,25 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="scratch_6" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="temporal-coding" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$APPLICATION_CONFIG_DIR$/scratches" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="stimuli_set_generation" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -559,22 +524,19 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test_temporal_shift" type="PythonConfigurationType" factoryName="Python" temporary="true">
+    <configuration name="test_Experiment" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="temporal-coding" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/generation/transform/tests" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/tests" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generation/transform/tests/test_temporal_shift.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/tests/test_Experiment.py" />
       <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="SHOW_COMMAND_LINE" value="true" />
       <option name="EMULATE_TERMINAL" value="false" />
       <option name="MODULE_MODE" value="false" />
       <option name="REDIRECT_INPUT" value="false" />
@@ -582,19 +544,19 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Python.generate_stimuli_pairs" />
-      <item itemvalue="Python.test_temporal_shift" />
-      <item itemvalue="Python.__init__" />
       <item itemvalue="Python.scratch" />
       <item itemvalue="Python.stimuli_set_generation" />
+      <item itemvalue="Python.scratch_6" />
+      <item itemvalue="Python.test_Experiment" />
+      <item itemvalue="Python.experiment_template" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.experiment_template" />
+        <item itemvalue="Python.test_Experiment" />
+        <item itemvalue="Python.scratch_6" />
         <item itemvalue="Python.stimuli_set_generation" />
         <item itemvalue="Python.scratch" />
-        <item itemvalue="Python.__init__" />
-        <item itemvalue="Python.test_temporal_shift" />
-        <item itemvalue="Python.generate_stimuli_pairs" />
       </list>
     </recent_temporary>
   </component>
@@ -756,13 +718,14 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="22" width="1920" height="1034" extended-state="6" />
+    <frame x="0" y="0" width="1920" height="1080" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" x="736" y="308" width="447" height="489" id="Project" order="0" sideWeight="0.49528795" visible="true" weight="0.17094018" />
+      <window_info content_ui="combo" x="1924" y="61" width="286" height="989" id="Project" order="0" sideWeight="0.49528795" type="WINDOWED" visible="true" weight="0.17307693" />
       <window_info id="Favorites" order="1" sideWeight="0.49842933" side_tool="true" weight="0.13942307" />
-      <window_info x="924" y="554" width="71" height="33" id="Structure" order="2" sideWeight="0.5015707" weight="0.13942307" />
+      <window_info x="2218" y="61" width="261" height="989" id="Structure" order="2" sideWeight="0.5015707" type="WINDOWED" visible="true" weight="0.13942307" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32735425" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.3271795" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.32984293" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
@@ -772,7 +735,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" weight="0.32735425" />
       <window_info anchor="bottom" id="Database Changes" order="9" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.094017096" side_tool="true" weight="0.31589743" />
-      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.9059829" visible="true" weight="0.3172646" />
+      <window_info active="true" anchor="bottom" id="Python Console" order="11" sideWeight="0.9059829" visible="true" weight="0.31589743" />
       <window_info active="true" anchor="bottom" id="Concurrent Activities Diagram" order="12" weight="0.32984293" />
       <window_info anchor="bottom" id="Terminal" order="13" sideWeight="0.49892703" weight="0.30564103" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
@@ -856,20 +819,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Old/make_test_samples.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="362" column="36" lean-forward="true" selection-start-line="348" selection-end-line="362" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/generation/transform/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" column="48" selection-start-line="1" selection-start-column="48" selection-end-line="1" selection-end-column="48" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/transform_stimuli_pairs.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="559">
@@ -949,13 +898,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/tests/test_classes.py" />
-    <entry file="file://$PROJECT_DIR$/tests/test_Experiment.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="918">
-          <caret line="58" column="35" selection-start-line="57" selection-end-line="58" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_2.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1088,30 +1030,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="578">
-          <caret line="139" column="93" selection-start-line="139" selection-start-column="93" selection-end-line="139" selection-end-column="93" />
-          <folding>
-            <element signature="e#91#109#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_experiment.py" />
-    <entry file="file://$PROJECT_DIR$/classification/tests/test_train.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="975">
-          <caret line="65" column="9" selection-start-line="65" selection-start-column="9" selection-end-line="65" selection-end-column="9" />
-          <folding>
-            <element signature="e#0#59#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
     <entry file="file://$PROJECT_DIR$/generation/set_classes.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="645">
+        <state relative-caret-position="731">
           <caret line="43" column="11" selection-start-line="43" selection-start-column="11" selection-end-line="43" selection-end-column="11" />
           <folding>
             <element signature="e#44#55#0" expanded="true" />
@@ -1119,46 +1042,94 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/time_tools.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tools/check_folder.py">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/tools/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="5" column="48" lean-forward="true" selection-start-line="5" selection-start-column="48" selection-end-line="5" selection-end-column="48" />
+        <state relative-caret-position="102">
+          <caret line="6" column="56" selection-start-line="6" selection-start-column="56" selection-end-line="6" selection-end-column="56" />
           <folding>
             <element signature="e#164#204#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.py" />
-    <entry file="file://$PROJECT_DIR$/tools/time_tools.py">
+    <entry file="file://$PROJECT_DIR$/tools/file_tools.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="22" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+        <state relative-caret-position="255">
+          <caret line="15" column="12" selection-start-line="15" selection-start-column="12" selection-end-line="15" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/obj_tools.py" />
+    <entry file="file://$PROJECT_DIR$/classification/tests/test_train.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="54" column="4" lean-forward="true" selection-start-line="54" selection-start-column="4" selection-end-line="54" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#59#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_6.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" column="18" selection-start-line="7" selection-start-column="18" selection-end-line="7" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/test_Experiment.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="74" column="19" lean-forward="true" selection-start-line="74" selection-start-column="19" selection-end-line="74" selection-end-column="19" />
+          <folding>
+            <element signature="e#9#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/classification/Tempotron.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="114" column="34" selection-start-line="114" selection-start-column="34" selection-end-line="114" selection-end-column="34" />
+          <folding>
+            <element signature="e#91#109#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Experiment.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="219" column="32" lean-forward="true" selection-start-line="219" selection-start-column="32" selection-end-line="219" selection-end-column="32" />
+        <state relative-caret-position="4112">
+          <caret line="256" column="29" selection-start-line="256" selection-start-column="29" selection-end-line="256" selection-end-column="29" />
           <folding>
             <element signature="e#0#19#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/tools/set_tools.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="32" column="31" selection-start-line="32" selection-start-column="31" selection-end-line="32" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/experiment_template.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" column="28" selection-start-line="11" selection-start-column="28" selection-end-line="11" selection-end-column="28" />
+        <state relative-caret-position="135">
+          <caret line="34" column="58" selection-start-line="34" selection-start-column="58" selection-end-line="34" selection-end-column="58" />
           <folding>
             <element signature="e#61#93#0" expanded="true" />
           </folding>
