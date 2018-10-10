@@ -30,7 +30,7 @@ check_folder(save_folder)
 
 # Optional: Set custom name for the experiment, useful when running several experiments with some shared conditions,
 # All experiment related files will have this name prepended to them with an underscore
-experiment_name = 'lrnRate=1e-4_thresh=25e-3'  # This can be left empty to save without experiment name
+experiment_name = f'thresh={threshold}_lrnRate={learning_rate}'  # This can be left empty to save without experiment name
 
 # Base experiment parameters
 number_of_repetitions = 10  # Number of times to repeat the experiment with the exact same conditions

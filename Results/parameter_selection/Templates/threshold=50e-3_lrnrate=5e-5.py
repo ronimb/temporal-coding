@@ -18,8 +18,8 @@ threshold = 25e-3
 learning_rate = 1e-3
 # %% Parameter specification
 # Set location of root report (results) folder
-# report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/' # For laptop
-report_folder = '/home/ronimber/PycharmProjects/temporal-coding/Results/' # For Google-Compute-Engine
+report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/' # For laptop
+# report_folder = '/home/ronimber/PycharmProjects/temporal-coding/Results/' # For Google-Compute-Engine
 # Optional: Set ordered sub-folders according to condition keywords
 condition_folders = ('parameter_selection', '30_neurons', '15_hz', 'interval_(1-3)')  # If empty, saves at report folder
 
@@ -30,7 +30,7 @@ check_folder(save_folder)
 
 # Optional: Set custom name for the experiment, useful when running several experiments with some shared conditions,
 # All experiment related files will have this name prepended to them with an underscore
-experiment_name = 'lrnRate=1e-4_thresh=25e-3'  # This can be left empty to save without experiment name
+experiment_name = f'thresh={threshold}_lrnRate={learning_rate}'  # This can be left empty to save without experiment name
 
 # Base experiment parameters
 number_of_repetitions = 10  # Number of times to repeat the experiment with the exact same conditions
