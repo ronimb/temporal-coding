@@ -29,7 +29,7 @@ check_folder(save_folder)
 experiment_name = 'lrnRate=1e-4_thresh=25e-3'  # This can be left empty to save without experiment name
 
 # Base experiment parameters
-number_of_repetitions = 10  # Number of times to repeat the experiment with the exact same conditions
+number_of_repetitions = 3  # Number of times to repeat the experiment with the exact same conditions
 set_size = 200  # The size of the set(s) to generate for this experiment
 fraction_training = 0.5  # Fraction of samples to be used in training, the rest go to testing
 stimulus_duration = 500 # Maximal duration of the stimulus
@@ -37,7 +37,7 @@ stimulus_duration = 500 # Maximal duration of the stimulus
 # Machine learning model parameters
 model_params = dict(
     tau=2,  # Voltage time decay constant
-    threshold=25e-3  # Threshold for firing, firing will result in a "1" classification
+    threshold=250e-3  # Threshold for firing, firing will result in a "1" classification
 )
 
 # Model training parameters

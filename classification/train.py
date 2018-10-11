@@ -6,7 +6,7 @@ from generation.conversion import convert_stimuli_set
 
 # %%
 def batch_train(stimuli_set: StimuliSet,
-                learning_rate: float, batch_size: int, training_repetitions: int,
+                learning_rate: float, batch_size: int, training_steps: int,
                 tempotron_tau: float = None, tempotron_threshold: float = None,
                 tempotron: Tempotron = None,
                 conversion_pool_size: int = 8, **kwargs):
@@ -34,7 +34,7 @@ def batch_train(stimuli_set: StimuliSet,
         stimuli=tempotron_converted_stimuli,
         labels=stimuli_set.labels,
         batch_size=batch_size,
-        num_reps=training_repetitions,
+        num_reps=training_steps,
         learning_rate=learning_rate
     )
     if return_tempotron:

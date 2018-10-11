@@ -46,7 +46,7 @@ model_params = dict(
 
 # Model training parameters
 training_params = dict(
-    training_repetitions=15,  # Number of training batches from training set to train with
+    training_steps=15,  # Number of training batches from training set to train with
     batch_size=50,  # Size of each training batch
     learning_rate=learning_rate,  # Learning rate for the training stage
     fraction_training=fraction_training,  # Fraction of set to be used for training

@@ -55,7 +55,7 @@ tempotron_params = dict(
 training_params = dict(
     learning_rate=1e-3,
     batch_size=50,
-    training_repetitions=15,
+    training_steps=15,
 )
 # %%
 stimuli_set = make_set_from_specs(**stimuli_creation_params, set_size=set_size,

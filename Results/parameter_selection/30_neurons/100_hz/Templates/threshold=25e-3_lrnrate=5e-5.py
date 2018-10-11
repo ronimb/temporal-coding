@@ -18,8 +18,8 @@ threshold = 25e-3
 learning_rate = 5e-5
 # %% Parameter specification
 # Set location of root report (results) folder
-# report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/' # For laptop
-report_folder = '/home/ronimber/PycharmProjects/temporal-coding/Results/' # For Compute-Engine
+report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/' # For laptop
+# report_folder = '/home/ronimber/PycharmProjects/temporal-coding/Results/' # For Compute-Engine
 # Optional: Set ordered sub-folders according to condition keywords
 condition_folders = ('parameter_selection', '30_neurons', '100_hz', 'interval_(1-3)')  # If empty, saves at report folder
 
@@ -46,7 +46,7 @@ model_params = dict(
 
 # Model training parameters
 training_params = dict(
-    training_repetitions=15,  # Number of training batches from training set to train with
+    training_steps=15,  # Number of training batches from training set to train with
     batch_size=50,  # Size of each training batch
     learning_rate=learning_rate,  # Learning rate for the training stage
     fraction_training=fraction_training,  # Fraction of set to be used for training
