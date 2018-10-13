@@ -1,7 +1,3 @@
-# TODO: Write documentation for experiment_template
-"""
-
-"""
 from generation import transform
 from Experiment import Experiment
 from os import path
@@ -13,45 +9,38 @@ from tools import check_folder
 start_time = time()
 start_date = gen_datestr()
 print(f"---- Started experiment : {start_date}")
-# %% Parameter specification
-# Set location of root report (results) folder
-report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/'
-# Optional: Set ordered sub-folders according to condition keywords
-condition_folders = ('parameter_selection', '30_neurons', '15_hz', 'interval_(1-3)')  # If empty, saves at report folder
-
+# %%
 # Determine name for save folder
-save_folder = path.join(report_folder, *condition_folders)
+report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/30_neurons/100_hz'
 # Make sure the folder exists, create with all subfolders if it does not
-check_folder(save_folder)
+check_folder(report_folder)
+# Name of files from current condition
+condition_name = 'interval=(7, 9)_relprob=1_relduration=9'
 
-# Optional: Set custom name for the experiment, useful when running several experiments with some shared conditions,
-# All experiment related files will have this name prepended to them with an underscore
-experiment_name = 'lrnRate=1e-4_thresh=25e-3'  # This can be left empty to save without experiment name
-
-# Base experiment parameters
-number_of_repetitions = 3  # Number of times to repeat the experiment with the exact same conditions
-set_size = 200  # The size of the set(s) to generate for this experiment
-fraction_training = 0.5  # Fraction of samples to be used in training, the rest go to testing
-stimulus_duration = 500 # Maximal duration of the stimulus
+# Main shared parameters
+number_of_repetitions = 30
+set_size = 200
+fraction_training = 0.5
+stimulus_duration = 500
 
 # Machine learning model parameters
 model_params = dict(
     tau=2,  # Voltage time decay constant
-    threshold=250e-3  # Threshold for firing, firing will result in a "1" classification
+    threshold=0.025  # Threshold for firing, firing will result in a "1" classification
 )
 
 # Model training parameters
 training_params = dict(
-    training_repetitions=15,  # Number of training batches from training set to train with
+    training_steps=30,  # Number of training batches from training set to train with
     batch_size=50,  # Size of each training batch
-    learning_rate=1e-4,  # Learning rate for the training stage
-    fraction_training=fraction_training,  # Fraction of set to be used for training
+    learning_rate=5e-05,  # Learning rate for the training stage
+    fraction_training=0.5,  # Fraction of set to be used for training
 )
 # These are the basic parameters for the spiking neuron stimuli from which the experiment originates
 # Changes to this might be required for different modes of generation (e.g. comparing different frequencies)
 stimuli_creation_params = dict(
-    frequency=15,
     number_of_neurons=30,
+    frequency=100,
     stimulus_duration=stimulus_duration,
     set_size=set_size
 )
@@ -61,22 +50,21 @@ stimuli_creation_params = dict(
 origin_transform_function = transform.symmetric_interval_shift  # The function to use for transfrom stimulus_a to stimulus_b
 origin_transform_params = dict(  # The parameters with which to execute the specified transformation function
     stimulus_duration=stimulus_duration,
-    interval=(1, 3)
+    interval=(7, 9)
 )
 
 # These parameters determine what transformation will be applied to the original stimuli to generate
 # the StimuliSet for the experiment (consisting of set_size/2 transformed samples of each)
 set_transform_function = transform.stochastic_release  # The function to use when generating each transformed stimulus
 set_transform_params = dict(  # The parameters with which to execute the specified transformation function
-    release_duration=5,
+    release_duration=9,
     number_of_vesicles=20,
     stimulus_duration=stimulus_duration,
-    release_probability=1,
+    release_probability=1
 )
 
-# Handle empty experiment name
-if experiment_name:
-    experiment_name = experiment_name + '_'
+# Append underscore to condition name
+
 # %% Running and controlling the experiment
 # Set up the experiment
 experiment = Experiment(
@@ -93,13 +81,13 @@ experiment = Experiment(
 experiment.run()
 
 # Saving all experiment data
-experiment.save(save_folder, experiment_name)
+experiment.save(report_folder, condition_name)
 
 # Save backup copy of this file
 with open(__file__, 'r') as file:
     this_file = file.read()
 
-with open(path.join(save_folder, f'{experiment_name}experiment_template.py'), 'w') as template_file:
+with open(path.join(report_folder, f'{condition_name}experiment_template.py'), 'w') as template_file:
     template_file.write(this_file)
     template_file.close()
 
