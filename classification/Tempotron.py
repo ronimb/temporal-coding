@@ -2,6 +2,7 @@
 # ToDO: rework helper function
 # ToDO: rework plotting
 import numpy as np
+import attr
 import matplotlib.pyplot as plt
 import brian2 as b2
 from brian2.units import ms
@@ -27,6 +28,7 @@ def return_subset(batch_size, samples, labels, num_samples, num_neurons):
 
 
 # %%
+# @attr.s
 class Tempotron():
     def __init__(self, number_of_neurons, tau, threshold, stimulus_duration):
         self.number_of_neurons = number_of_neurons
@@ -63,6 +65,7 @@ class Tempotron():
                                          driving=driving)
 
         make_plot_network(self)
+
 
     def reset(self):
         self.weights = np.random.normal(0, 1e-3, self.number_of_neurons)

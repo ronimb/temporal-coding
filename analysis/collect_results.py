@@ -2,7 +2,6 @@ import os
 import pandas as pd
 import re
 # %%
-target_folder = 'tests/'
 
 def collect_results(results_path, pattern='results.csv', with_subfolders=True,
                     save_path='',  # Default is to only return the dataframe without saving

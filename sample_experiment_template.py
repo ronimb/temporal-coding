@@ -4,21 +4,25 @@ from os import path
 from tools import sec_to_time, gen_datestr
 from time import time
 from tools import check_folder
+import logging
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 # Record start time for this experiment
 start_time = time()
 start_date = gen_datestr()
-print(f"---- Started experiment : {start_date}")
+logger.info(f"---- Started experiment : {start_date}")
 # %%
 # Determine name for save folder
-report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/30_neurons/100_hz'
+report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/snooch'
 # Make sure the folder exists, create with all subfolders if it does not
 check_folder(report_folder)
 # Name of files from current condition
 condition_name = 'interval=(7, 9)_relprob=1_relduration=9'
 
 # Main shared parameters
-number_of_repetitions = 30
+number_of_repetitions = 2
 set_size = 200
 fraction_training = 0.5
 stimulus_duration = 500
@@ -63,7 +67,7 @@ set_transform_params = dict(  # The parameters with which to execute the specifi
     release_probability=1
 )
 
-# Append underscore to condition name
+# Set up logging
 
 # %% Running and controlling the experiment
 # Set up the experiment
@@ -95,4 +99,4 @@ with open(path.join(report_folder, f'{condition_name}experiment_template.py'), '
 end_time = time()
 runtime = sec_to_time(end_time - start_time)
 end_date = gen_datestr()
-print(f"EXPERIMENT FINISHED:\n\tStarted: {start_date}\n\tEnded: {end_date}\n\tTook: {runtime}")
+logger.info(f"EXPERIMENT FINISHED:\n\tStarted: {start_date}\n\tEnded: {end_date}\n\tTook: {runtime}")

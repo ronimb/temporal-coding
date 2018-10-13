@@ -1,9 +1,14 @@
 import pickle
 from os import umask, makedirs
-from os.path import exists, dirname
+from os.path import exists, dirname, join
 
 
 # %%
+def make_folder(base_folder, *subfolders):
+    path = join(base_folder, *subfolders)
+    check_folder(path)
+    return path
+
 def check_folder(folder_location):
     # This is a simple function for checking if a folder exists, and creating it if it does not
     if folder_location:  # Check if empty string was passed

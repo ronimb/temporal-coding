@@ -40,7 +40,7 @@ training_params = dict(
 # Changes to this might be required for different modes of generation (e.g. comparing different frequencies)
 stimuli_creation_params = dict(
     number_of_neurons=30,
-    frequency=15,
+    frequency=50,
     stimulus_duration=stimulus_duration,
     set_size=set_size
 )

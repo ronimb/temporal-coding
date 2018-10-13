@@ -76,6 +76,8 @@ class Experiment:
     rep_times = attr.ib(default=[])
     last_run_time = attr.ib(init=False)
 
+    logger = attr.ib()
+
     def _results_initializer(self):
         data_columns = ('duration', 'frequency', 'number_of_neurons',
                         'model_threshold', 'learning_rate',
@@ -117,6 +119,21 @@ class Experiment:
                           stimulus_duration=self.stimuli_creation_params['stimulus_duration'],
                           **model_params)
         return model
+
+    @logger.default
+    def _setup_logging(self):
+        log_format = '%(asctime)s - %(message)s'
+        logging.basicConfig(level=logging.INFO,
+                            format='%(asctime)s - %(message)s',
+                            filename=log_format)
+        logger = logging.getLogger(__name__)
+        logger.setLevel(level=logging.INFO)
+        console = logging.StreamHandler()
+        console.setLevel(logging.INFO)
+        console.setFormatter(logging.Formatter(log_format))
+        logger.addHandler(console)
+        return logger
+
 
     def __attrs_post_init__(self):
         # Handle direct model or model parameter specification
