@@ -1,6 +1,5 @@
 import os
 import pandas as pd
-import re
 # %%
 
 def collect_results(results_path, pattern='results.csv', with_subfolders=True,
@@ -28,4 +27,10 @@ def collect_results(results_path, pattern='results.csv', with_subfolders=True,
         if 'df' in save_formats:
             combined_data.to_pickle(f'{file_name}.pkl')
     return combined_data
+# %%
+if __name__ == '__main__':
+    results_path = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/Experiments/'
+    save_path = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results'
+    save_name = 'all_experiment_results'
 
+    collect_results(results_path=results_path, save_name=save_name, save_path=save_path)

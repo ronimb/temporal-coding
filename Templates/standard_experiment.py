@@ -8,14 +8,14 @@ import logging
 
 # %%
 # Determine name for save folder
-report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/BOY'
+report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding'
 # Make sure the folder exists, create with all subfolders if it does not
 make_folder(report_folder)
 # Name of files from current condition
 condition_name = 'interval=(7, 9)_relprob=1_relduration=9'
 
 # Main shared parameters
-number_of_repetitions = 2
+number_of_repetitions = 30
 set_size = 200
 fraction_training = 0.5
 stimulus_duration = 500

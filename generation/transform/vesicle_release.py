@@ -177,7 +177,10 @@ def stochastic_release(stimulus: np.array, release_duration: float, number_of_ve
         # Determine which bins fired using the time bin probabilities and the scaling factor
         release_inds = (random_values / probability_scaling_factor) <= release_times_probabilities
         # Derive release time offsets from release inds and clipping to no more than the specified number of vesicles
-        vesicle_time_offsets = np.array([possible_release_times[inds][:number_of_vesicles] for inds in release_inds])
+
+        # vesicle_time_offsets = np.array([possible_release_times[inds][:number_of_vesicles] for inds in release_inds]) # With shunting
+        vesicle_time_offsets = np.array([possible_release_times[inds] for inds in release_inds]) # No shunting
+
         # Transform neuron by adding vesicle time offsets to spike times
         if vesicle_time_offsets.ndim == 1:  # This takes care of possible issues with the time offset array
             transformed_neuron = np.hstack(neuron + vesicle_time_offsets)
