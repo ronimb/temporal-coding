@@ -1,0 +1,571 @@
+/home/ronimber/anaconda3/envs/temporal_coding/bin/python /snap/pycharm-professional/89/helpers/pydev/pydevconsole.py 34451 34273
+import sys; print('Python %s on %s' % (sys.version, sys.platform))
+sys.path.extend(['/home/ronimber/PycharmProjects/temporal-coding'])
+Python 3.6.5 | packaged by conda-forge | (default, Apr  6 2018, 13:39:56) 
+Type 'copyright', 'credits' or 'license' for more information
+IPython 6.4.0 -- An enhanced Interactive Python. Type '?' for help.
+PyDev console: using IPython 6.4.0
+Python 3.6.5 | packaged by conda-forge | (default, Apr  6 2018, 13:39:56) 
+[GCC 4.8.2 20140120 (Red Hat 4.8.2-15)] on linux
+runfile('/home/ronimber/PycharmProjects/temporal-coding/Results/Experiments/30_neurons/50_hz/interval=(7, 9)_relprob=1_relduration=6_experiment_template.py', wdir='/home/ronimber/PycharmProjects/temporal-coding/Results/Experiments/30_neurons/50_hz')
+Backend Qt5Agg is interactive backend. Turning interactive mode on.
+QXcbConnection: Failed to initialize XRandr
+Qt: XKEYBOARD extension not present on the X server.
+Qt: Could not determine keyboard configuration data from X server, will use hard-coded keymap configuration.
+Qt: Failed to compile a keymap!
+Current XKB configuration data search paths are: 
+/home/ronimber/anaconda3/envs/temporal_coding/lib
+Use QT_XKB_CONFIG_ROOT environmental variable to provide an additional search path, add ':' as separator to provide several search paths and/or make sure that XKB configuration data directory contains recent enough contents, to update please see http://cgit.freedesktop.org/xkeyboard-config/ .
+INFO       Cache size for target "cython": 9711 MB.
+You can call "clear_cache('cython')" to delete all files from the cache or manually delete files in the "/home/ronimber/.cython/brian_extensions" directory. [brian2]
+---- Started experiment : Oct_12 00:52:50
+Running repetition #1 INFO       No numerical integration method specified for group 'neurongroup_1', using method 'exact' (took 0.05s). [brian2.stateupdaters.base.method_choice]
+INFO       No numerical integration method specified for group 'neurongroup_2', using method 'exact' (took 0.02s). [brian2.stateupdaters.base.method_choice]
+INFO       No numerical integration method specified for group 'neurongroup_3', using method 'exact' (took 0.02s). [brian2.stateupdaters.base.method_choice]
+ | DONE! Started at Oct_12 00:52:50, finished at Oct_12 00:54:04, took 00:01:14.131575107574463
+Running repetition #2  | DONE! Started at Oct_12 00:54:04, finished at Oct_12 00:55:28, took 00:01:24.488974571228027
+Running repetition #3  | DONE! Started at Oct_12 00:55:28, finished at Oct_12 00:56:56, took 00:01:27.425748109817505
+Running repetition #4  | DONE! Started at Oct_12 00:56:56, finished at Oct_12 00:58:12, took 00:01:15.69427227973938
+Running repetition #5  | DONE! Started at Oct_12 00:58:12, finished at Oct_12 00:59:28, took 00:01:16.107197046279907
+Running repetition #6  | DONE! Started at Oct_12 00:59:28, finished at Oct_12 01:01:09, took 00:01:40.907413959503174
+Running repetition #7  | DONE! Started at Oct_12 01:01:09, finished at Oct_12 01:02:06, took 00:00:57.21995520591736
+Running repetition #8  | DONE! Started at Oct_12 01:02:06, finished at Oct_12 01:03:29, took 00:01:23.13095450401306
+Running repetition #9  | DONE! Started at Oct_12 01:03:29, finished at Oct_12 01:04:46, took 00:01:17.44876194000244
+Running repetition #10  | DONE! Started at Oct_12 01:04:46, finished at Oct_12 01:06:19, took 00:01:32.21647238731384
+Running repetition #11  | DONE! Started at Oct_12 01:06:19, finished at Oct_12 01:07:37, took 00:01:18.36382246017456
+Running repetition #12  | DONE! Started at Oct_12 01:07:37, finished at Oct_12 01:09:19, took 00:01:42.1617648601532
+Running repetition #13  | DONE! Started at Oct_12 01:09:19, finished at Oct_12 01:11:06, took 00:01:46.591264963150024
+Running repetition #14  | DONE! Started at Oct_12 01:11:06, finished at Oct_12 01:12:13, took 00:01:7.558593988418579
+Running repetition #15  | DONE! Started at Oct_12 01:12:13, finished at Oct_12 01:13:24, took 00:01:10.966508388519287
+Running repetition #16 Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 2280)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+ | DONE! Started at Oct_12 01:13:24, finished at Oct_12 01:15:00, took 00:01:36.2492036819458
+Running repetition #17  | DONE! Started at Oct_12 01:15:00, finished at Oct_12 01:17:27, took 00:02:27.024141788482666
+Running repetition #18  | DONE! Started at Oct_12 01:17:27, finished at Oct_12 01:19:18, took 00:01:50.57001233100891
+Running repetition #19  | DONE! Started at Oct_12 01:19:18, finished at Oct_12 01:20:29, took 00:01:11.395968675613403
+Running repetition #20  | DONE! Started at Oct_12 01:20:29, finished at Oct_12 01:21:36, took 00:01:6.073908567428589
+Running repetition #21 Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 1990)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 26
+ | DONE! Started at Oct_12 01:21:36, finished at Oct_12 01:22:47, took 00:01:11.144596099853516
+Running repetition #22  | DONE! Started at Oct_12 01:22:47, finished at Oct_12 01:24:31, took 00:01:43.93870234489441
+Running repetition #23 Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+Error occured on:
+Learning rate: 5e-05
+Threshold: 0.025
+Num neurons: 30
+voltage_contribs: (1500, 4170)
+                    v_max_times: (50,)
+                    number_of_neurons: 30
+                    batch_size: 50
+                    correct: 49
+ | DONE! Started at Oct_12 01:24:31, finished at Oct_12 01:25:38, took 00:01:7.721865177154541
+Running repetition #24  | DONE! Started at Oct_12 01:25:38, finished at Oct_12 01:26:53, took 00:01:14.340980529785156
+Running repetition #25  | DONE! Started at Oct_12 01:26:53, finished at Oct_12 01:28:13, took 00:01:20.591196537017822
+Running repetition #26  | DONE! Started at Oct_12 01:28:13, finished at Oct_12 01:29:33, took 00:01:19.57200002670288
+Running repetition #27  | DONE! Started at Oct_12 01:29:33, finished at Oct_12 01:31:28, took 00:01:54.840949296951294
+Running repetition #28  | DONE! Started at Oct_12 01:31:28, finished at Oct_12 01:32:48, took 00:01:20.19360041618347
+Running repetition #29  | DONE! Started at Oct_12 01:32:48, finished at Oct_12 01:34:04, took 00:01:16.582453966140747
+Running repetition #30  | DONE! Started at Oct_12 01:34:04, finished at Oct_12 01:35:32, took 00:01:27.480842113494873
+EXPERIMENT FINISHED:
+	Started: Oct_12 00:52:50
+	Ended: Oct_12 01:35:32
+	Took: 00:42:42.22906041145325 
