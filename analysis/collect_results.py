@@ -29,8 +29,8 @@ def collect_results(results_path, pattern='results.csv', with_subfolders=True,
     return combined_data
 # %%
 if __name__ == '__main__':
-    results_path = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/Experiments/'
+    results_path = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/No_Shunting/'
     save_path = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results'
-    save_name = 'all_experiment_results'
+    save_name = 'no_shunting'
 
     collect_results(results_path=results_path, save_name=save_name, save_path=save_path)

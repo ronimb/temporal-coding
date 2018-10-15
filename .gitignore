@@ -104,22 +104,19 @@ ENV/
 /.idea
 .idea/
 
-# Old data
-/Old
-
 # Link files
 *.lnk
 
-#
-/data
+# folders
+/Old
+/results/Old
+/cython_test
+/__pycache__
+/Testing
+
+# patterns
 *.xlsx
 *.xls
 
-# Testing code
-/Testing
-tempotron_mockup.ipynb
-tempotron_mockup_old.ipynb
-pyspike_testdata.txt
-beta_games.py
 
 
