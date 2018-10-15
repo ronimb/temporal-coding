@@ -11,7 +11,7 @@ start_date = gen_datestr()
 print(f"---- Started experiment : {start_date}")
 # %%
 # Determine name for save folder
-report_folder = '~/PycharmProjects/temporal-coding/Results/Experiments/30_neurons/50_hz'
+report_folder = '~/PycharmProjects/temporal-coding/results/experiments/30_neurons/50_hz'
 # Make sure the folder exists, create with all subfolders if it does not
 check_folder(report_folder)
 # Name of files from current condition
