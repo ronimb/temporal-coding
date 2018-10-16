@@ -1,0 +1,10 @@
+interval=(1, 3)_relprob=1_relduration=3.log
+interval=(1, 3)_relprob=1_relduration=6.log
+interval=(1, 3)_relprob=1_relduration=9.log
+interval=(3, 5)_relprob=1_relduration=3.log
+interval=(3, 5)_relprob=1_relduration=6.log
+interval=(3, 5)_relprob=1_relduration=9.log
+interval=(7, 9)_relprob=1_relduration=3.log
+interval=(7, 9)_relprob=1_relduration=6.log
+interval=(7, 9)_relprob=1_relduration=9.log
+wc
