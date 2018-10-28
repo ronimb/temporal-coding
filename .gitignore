@@ -108,6 +108,7 @@ ENV/
 *.lnk
 
 # folders
+/lavi_2015_code
 /Old
 /results/Old
 /cython_test
@@ -118,5 +119,7 @@ ENV/
 *.xlsx
 *.xls
 
+# Single files
+lavi_2015_code.zip
 
 

@@ -7,8 +7,8 @@ template_file = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Tem
 
 # %% define conditions for template generation
 # Set the main report folder where templates will be saved
-report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/Results/Experiments'  # Ron-Laptop
-# report_folder = '/home/ronimber/PycharmProjects/temporal-coding/Results/Experiments' # Google Compute Engine
+# report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/results/experiments'  # Ron-Laptop
+report_folder = '/home/ronimber/PycharmProjects/temporal-coding/results/experiments' # Google Compute Engine
 
 experiment_set_name = ''  # Optional name for experiment set, if provided will create as a folder in the reports folder
 

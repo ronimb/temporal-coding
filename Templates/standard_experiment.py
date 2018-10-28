@@ -8,7 +8,7 @@ import logging
 
 # %%
 # Determine name for save folder
-report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding'
+report_folder = '/home/ron/OneDrive/Documents/Masters/Parnas/temporal-coding/results'
 # Make sure the folder exists, create with all subfolders if it does not
 make_folder(report_folder)
 # Name of files from current condition

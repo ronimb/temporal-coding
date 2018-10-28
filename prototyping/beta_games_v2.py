@@ -80,7 +80,8 @@ for span in spans:
     num_released[span] = np.array([spike_released.size for spike_released in vesicle_time_offsets])
     time_offsets[span] = np.hstack(vesicle_time_offsets)
 
+plt.figure()
+sns.distplot(time_offsets[3], norm_hist=False, kde=False)
+sns.distplot(time_offsets [6], norm_hist=False, kde=False)
+sns.distplot(time_offsets[9], norm_hist=False, kde=False)
 
-sns.distplot(time_offsets[3])
-sns.distplot(time_offsets[6])
-sns.distplot(time_offsets[9])
