@@ -10,17 +10,17 @@ from generation.set_classes import StimuliSet
 # %%
 creation_params = dict(
     frequency=15,
-    number_of_neurons=30,
+    number_of_neurons=2,
     stimulus_duration=500,
 )
 
-set_transform_function = transform.stochastic_release
+set_transform_function = transform.stochastic_pool_release
 set_transform_params = dict(
-    release_duration=5,
-    number_of_vesicles=20,
+    release_duration=9,
+    max_pool_size=20,
     stimulus_duration=creation_params['stimulus_duration'],
-    release_probability=1,
-    # num_transformed=50
+    max_fraction_released=1,
+    num_transformed=1
 )
 
 origin_transform_function = transform.symmetric_interval_shift

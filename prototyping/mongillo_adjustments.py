@@ -7,7 +7,7 @@ from numba import jit
 # %%
 # Values as given in the article synaptic theory of working memory
 tau_d = 0.2  # Sec
-tau_f = 1.5  # Sec
+tau_f = 1.5 # Sec
 
 
 def simple_decay(val, time, tau):
@@ -19,7 +19,8 @@ def simple_decay(val, time, tau):
 t = np.linspace(0, 2, 101)
 val = 0
 sol_d = odeint(simple_decay, val, t, (tau_d,))
-sol_f = odeint(simple_decay, val, t, (tau_f,))
+sol_f = odeint(simple_decay, val, t, (-tau_f,))
+
 
 plt.figure()
 plt.plot(t * 1000, sol_d)
